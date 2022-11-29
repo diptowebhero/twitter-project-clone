@@ -1,0 +1,21 @@
+extends ./../../partials/header.pug
+
+block title
+    title=title
+
+block cssLink
+    link(rel="stylesheet" href="/assets/css/confirmationPage.css")
+
+block bodyContent
+    .confirmation-section
+        .confirmation-inner.mx-auto.text-center
+            .mx-auto.text-center
+                h2 Thank You !
+            .confirmation-img.mx-auto.my-4
+                img(src='/assets/images/thumbs_up.png' alt='Images')
+            .px-4.text-center
+            h3 Your account was verified successfully !!
+            .w-10.text-center.d-flex.justify-content-center.align-items-center
+                p Now you are a verified user and can login with your credentials
+            button#submit.submit(type='submit')
+                a(href='/login') Go to Login

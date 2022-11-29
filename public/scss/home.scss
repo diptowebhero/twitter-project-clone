@@ -1,0 +1,604 @@
+.main {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0px auto;
+  width: 100%;
+  height: 100vh;
+  //left container
+  .left_side_container {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 250px;
+    height: 100vh;
+    .left_top_area {
+      padding: 10px 0px;
+      flex: 1;
+      .logo_area {
+        display: flex;
+        align-items: center;
+        height: 50px;
+        .logoIcon {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 60px;
+          height: 60px;
+          border-radius: 50%;
+          transition: 0.3s;
+          &:hover {
+            background-color: #e7f4ff;
+          }
+          i {
+            font-size: 30px;
+            color: rgb(29, 155, 240) !important;
+          }
+        }
+      }
+      .menu_section {
+        width: 100%;
+        .nav {
+          display: flex;
+          flex-direction: column;
+          .nav_link {
+            display: flex;
+            cursor: pointer;
+            align-items: center;
+            padding: 10px 35px 12px 12px;
+            font-size: 20px;
+            color: black;
+            font-weight: 600;
+            margin: 5px 0;
+            width: fit-content;
+            border-radius: 30px;
+            transition: 0.3s;
+            &:hover {
+              background-color: #e6e7e7;
+            }
+            span {
+              display: flex;
+              align-items: center;
+              position: relative;
+              padding-right: 15px;
+              .notification_box {
+                display: none !important;
+                position: absolute;
+                max-width: 20px;
+                bottom: 14px;
+                left: 14px;
+                width: 100%;
+                height: 20px;
+                border-radius: 50%;
+                background-color: #1a8cd8;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 14px;
+                font-weight: 500;
+                color: white;
+              }
+            }
+          }
+        }
+
+        .tweet_btn {
+          button {
+            max-width: 170px;
+            width: 100%;
+            height: 50px;
+            border: none;
+            background-color: #1d9bf0;
+            color: white;
+            border-radius: 30px;
+            font-weight: 500;
+            font-weight: 18px;
+          }
+        }
+      }
+    }
+    .left_bottom_area {
+      position: relative;
+      width: fit-content;
+      flex-basis: 60px;
+      margin: 10px 0px;
+      padding: 10px;
+      border-radius: 50px;
+      transition: 0.3s;
+      cursor: pointer;
+      &:hover {
+        background-color: #e6e7e7;
+      }
+
+      .user_profile_info {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 15px;
+        img {
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+        }
+        .info {
+          h5 {
+            font-size: 15px;
+            font-weight: 00;
+            line-height: 0;
+            color: black;
+          }
+          span {
+            color: #536471;
+          }
+        }
+      }
+      .menu {
+        position: absolute;
+        background: #fff;
+        width: 100%;
+        top: -60px;
+        padding: 20px;
+        border-radius: 8px;
+        font-weight: 500;
+        font-size: 15px;
+        a {
+          color: black !important;
+          &:hover {
+            text-decoration: underline !important;
+          }
+        }
+      }
+      .active {
+        display: none;
+      }
+    }
+  }
+  //middle container
+  .middle_side_container {
+    flex: 1;
+    height: 100vh;
+    overflow: auto;
+    border-left: 1px solid #dfdfdf;
+    border-right: 1px solid #dfdfdf;
+    .post_header {
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 60px;
+      h4 {
+        font-weight: 700;
+        color: black;
+      }
+      i {
+        cursor: pointer;
+      }
+    }
+    .create_post {
+      border-top: 1px solid #dfdfdf;
+      border-bottom: 1px solid #dfdfdf;
+      padding: 20px;
+      display: flex;
+      .user_avatar {
+        flex-basis: 50px;
+        margin-right: 10px;
+        img {
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          cursor: pointer;
+        }
+      }
+      .post_area {
+        flex: 1;
+        textarea {
+          width: 100%;
+          border: none;
+          outline: none;
+          font-weight: 500;
+          font-size: 17px;
+        }
+        .post_actions {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          button {
+            border: none;
+            border-radius: 30px;
+            padding: 10px 35px;
+            color: white;
+            font-size: 15px;
+            font-weight: 500;
+          }
+          i {
+            cursor: pointer;
+            font-size: 21px;
+            color: #03a9f4;
+          }
+        }
+        #postImageContainer {
+          display: grid;
+          grid-template-columns: auto auto;
+          place-items: center;
+          gap: 20px;
+          position: relative;
+          .image {
+            height: 350px;
+            max-width: 350px;
+            padding: 15px;
+            border-radius: 10px;
+            position: relative;
+            img {
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+              border-radius: 10px;
+              border: 1px solid #e5e5e5;
+            }
+
+            #close_btn {
+              position: absolute;
+              background: rgba(15, 20, 25, 0.75);
+              width: 30px;
+              height: 30px;
+              border-radius: 50px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              color: white;
+              top: 20px;
+              left: 20px;
+              transition: 0.3s;
+              cursor: pointer;
+              &:hover {
+                background: #26303abf;
+              }
+              i {
+                font-size: 12px;
+                pointer-events: none;
+              }
+            }
+          }
+        }
+      }
+    }
+    .tweetPost_container {
+      .nothing {
+        text-align: center;
+        margin-top: 30px;
+        color: red;
+        font-size: 22px;
+        font-weight: 700;
+      }
+      .tweetedUser {
+        margin: 3px 0px;
+        padding-left: 27px;
+        font-size: 19px;
+        font-weight: 500;
+        font-family: italic;
+        color: black;
+      }
+      .tweet {
+        border-bottom: 1px solid #dfdfdf;
+        padding: 20px;
+        display: flex;
+        .avatar-area {
+          width: 50px;
+          height: 50px;
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+        .tweet_body {
+          margin-left: 12px;
+          .tweetsPostImages {
+            margin-top: 10px;
+            max-width: 500px;
+            max-height: 500px;
+            display: grid;
+            grid-template-columns: auto auto;
+            border-radius: 10px;
+            border: 1px solid #dfdfdf;
+            overflow: hidden;
+            .tweetImg {
+              width: 100%;
+              height: 100%;
+              overflow: hidden;
+              margin: auto;
+              img {
+                width: 100%;
+                height: 100%;
+              }
+            }
+          }
+          .header {
+            .displayUserInfo {
+              display: flex;
+              gap: 7px;
+              align-items: center;
+              a {
+                text-decoration: none;
+                font-size: 18px;
+                font-weight: 600;
+                color: black;
+                &:hover {
+                  text-decoration: underline !important;
+                }
+              }
+              span {
+                color: #000;
+                font-weight: 400;
+                font-size: 17px;
+              }
+            }
+            .content {
+              max-width: 250px;
+              margin-top: 8px;
+              span {
+                font-weight: 500;
+                font-size: 17px;
+              }
+            }
+          }
+          .post_footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px;
+          }
+
+          button {
+            background: transparent;
+            border: none;
+            padding: 10px;
+            font-size: 18px;
+            font-weight: 500;
+            color: #757b7e;
+            cursor: pointer;
+            i {
+              pointer-events: none;
+            }
+            span {
+              pointer-events: none;
+            }
+          }
+          button.like.active {
+            i {
+              color: red;
+            }
+            span {
+              color: red;
+            }
+          }
+          button.retweet.active {
+            i {
+              color: green;
+            }
+            span {
+              color: green;
+            }
+          }
+        }
+      }
+    }
+  }
+  //right container
+  .right_side_container {
+    flex-basis: 250px;
+    height: 100vh;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    display: none;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: unset;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #bcc0c4;
+    border-radius: 25px;
+    transition: 0.3s;
+  }
+}
+#commentModal {
+  .tweet {
+    display: flex;
+    .avatar-area {
+      width: 50px;
+      height: 50px;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+    .tweet_body {
+      margin-left: 12px;
+      .tweetsPostImages {
+        margin-top: 10px;
+        max-width: 500px;
+        max-height: 500px;
+        display: grid;
+        grid-template-columns: auto auto;
+        border-radius: 10px;
+        overflow: hidden;
+        .tweetImg {
+          width: 100%;
+          height: 100%;
+          overflow: hidden;
+          margin: auto;
+          border-radius: 10px;
+          border: 2px solid #dfdfdf;
+          img {
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
+          }
+        }
+      }
+      .header {
+        .displayUserInfo {
+          display: flex;
+          gap: 7px;
+          align-items: center;
+          a {
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 600;
+            color: black;
+            &:hover {
+              text-decoration: underline !important;
+            }
+          }
+          span {
+            color: #000;
+            font-weight: 400;
+            font-size: 17px;
+          }
+        }
+        .content {
+          max-width: 250px;
+          margin-top: 8px;
+          span {
+            font-weight: 500;
+            font-size: 17px;
+          }
+        }
+      }
+      .post_footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px;
+      }
+
+      button {
+        background: transparent;
+        border: none;
+        padding: 10px;
+        font-size: 18px;
+        font-weight: 500;
+        color: #757b7e;
+        cursor: pointer;
+        i {
+          pointer-events: none;
+        }
+        span {
+          pointer-events: none;
+        }
+      }
+      button.like.active {
+        i {
+          color: red;
+        }
+        span {
+          color: red;
+        }
+      }
+      button.retweet.active {
+        i {
+          color: green;
+        }
+        span {
+          color: green;
+        }
+      }
+    }
+  }
+  .modal-footer {
+    display: block !important;
+    .create_post {
+      padding: 20px;
+      display: flex;
+      .user_avatar {
+        flex-basis: 50px;
+        margin-right: 10px;
+        img {
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          cursor: pointer;
+        }
+      }
+      .post_area {
+        flex: 1;
+        textarea {
+          width: 100%;
+          border: none;
+          outline: none;
+          font-weight: 500;
+          font-size: 17px;
+        }
+        .post_actions {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          button {
+            border: none;
+            border-radius: 30px;
+            padding: 10px 35px;
+            color: white;
+            font-size: 15px;
+            font-weight: 500;
+          }
+          i {
+            cursor: pointer;
+            font-size: 21px;
+            color: #03a9f4;
+          }
+        }
+        .postImageContainer {
+          display: grid;
+          grid-template-columns: auto auto;
+          place-items: center;
+          gap: 20px;
+          position: relative;
+          .image {
+            height: 350px;
+            max-width: 350px;
+            padding: 15px;
+            border-radius: 10px;
+            position: relative;
+            img {
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+              border-radius: 10px;
+              border: 1px solid #e5e5e5;
+            }
+
+            #close_btn {
+              position: absolute;
+              background: rgba(15, 20, 25, 0.75);
+              width: 30px;
+              height: 30px;
+              border-radius: 50px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              color: white;
+              top: 20px;
+              left: 20px;
+              transition: 0.3s;
+              cursor: pointer;
+              &:hover {
+                background: #26303abf;
+              }
+              i {
+                font-size: 12px;
+                pointer-events: none;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

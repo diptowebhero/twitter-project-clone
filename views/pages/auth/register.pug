@@ -1,0 +1,71 @@
+extends ./../../partials/header.pug
+
+block title
+    title=title
+block cssLink
+    link(rel="stylesheet" href="assets/css/auth.css")
+
+block jsScript
+    script(src="/assets/js/register.js" defer) 
+
+block bodyContent
+    div.authSection.register_container
+        div.wrapper 
+            div.auth_wrapper.register
+                h2 Register in to Twitter
+                    i.fab.fa-twitter
+                form(action="/register" method="post" enctype="multipart/form-data")
+                    .row.rows_container.mt-3
+                        .col
+                            .mb-3 
+                                label(for="firstName") First Name
+                                input#firstName(type="text" name="firstName" value = user? user.firstName : '' placeholder="Enter first name" class="form-control")
+                                if error.firstName
+                                    p.error #{error.firstName.msg}
+                        .col
+                            .mb-3 
+                                label(for="lastName") Last Name
+                                input#lastName(type="text" name="lastName" value = user? user.lastName : '' placeholder="Enter last name" class="form-control")
+                                if error.lastName
+                                    p.error #{error.lastName.msg}
+                    .row.rows_container
+                        .col
+                            .mb-3 
+                                label(for="userName") Username
+                                input#userName(type="text" name="username" value = user? user.username : '' placeholder="Enter userName" class="form-control")
+                                if error.username
+                                    p.error #{error.username.msg}
+                        .col
+                            .mb-3 
+                                label(for="email") Email
+                                input#email(type="text" name="email" value = user? user.email : '' placeholder="Enter Email" class="form-control")
+                                if error.email
+                                    p.error #{error.email.msg} 
+                    .row.rows_container
+                        .col
+                            .mb-0
+                                label(for="password") Password
+                                .passContainer
+                                    input#password(type="password" name="password" value = user? user.password : '' placeholder="Enter Password" class="form-control")
+                                    span#passwordEyeIcon
+                                        i.fas.fa-eye
+                                if error.password
+                                    p.error #{error.password.msg}
+                        .col
+                            .mb-3 
+                                label(for="confirmPassword") Confirm Password
+                                .passContainer
+                                    input#confirmPassword(type="text" name="confirmPassword" value = user? user.confirmPassword : '' placeholder="Re-confirm password" class="form-control")
+                                    span#confirmPasswordEyeIcon
+                                        i.fas.fa-eye
+                                if error.confirmPassword
+                                    p.error #{error.confirmPassword.msg}
+                    .col
+                        .mb-3 
+                            label(for="avatarProfile") Avatar
+                            input#avatarProfile(type="file" accept=".jpg, .jpeg, .png, .svg" name="avatarProfile" class="form-control")
+                            if error.avatarProfile
+                                p.error #{error.avatarProfile.msg}
+                    input#formBtn(type="submit" class="form-control mt-3" value="Register")
+                p.toggle_page Have an account?
+                    a(href="/login") Login Here

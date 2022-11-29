@@ -1,0 +1,106 @@
+extends ./../../partials/header.pug
+block title
+    title=title
+block cssLink
+    link(rel="stylesheet" href="/assets/css/home.css")
+    link(rel="stylesheet" href="/assets/css/toastify.css")
+block jsScript
+    script(src="/assets/js/home.js" defer)
+    <script type="text/javascript" src="/assets/js/toastify.js" defer></script>
+    <script type="text/javascript" src="/assets/js/moment.js" defer></script>
+block bodyContent
+    #commentModal.modal.fade(aria-hidden='true' aria-labelledby='commentModalTitle' tabindex='-1')
+        .modal-dialog.modal-dialog-centered
+            .modal-content
+                .modal-header
+                    h1#commentModalTitle.modal-title.fs-5 Reply
+                    button.btn-close(type='button' data-bs-dismiss='modal' aria-label='Close')
+                .modal-body
+
+                .modal-footer
+                    .create_post
+                        .user_avatar
+                            img(src='http://localhost:3000/uploads/profile/user-1669213414896.png' alt='Avatar')
+                        .post_area
+                            textarea#commentTextAreaContent(placeholder="What's happening" spellcheck='false')
+                            .postImageContainer
+                            .post_actions.mt-3
+                                label(for='postImage')
+                                    i.fas.fa-image(aria-hidden='true')
+                                    input#commentPostImage(type='file' multiple='' hidden='')
+                                button#commentBtn(style='background: rgb(118, 185, 229);' disabled='') Reply Tweet
+    main.main
+        .left_side_container
+            .left_top_area
+                .logo_area
+                    a(href="/" class="logoIcon")
+                        i.fab.fa-twitter
+                .menu_section.mt-2
+                    nav.nav
+                        a.nav_link(href="/home")
+                            span
+                                i.fas.fa-home
+                                .notification_box 1
+                            |Home 
+                        a.nav_link(href="/explore")
+                            span
+                                i.fas.fa-hashtag
+                                .notification_box
+                            |Explore 
+                        a.nav_link(href="/notification")
+                            span
+                                i.fas.fa-bell
+                                .notification_box
+                            |Notification 
+                        a.nav_link(href="/message")
+                            span
+                                i.fas.fa-envelope
+                                .notification_box
+                            |Message 
+                        a.nav_link(href="/bookmarks")
+                            span 
+                                i.far.fa-bookmark
+                                .notification_box
+                            | Bookmarks
+                        a.nav_link(href="/lists")
+                            span 
+                                i.fas.fa-list
+                                .notification_box
+                            | Lists
+                        a.nav_link(href="/profile")
+                            span
+                                i.fas.fa-user-circle
+                                .notification_box
+                            |Profile
+                        a.nav_link
+                            span
+                                i.fas.fa-ellipsis-h
+                            |More
+                    .tweet_btn.mt-3
+                        button Tweet
+            .left_bottom_area 
+                .user_profile_info
+                    img(src="/uploads/profile/" + user.avatarProfile alt="Avatar")
+                    .info
+                        h5 #{user.firstName + ' ' + user.lastName}
+                        span @#{user.username}
+                    i.fas.fa-ellipsis-h
+                .menu.active.shadow
+                    a(href="/logout") Log out @#{user.username}
+        .middle_side_container
+            .post_header
+                h4 Latest Tweet 
+                i.fas.fa-star
+            .create_post
+                .user_avatar
+                    img(src="/uploads/profile/" + user.avatarProfile alt="Avatar")
+                .post_area
+                    textarea#textAreaContent(placeholder="What's happening")
+                    #postImageContainer
+                    .post_actions.mt-3
+                        label(for="postImage")
+                            i.fas.fa-image
+                            input#postImage(type="file" multiple hidden)
+                        button#tweetBtn(disabled) Tweet
+            .tweetPost_container
+        .right_side_container

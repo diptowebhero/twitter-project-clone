@@ -1,0 +1,186 @@
+.confirmation-section {
+  margin: 0px 10px;
+  max-width: 100%;
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+  .confirmation-section {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+}
+
+@media only screen and (min-width: 576px) and (max-width: 768px) {
+  .confirmation-section {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+}
+
+@media only screen and (min-width: 426px) and (max-width: 575px) {
+  .confirmation-section {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+}
+
+@media only screen and (min-width: 375px) and (max-width: 425px) {
+  .confirmation-section {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+}
+
+@media only screen and (min-width: 320px) and (max-width: 375px) {
+  .confirmation-section {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+}
+
+.confirmation-inner {
+  padding: 30px;
+  border-radius: 10px;
+  max-width: 600px;
+  -webkit-box-shadow: 5px 3px 4px 6px #f5f0f0;
+  box-shadow: 5px 3px 4px 6px #f5f0f0;
+}
+
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+  .confirmation-inner {
+    margin: 0;
+  }
+}
+
+@media only screen and (min-width: 576px) and (max-width: 768px) {
+  .confirmation-inner {
+    margin: 0;
+  }
+}
+
+@media only screen and (min-width: 426px) and (max-width: 575px) {
+  .confirmation-inner {
+    margin: 0;
+  }
+}
+
+@media only screen and (min-width: 375px) and (max-width: 425px) {
+  .confirmation-inner {
+    margin: 0;
+  }
+}
+
+.confirmation-inner h2 {
+  font-size: 56px;
+  color: #3e90fa;
+  font-weight: 600;
+  font-family: cursive;
+}
+
+@media only screen and (min-width: 426px) and (max-width: 575px), only screen and (min-width: 375px) and (max-width: 425px), only screen and (min-width: 320px) and (max-width: 375px) {
+  .confirmation-inner h2 {
+    font-size: 42px;
+  }
+}
+
+.confirmation-inner h3 {
+  color: #102e44;
+  font-weight: 500;
+}
+
+.confirmation-inner a {
+  color: #1d43eb !important;
+  text-decoration: none !important;
+}
+
+.confirmation-inner a:hover {
+  text-decoration: underline !important;
+}
+
+.confirmation-inner p {
+  width: 70% !important;
+}
+
+@media only screen and (min-width: 426px) and (max-width: 575px), only screen and (min-width: 375px) and (max-width: 425px), only screen and (min-width: 320px) and (max-width: 375px) {
+  .confirmation-inner p {
+    width: 100% !important;
+  }
+}
+
+.confirmation-img {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.confirmation-inner img {
+  height: 100%;
+  width: 50%;
+}
+
+.submit {
+  border: none;
+  background: #3e90fa;
+  padding: 10px 30px;
+  border-radius: 30px;
+}
+
+.submit a {
+  font-weight: 500;
+  color: white !important;
+}

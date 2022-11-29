@@ -1,0 +1,21 @@
+.error_page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 50%;
+  margin: auto;
+  height: 100vh;
+  h2 {
+    color: red;
+    font-weight: bold;
+  }
+  h4 {
+    color: green;
+    font-weight: 500;
+  }
+  p {
+    font-weight: 500;
+    font-size: 16px;
+  }
+}

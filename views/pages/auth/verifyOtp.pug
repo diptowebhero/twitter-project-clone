@@ -1,0 +1,33 @@
+extends ./../../partials/header.pug
+block title
+    title=title
+block cssLink
+    link(rel="stylesheet" href="/assets/css/auth.css")
+block jsScript
+    script(src="/assets/js/otpVerify.js" defer) 
+
+block bodyContent
+    div.authSection
+        div.wrapper
+            div.auth_wrapper
+                h2 Verify OTP
+                .otp_image
+                    img(src="/assets/images/otpVerification.png" alt="OTP-Images")
+                p.mt-2.fw-semibold.text-center we have sent OTP to #{otp.email} check inbox
+                form(action="/otpVerification" method="post")
+                    label(for="username") OTP
+                    input#username(type="number" maxlength='4' name="otp" placeholder="Enter OTP" class="form-control")
+                    if error.otp
+                        p.error #{error.otp.msg}
+                    input(type="hidden" name="otpId" value =otp.otpId)
+                    input(type="hidden" name="otpEmail" value=otp.email)
+                    input.otpBtn(type="submit" class="form-control mt-3" value="Verify Now")
+                    .countDown.text-center.mt-3
+                        p#countDown.fw-bold.expireIn Expire In:
+                            span.text-success.mx-2 1.59
+                form(action="/resetPassword" method="post")
+                    input#username(type="hidden" name="email" value=otp.email)
+                    input#resendOtp_btn(type="submit" class="form-control resendOtp_btn" value="Resend")
+
+                    p.toggle_page.mt-2 Need to login?
+                        a(href="/login") Login Here

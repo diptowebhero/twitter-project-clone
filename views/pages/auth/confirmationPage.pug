@@ -1,0 +1,22 @@
+extends ./../../partials/header.pug
+
+block title
+    title=title
+
+block cssLink
+    link(rel="stylesheet" href="/assets/css/confirmationPage.css")
+
+block bodyContent
+    .confirmation-section
+        .confirmation-inner.mx-auto
+            .mx-auto.text-center
+                h2 Thank You !
+            .confirmation-img.mx-auto.my-5
+                img(src='/assets/images/emailConfirmation.png' alt='images')
+            .px-4.text-center
+                h3 Your email was sent successfully !!
+                .w-10.text-center.d-flex.justify-content-center.align-items-center
+                    p
+                        | We have sent email to 
+                        a #{email}
+                        |  to confirm the verify of our email address. After receiving the email follow the link provided to complete your registration

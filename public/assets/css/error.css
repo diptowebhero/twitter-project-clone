@@ -1,0 +1,33 @@
+.error_page {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 50%;
+  margin: auto;
+  height: 100vh;
+}
+
+.error_page h2 {
+  color: red;
+  font-weight: bold;
+}
+
+.error_page h4 {
+  color: green;
+  font-weight: 500;
+}
+
+.error_page p {
+  font-weight: 500;
+  font-size: 16px;
+}

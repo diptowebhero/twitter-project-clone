@@ -1,0 +1,30 @@
+extends ./../../partials/header.pug
+
+block title
+    title=title
+
+block cssLink
+    link(rel="stylesheet" href="/assets/css/auth.css")
+
+block bodyContent 
+    div.authSection.login
+        div.wrapper 
+            div.auth_wrapper 
+                h2 Login in to Twitter
+                    i.fab.fa-twitter
+                form(action="/login" method="post")
+                    label(for="username") Email
+                    input#username(type="text" name="username" value =user ? user.username :'' placeholder="Enter email" class="form-control")
+                    if error.username
+                        p.error #{error.username.msg}
+                    label(for="password" class="mt-3" placeholder="Enter Password") Password
+                    input#password(type="password" value =user ? user.password :'' name="password" placeholder="Enter your password" class="form-control")
+                    if error.password
+                        p.error #{error.password.msg}
+                    input#formBtn(type="submit" class="form-control mt-3" value="Login")
+                    .toggle_page_container
+                        p.toggle_page Don't Have an account?
+                            a(href="/register") Register Here
+                        div
+                            p.toggle_page
+                                a(href="/resetPassword") Forget Password ?

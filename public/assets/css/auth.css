@@ -1,0 +1,263 @@
+.authSection {
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(24, 23, 23, 0.2)), to(rgba(32, 29, 29, 0.4))), url("/assets/images/bg-1.jpg") !important;
+  background-image: linear-gradient(rgba(24, 23, 23, 0.2), rgba(32, 29, 29, 0.4)), url("/assets/images/bg-1.jpg") !important;
+  width: 100%;
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.authSection .wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 100%;
+}
+
+.authSection .auth_wrapper {
+  background: white;
+  width: 500px;
+  max-width: 80%;
+  margin: 0px auto;
+  padding: 30px;
+  border-radius: 10px;
+}
+
+.authSection .auth_wrapper h2 {
+  text-align: center;
+  margin-bottom: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  font-size: 35px;
+  font-weight: 700;
+}
+
+@media only screen and (min-width: 426px) and (max-width: 575px), only screen and (min-width: 375px) and (max-width: 425px), only screen and (min-width: 320px) and (max-width: 375px) {
+  .authSection .auth_wrapper h2 {
+    font-size: 25px;
+  }
+}
+
+.authSection .auth_wrapper h2 i {
+  color: #6abbf4 !important;
+  margin-top: 20px;
+  font-size: 45px;
+}
+
+.authSection .auth_wrapper form input {
+  padding: 8px;
+  border-radius: 5px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.authSection .auth_wrapper form input:hover {
+  border: 1px solid #6abbf4;
+}
+
+.authSection .auth_wrapper form input:focus {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.authSection .form-control {
+  margin-top: 5px;
+  font-size: 17px !important;
+  font-weight: 500 !important;
+}
+
+@media only screen and (min-width: 426px) and (max-width: 575px), only screen and (min-width: 375px) and (max-width: 425px), only screen and (min-width: 320px) and (max-width: 375px) {
+  .authSection .form-control {
+    font-size: 15px !important;
+  }
+}
+
+.authSection label {
+  font-size: 15px;
+  font-weight: bold;
+  color: #332f2f;
+}
+
+@media only screen and (min-width: 426px) and (max-width: 575px), only screen and (min-width: 375px) and (max-width: 425px), only screen and (min-width: 320px) and (max-width: 375px) {
+  .authSection label {
+    font-size: 14px;
+  }
+}
+
+.authSection #formBtn {
+  background: #16181c !important;
+  color: white !important;
+}
+
+.authSection .toggle_page {
+  margin: 2px 0px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.authSection .error {
+  color: red;
+  font-weight: 500;
+  margin: 0;
+}
+
+.authSection .register {
+  background: white;
+  width: 600px !important;
+  max-width: 80%;
+  margin: 0px auto;
+  padding: 30px;
+  border-radius: 10px;
+}
+
+@media only screen and (min-width: 426px) and (max-width: 575px), only screen and (min-width: 375px) and (max-width: 425px), only screen and (min-width: 320px) and (max-width: 375px) {
+  .authSection .register {
+    width: 600px !important;
+    max-width: 90% !important;
+    padding: 10px;
+  }
+}
+
+.authSection .passContainer {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.authSection .passContainer span {
+  position: absolute;
+  right: 25px;
+  bottom: 9px;
+  cursor: pointer;
+}
+
+.authSection .passError {
+  color: red;
+  font-weight: 500;
+  margin-top: 3px;
+}
+
+.authSection .toggle_page_container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+@media only screen and (min-width: 576px) and (max-width: 768px), only screen and (min-width: 426px) and (max-width: 575px), only screen and (min-width: 375px) and (max-width: 425px), only screen and (min-width: 320px) and (max-width: 375px) {
+  .authSection .toggle_page_container {
+    -webkit-box-align: start !important;
+        -ms-flex-align: start !important;
+            align-items: start !important;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+
+.login {
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(24, 23, 23, 0.2)), to(rgba(32, 29, 29, 0.4))), url("/assets/images/bg-2.jpg") !important;
+  background-image: linear-gradient(rgba(24, 23, 23, 0.2), rgba(32, 29, 29, 0.4)), url("/assets/images/bg-2.jpg") !important;
+}
+
+.register_container {
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(24, 23, 23, 0.2)), to(rgba(32, 29, 29, 0.4))), url("/assets/images/bg-1.jpg") !important;
+  background-image: linear-gradient(rgba(24, 23, 23, 0.2), rgba(32, 29, 29, 0.4)), url("/assets/images/bg-1.jpg") !important;
+}
+
+.resetPass {
+  min-height: 250px !important;
+}
+
+.resetPass h2 {
+  color: #201e5d !important;
+}
+
+.resetPass input {
+  background-color: #edf3f8 !important;
+}
+
+.resetPass img {
+  max-width: 120px;
+  width: 100%;
+  margin: auto;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.resetPass .expireIn {
+  margin-bottom: 0px !important;
+}
+
+.otp_image {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 200px !important;
+  margin: 15px auto;
+}
+
+@media only screen and (min-width: 426px) and (max-width: 575px), only screen and (min-width: 375px) and (max-width: 425px), only screen and (min-width: 320px) and (max-width: 375px) {
+  .otp_image {
+    margin: 10px auto;
+  }
+}
+
+.otp_image img {
+  width: 100%;
+}
+
+.resendOtp_btn {
+  background: #e91e63 !important;
+  color: white !important;
+  border: none !important;
+  width: 140px;
+  margin: 10px auto;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.resendOtp_btn:hover {
+  background-color: #d9366e !important;
+}
+
+.resetPasBtn {
+  background-color: #09c098 !important;
+  color: white !important;
+}
+
+.otpBtn {
+  background-color: #0f376c !important;
+  color: white !important;
+}

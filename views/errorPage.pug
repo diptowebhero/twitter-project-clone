@@ -1,0 +1,11 @@
+extends ./partials/header.pug
+block title
+    title=title
+block cssLink
+    link(rel="stylesheet" href="/assets/css/error.css")
+
+block bodyContent
+    div.error_page
+        h2= error.message
+        h4= error.status
+        span= error.stack
