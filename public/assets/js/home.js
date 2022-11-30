@@ -202,6 +202,6 @@ function likeHandler(e, postId) {
       } else {
         likeBtn.classList.remove("active");
       }
-      span.innerText = data.likes.length || "";
+      span.innerText = data?.likes?.length || "";
     });
 }
