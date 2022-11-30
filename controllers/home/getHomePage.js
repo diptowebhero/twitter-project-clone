@@ -8,8 +8,10 @@ const getHomePage = async (req, res, next) => {
     );
     return newUser;
   });
+
+  const userObj = JSON.stringify(user);
   try {
-    res.render("pages/home/home", { error: {}, user: user });
+    res.render("pages/home/home", { error: {}, user: user, userObj });
   } catch (error) {
     next(error);
   }

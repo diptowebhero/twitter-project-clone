@@ -10,6 +10,7 @@ const createTweet = async (req, res, next) => {
       content,
       images: [],
       tweetedBy: req.id,
+      likes: [],
     };
 
     [...req.files].forEach((file) => {

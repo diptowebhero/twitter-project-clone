@@ -49,6 +49,12 @@ const userSchema = new Schema(
       enum: ["unverified", "verified", "suspend"],
       default: "unverified",
     },
+    likes: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Tweet",
+      },
+    ],
   },
   { timestamps: true }
 );

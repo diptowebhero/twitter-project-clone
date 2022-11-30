@@ -125,9 +125,11 @@ tweetBtn.addEventListener("click", function (e) {
 //create tweet
 function createTweet(data) {
   const {
+    _id: postId,
     content,
     createdAt,
     images,
+    likes,
     tweetedBy: { _id, firstName, lastName, username, avatarProfile, updatedAt },
   } = data;
 
@@ -151,8 +153,14 @@ function createTweet(data) {
           <div class="tweetsPostImages"></div>
           <div class="post_footer">
             <button class="comment"><i class="far fa-comment"></i><span class="mx-1">5</span></button>
-            <button class="retweet"><i class="fas fa-retweet"></i><span class="mx-1">5</span></button>
-            <button class="like"><i class="far fa-heart"></i><span class="mx-1">5</span></button>
+            <button class="retweet">
+              <i class="fas fa-retweet"></i><span class="mx-1">5</span>
+            </button>
+            <button class="like ${
+              user.likes.includes(postId) ? "active" : ""
+            }" onclick="likeHandler(event,'${postId}')"><i class="fas fa-heart"></i><span class="mx-1">${
+    likes.length || ""
+  }</span></button>
           </div>
         </div>
   `;
@@ -168,18 +176,32 @@ function createTweet(data) {
 }
 
 //Load all tweets
-function loadAllTweets() {
+async function loadAllTweets() {
   const url = `${window.location.origin}/posts`;
-  fetch(url, { method: "GET" })
+  const result = await fetch(url, { method: "GET" });
+  const posts = await result.json();
+  if (posts.length) {
+    posts.forEach((post) => {
+      const tweetEl = createTweet(post);
+      tweetPostContainer.insertAdjacentElement("afterbegin", tweetEl);
+    });
+  }
+}
+loadAllTweets();
+
+//Like btn handler
+function likeHandler(e, postId) {
+  const likeBtn = e.target;
+  const span = likeBtn.querySelector("span");
+  const url = `${window.location.origin}/posts/like/${postId}`;
+  fetch(url, { method: "PUT" })
     .then((res) => res.json())
-    .then((posts) => {
-      if (posts.length) {
-        posts.forEach((post) => {
-          const tweetEl = createTweet(post);
-          tweetPostContainer.insertAdjacentElement("afterbegin", tweetEl);
-        });
+    .then((data) => {
+      if (data.likes.includes(user._id)) {
+        likeBtn.classList.add("active");
+      } else {
+        likeBtn.classList.remove("active");
       }
+      span.innerText = data.likes.length || "";
     });
 }
-
-loadAllTweets();

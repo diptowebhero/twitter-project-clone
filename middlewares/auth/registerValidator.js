@@ -20,8 +20,6 @@ const registerValidator = [
   check("username")
     .notEmpty()
     .withMessage("username is require")
-    .isAlpha("en-US", { ignore: "_" })
-    .withMessage("Name must not contain anything other than alphabet")
     .custom(async (value) => {
       try {
         const user = await User.findOne({ username: value }, { username: 1 });

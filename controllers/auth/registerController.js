@@ -18,6 +18,7 @@ const registerController = async (req, res, next) => {
       password: hashPass,
       avatarProfile,
       status: "unverified",
+      likes: [],
     });
 
     const user = await userObj.save();
