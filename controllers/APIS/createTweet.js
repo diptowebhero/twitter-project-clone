@@ -11,6 +11,8 @@ const createTweet = async (req, res, next) => {
       images: [],
       tweetedBy: req.id,
       likes: [],
+      retweetUsers: [],
+      postData: null,
     };
 
     [...req.files].forEach((file) => {

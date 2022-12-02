@@ -153,7 +153,7 @@ function createTweet(data) {
           <div class="tweetsPostImages"></div>
           <div class="post_footer">
             <button class="comment"><i class="far fa-comment"></i><span class="mx-1">5</span></button>
-            <button class="retweet">
+            <button class="retweet" onclick="retweetHandler(event,'${postId}')">
               <i class="fas fa-retweet"></i><span class="mx-1">5</span>
             </button>
             <button class="like ${
@@ -189,7 +189,7 @@ async function loadAllTweets() {
 }
 loadAllTweets();
 
-//Like btn handler
+//Like handler
 function likeHandler(e, postId) {
   const likeBtn = e.target;
   const span = likeBtn.querySelector("span");
@@ -203,5 +203,17 @@ function likeHandler(e, postId) {
         likeBtn.classList.remove("active");
       }
       span.innerText = data?.likes?.length || "";
+    });
+}
+
+//retweet handler
+function retweetHandler(e, postId) {
+  const retweetBtn = e.target;
+  const span = retweetBtn.querySelector("span");
+  const url = `${window.location.origin}/posts/retweet/${postId}`;
+  fetch(url, { method: "POST" })
+    .then((res) => res.json())
+    .then((data) => {
+      console.log(data);
     });
 }

@@ -19,6 +19,7 @@ const registerController = async (req, res, next) => {
       avatarProfile,
       status: "unverified",
       likes: [],
+      retweets: [],
     });
 
     const user = await userObj.save();
