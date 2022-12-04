@@ -9,7 +9,7 @@ block jsScript
     <script type="text/javascript" src="/assets/js/toastify.js" defer></script>
     <script type="text/javascript" src="/assets/js/moment.js" defer></script>
 block bodyContent
-    #commentModal.modal.fade(aria-hidden='true' aria-labelledby='commentModalTitle' tabindex='-1')
+    #replyModal.modal.fade(aria-hidden='true' aria-labelledby='commentModalTitle' tabindex='-1')
         .modal-dialog.modal-dialog-centered
             .modal-content
                 .modal-header
@@ -18,17 +18,17 @@ block bodyContent
                 .modal-body
 
                 .modal-footer
-                    .create_post
+                    .create_reply
                         .user_avatar
-                            img(src='http://localhost:3000/uploads/profile/user-1669213414896.png' alt='Avatar')
-                        .post_area
-                            textarea#commentTextAreaContent(placeholder="What's happening" spellcheck='false')
-                            .postImageContainer
-                            .post_actions.mt-3
-                                label(for='postImage')
+                            img(src="/uploads/profile/" + user.avatarProfile alt="Avatar")
+                        .reply_area
+                            textarea#replyTextAreaContent(placeholder="What's happening" spellcheck='false')
+                            .replyImageContainer
+                            .reply_actions.mt-3
+                                label(for='replyPostImage')
                                     i.fas.fa-image(aria-hidden='true')
-                                    input#commentPostImage(type='file' multiple='' hidden='')
-                                button#commentBtn(style='background: rgb(118, 185, 229);' disabled='') Reply Tweet
+                                    input#replyPostImage(type='file' multiple='' hidden='')
+                                button#replyBtn(disabled onclick="clearInputData()") Reply Tweet
     main.main
         .left_side_container
             .left_top_area

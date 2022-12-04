@@ -275,7 +275,6 @@
         padding-left: 27px;
         font-size: 19px;
         font-weight: 500;
-        font-family: italic;
         color: black;
       }
       .tweet {
@@ -407,7 +406,7 @@
     transition: 0.3s;
   }
 }
-#commentModal {
+#replyModal {
   .tweet {
     display: flex;
     .avatar-area {
@@ -514,7 +513,7 @@
   }
   .modal-footer {
     display: block !important;
-    .create_post {
+    .create_reply {
       padding: 20px;
       display: flex;
       .user_avatar {
@@ -527,7 +526,7 @@
           cursor: pointer;
         }
       }
-      .post_area {
+      .reply_area {
         flex: 1;
         textarea {
           width: 100%;
@@ -536,7 +535,7 @@
           font-weight: 500;
           font-size: 17px;
         }
-        .post_actions {
+        .reply_actions {
           display: flex;
           align-items: center;
           justify-content: space-between;
@@ -554,7 +553,7 @@
             color: #03a9f4;
           }
         }
-        .postImageContainer {
+        .replyImageContainer {
           display: grid;
           grid-template-columns: auto auto;
           place-items: center;

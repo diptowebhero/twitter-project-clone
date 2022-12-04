@@ -398,7 +398,6 @@
   padding-left: 27px;
   font-size: 19px;
   font-weight: 500;
-  font-family: italic;
   color: black;
 }
 
@@ -557,29 +556,29 @@
   transition: 0.3s;
 }
 
-#commentModal .tweet {
+#replyModal .tweet {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
-#commentModal .tweet .avatar-area {
+#replyModal .tweet .avatar-area {
   width: 50px;
   height: 50px;
 }
 
-#commentModal .tweet .avatar-area img {
+#replyModal .tweet .avatar-area img {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
 }
 
-#commentModal .tweet .tweet_body {
+#replyModal .tweet .tweet_body {
   margin-left: 12px;
 }
 
-#commentModal .tweet .tweet_body .tweetsPostImages {
+#replyModal .tweet .tweet_body .tweetsPostImages {
   margin-top: 10px;
   max-width: 500px;
   max-height: 500px;
@@ -591,7 +590,7 @@
   overflow: hidden;
 }
 
-#commentModal .tweet .tweet_body .tweetsPostImages .tweetImg {
+#replyModal .tweet .tweet_body .tweetsPostImages .tweetImg {
   width: 100%;
   height: 100%;
   overflow: hidden;
@@ -600,13 +599,13 @@
   border: 2px solid #dfdfdf;
 }
 
-#commentModal .tweet .tweet_body .tweetsPostImages .tweetImg img {
+#replyModal .tweet .tweet_body .tweetsPostImages .tweetImg img {
   width: 100%;
   height: 100%;
   border-radius: 10px;
 }
 
-#commentModal .tweet .tweet_body .header .displayUserInfo {
+#replyModal .tweet .tweet_body .header .displayUserInfo {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -616,34 +615,34 @@
           align-items: center;
 }
 
-#commentModal .tweet .tweet_body .header .displayUserInfo a {
+#replyModal .tweet .tweet_body .header .displayUserInfo a {
   text-decoration: none;
   font-size: 18px;
   font-weight: 600;
   color: black;
 }
 
-#commentModal .tweet .tweet_body .header .displayUserInfo a:hover {
+#replyModal .tweet .tweet_body .header .displayUserInfo a:hover {
   text-decoration: underline !important;
 }
 
-#commentModal .tweet .tweet_body .header .displayUserInfo span {
+#replyModal .tweet .tweet_body .header .displayUserInfo span {
   color: #000;
   font-weight: 400;
   font-size: 17px;
 }
 
-#commentModal .tweet .tweet_body .header .content {
+#replyModal .tweet .tweet_body .header .content {
   max-width: 250px;
   margin-top: 8px;
 }
 
-#commentModal .tweet .tweet_body .header .content span {
+#replyModal .tweet .tweet_body .header .content span {
   font-weight: 500;
   font-size: 17px;
 }
 
-#commentModal .tweet .tweet_body .post_footer {
+#replyModal .tweet .tweet_body .post_footer {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -656,7 +655,7 @@
   padding: 10px;
 }
 
-#commentModal .tweet .tweet_body button {
+#replyModal .tweet .tweet_body button {
   background: transparent;
   border: none;
   padding: 10px;
@@ -666,61 +665,61 @@
   cursor: pointer;
 }
 
-#commentModal .tweet .tweet_body button i {
+#replyModal .tweet .tweet_body button i {
   pointer-events: none;
 }
 
-#commentModal .tweet .tweet_body button span {
+#replyModal .tweet .tweet_body button span {
   pointer-events: none;
 }
 
-#commentModal .tweet .tweet_body button.like.active i {
+#replyModal .tweet .tweet_body button.like.active i {
   color: red;
 }
 
-#commentModal .tweet .tweet_body button.like.active span {
+#replyModal .tweet .tweet_body button.like.active span {
   color: red;
 }
 
-#commentModal .tweet .tweet_body button.retweet.active i {
+#replyModal .tweet .tweet_body button.retweet.active i {
   color: green;
 }
 
-#commentModal .tweet .tweet_body button.retweet.active span {
+#replyModal .tweet .tweet_body button.retweet.active span {
   color: green;
 }
 
-#commentModal .modal-footer {
+#replyModal .modal-footer {
   display: block !important;
 }
 
-#commentModal .modal-footer .create_post {
+#replyModal .modal-footer .create_reply {
   padding: 20px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
-#commentModal .modal-footer .create_post .user_avatar {
+#replyModal .modal-footer .create_reply .user_avatar {
   -ms-flex-preferred-size: 50px;
       flex-basis: 50px;
   margin-right: 10px;
 }
 
-#commentModal .modal-footer .create_post .user_avatar img {
+#replyModal .modal-footer .create_reply .user_avatar img {
   width: 50px;
   height: 50px;
   border-radius: 50%;
   cursor: pointer;
 }
 
-#commentModal .modal-footer .create_post .post_area {
+#replyModal .modal-footer .create_reply .reply_area {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
 }
 
-#commentModal .modal-footer .create_post .post_area textarea {
+#replyModal .modal-footer .create_reply .reply_area textarea {
   width: 100%;
   border: none;
   outline: none;
@@ -728,7 +727,7 @@
   font-size: 17px;
 }
 
-#commentModal .modal-footer .create_post .post_area .post_actions {
+#replyModal .modal-footer .create_reply .reply_area .reply_actions {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -740,7 +739,7 @@
           justify-content: space-between;
 }
 
-#commentModal .modal-footer .create_post .post_area .post_actions button {
+#replyModal .modal-footer .create_reply .reply_area .reply_actions button {
   border: none;
   border-radius: 30px;
   padding: 10px 35px;
@@ -749,13 +748,13 @@
   font-weight: 500;
 }
 
-#commentModal .modal-footer .create_post .post_area .post_actions i {
+#replyModal .modal-footer .create_reply .reply_area .reply_actions i {
   cursor: pointer;
   font-size: 21px;
   color: #03a9f4;
 }
 
-#commentModal .modal-footer .create_post .post_area .postImageContainer {
+#replyModal .modal-footer .create_reply .reply_area .replyImageContainer {
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: auto auto;
@@ -765,7 +764,7 @@
   position: relative;
 }
 
-#commentModal .modal-footer .create_post .post_area .postImageContainer .image {
+#replyModal .modal-footer .create_reply .reply_area .replyImageContainer .image {
   height: 350px;
   max-width: 350px;
   padding: 15px;
@@ -773,7 +772,7 @@
   position: relative;
 }
 
-#commentModal .modal-footer .create_post .post_area .postImageContainer .image img {
+#replyModal .modal-footer .create_reply .reply_area .replyImageContainer .image img {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
@@ -782,7 +781,7 @@
   border: 1px solid #e5e5e5;
 }
 
-#commentModal .modal-footer .create_post .post_area .postImageContainer .image #close_btn {
+#replyModal .modal-footer .create_reply .reply_area .replyImageContainer .image #close_btn {
   position: absolute;
   background: rgba(15, 20, 25, 0.75);
   width: 30px;
@@ -805,11 +804,11 @@
   cursor: pointer;
 }
 
-#commentModal .modal-footer .create_post .post_area .postImageContainer .image #close_btn:hover {
+#replyModal .modal-footer .create_reply .reply_area .replyImageContainer .image #close_btn:hover {
   background: #26303abf;
 }
 
-#commentModal .modal-footer .create_post .post_area .postImageContainer .image #close_btn i {
+#replyModal .modal-footer .create_reply .reply_area .replyImageContainer .image #close_btn i {
   font-size: 12px;
   pointer-events: none;
 }

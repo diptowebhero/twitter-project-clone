@@ -21,7 +21,7 @@ const postRetweetHandler = async (req, res, next) => {
       });
 
       retweetObj = await tweet.save();
-      updateCached(`posts:${retweetObj._id}`, retweetObj);
+      updateCached(`posts:${retweetObj._id}`, tweet);
     }
 
     const option = deletedPost !== null ? "$pull" : "$addToSet";
@@ -39,10 +39,10 @@ const postRetweetHandler = async (req, res, next) => {
     //update user
     const modifiedUser = await User.findOneAndUpdate(
       { _id: userId },
-      { [option]: { retweets: userId } },
+      { [option]: { retweets: postId } },
       { new: true }
     );
-    updateCached(`posts:${userId}`, modifiedUser);
+    updateCached(`users:${userId}`, modifiedUser);
 
     return res.json(post);
   } catch (error) {

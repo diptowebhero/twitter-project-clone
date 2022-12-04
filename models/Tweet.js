@@ -23,7 +23,7 @@ const tweetSchema = new Schema(
       },
     ],
     retweetUsers: [{ type: Schema.Types.ObjectId, ref: "User" }],
-    postData: [{ type: Schema.Types.ObjectId, ref: "Tweet" }],
+    postData: { type: Schema.Types.ObjectId, ref: "Tweet" },
   },
   { timestamps: true }
 );

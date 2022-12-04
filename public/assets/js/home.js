@@ -1,33 +1,49 @@
+//select all references
 const postImageInp = document.querySelector("#postImage");
 const postImageContainer = document.querySelector("#postImageContainer");
 const user_profile_info = document.querySelector(".user_profile_info");
 const menu = document.querySelector(".menu");
 const tweetBtn = document.querySelector("#tweetBtn");
-const textAreaInp = document.querySelector("#textAreaContent");
+const textAreaInpPost = document.querySelector("#textAreaContent");
 const tweetPostContainer = document.querySelector(".tweetPost_container");
+
+//for reply
+const textAreaInpPostReply = document.querySelector("#replyTextAreaContent");
+const replyBtn = document.querySelector("#replyBtn");
+const replyPostImageInp = document.querySelector("#replyPostImage");
+const replyImageContainer = document.querySelector(".replyImageContainer");
 
 //set default style tweet btn
 tweetBtn.style.backgroundColor = "#76b9e5";
+replyBtn.style.backgroundColor = "#76b9e5";
 
 //STORE POST IMAGES
 let postImages = [];
+let replyImages = [];
 
 //Logout btn toggle
 user_profile_info.addEventListener("click", function () {
   menu.classList.toggle("active");
 });
 
-//tweet btn handler
-textAreaInp.addEventListener("input", function () {
-  const value = this.value.trim();
-  if (value) {
-    tweetBtn.removeAttribute("disabled", "");
-    tweetBtn.style.background = "#1d9bf0";
-  } else {
-    tweetBtn.setAttribute("disabled", "");
-    tweetBtn.style.background = "#76b9e5";
-  }
-});
+//common function for textarea input handling
+function textAreaInpHandler(input, btn) {
+  input.addEventListener("input", function () {
+    const value = this.value.trim();
+    if (value || postImages.length) {
+      btn.removeAttribute("disabled", "");
+      btn.style.background = "#1d9bf0";
+    } else {
+      btn.setAttribute("disabled", "");
+      btn.style.background = "#76b9e5";
+    }
+  });
+}
+//post textarea handling
+textAreaInpHandler(textAreaInpPost, tweetBtn);
+
+//reply textarea handling
+textAreaInpHandler(textAreaInpPostReply, replyBtn);
 
 //uploading post image handler
 postImageInp.addEventListener("change", function () {
@@ -71,6 +87,49 @@ postImageInp.addEventListener("change", function () {
   });
 });
 
+//uploading reply image handler
+replyPostImageInp.addEventListener("change", function () {
+  const files = this.files;
+  [...files].forEach((file) => {
+    // toasts error
+    const fileSizeLimitError = Toastify({
+      text: "File is too large",
+      duration: 4000,
+    });
+    const fileTypeLimitError = Toastify({
+      text: "Only jpeg, jpg, png, svg file is allowed",
+      duration: 4000,
+    });
+    if (
+      !["image/png", "image/jpg", "image/jpeg", "images/svg+xml"].includes(
+        file.type
+      )
+    ) {
+      return fileTypeLimitError.showToast();
+    }
+    if (file.size > 1000000) {
+      return fileSizeLimitError.showToast();
+    }
+    replyImages = [];
+    replyBtn.removeAttribute("disabled", "");
+    replyBtn.style.background = "#1d9bf0";
+    replyImages.push(file);
+    const fr = new FileReader();
+    fr.onload = function () {
+      const htmlEl = document.createElement("div");
+      htmlEl.classList.add("image");
+      htmlEl.dataset.name = file.name;
+      htmlEl.innerHTML = `<span id="close_btn">
+                            <i class="fas fa-times"></i>
+                          </span><img>`;
+      const img = htmlEl.querySelector("img");
+      img.src = fr.result;
+      replyImageContainer.appendChild(htmlEl);
+    };
+    fr.readAsDataURL(file);
+  });
+});
+
 //remove post image
 postImageContainer.addEventListener("click", function (e) {
   const closeBtn = e.target.id === "close_btn" ? e.target.id : null;
@@ -81,7 +140,7 @@ postImageContainer.addEventListener("click", function (e) {
       if (imgName === img.name) {
         postImages.splice(i, 1);
         imgEl.remove();
-        if (!postImages.length && !textAreaInp.value.trim()) {
+        if (!postImages.length && !textAreaInpPost.value.trim()) {
           tweetBtn.setAttribute("disabled", "");
           tweetBtn.style.background = "#76b9e5";
         }
@@ -92,9 +151,37 @@ postImageContainer.addEventListener("click", function (e) {
   }
 });
 
+//remove reply image
+replyImageContainer.addEventListener("click", function (e) {
+  const closeBtn = e.target.id === "close_btn" ? e.target.id : null;
+  if (closeBtn) {
+    const imgEl = e.target.parentElement;
+    const imgName = imgEl.dataset.name;
+    replyImages.forEach((img, i) => {
+      if (imgName === img.name) {
+        replyImages.splice(i, 1);
+        imgEl.remove();
+        if (!replyImages.length && !replyTextAreaContent.value.trim()) {
+          replyBtn.setAttribute("disabled", "");
+          replyBtn.style.background = "#76b9e5";
+        }
+      }
+    });
+  } else {
+    return;
+  }
+});
+
+function clearInputData() {
+  replyImageContainer.innerHTML = "";
+  replyTextAreaContent.innerHTML = "";
+  replyBtn.setAttribute("disabled", "");
+  replyBtn.style.backgroundColor = "#8ecaf3";
+}
+
 //submitting tweet handler
 tweetBtn.addEventListener("click", function (e) {
-  const content = textAreaInp.value.trim();
+  const content = textAreaInpPost.value.trim();
   if (!(postImages.length || content)) return;
 
   //store form data in formData api
@@ -114,7 +201,7 @@ tweetBtn.addEventListener("click", function (e) {
       const tweetEl = createTweet(data);
       tweetPostContainer.insertAdjacentElement("afterbegin", tweetEl);
       postImages = [];
-      textAreaInp.value = "";
+      textAreaInpPost.value = "";
       postImageContainer.innerText = "";
       tweetBtn.removeAttribute("disabled", "");
       tweetBtn.style.background = "#1d9bf0";
@@ -124,45 +211,63 @@ tweetBtn.addEventListener("click", function (e) {
 
 //create tweet
 function createTweet(data) {
+  let retweetNameDisplay = "";
+  let newData = data;
+  if (data.postData) {
+    newData = data.postData;
+    retweetNameDisplay =
+      data.tweetedBy.username === user.username
+        ? `<p class="tweetedUser">
+<i class="fas fa-retweet"></i>You retweeted</a>
+</p>`
+        : `<p class="tweetedUser">
+    <i class="fas fa-retweet"></i> retweeted By @<a href="/user/profile/"}>${data.tweetedBy.username}</a>
+    </p>`;
+  }
   const {
     _id: postId,
     content,
     createdAt,
     images,
     likes,
-    tweetedBy: { _id, firstName, lastName, username, avatarProfile, updatedAt },
-  } = data;
-
+    retweetUsers,
+    tweetedBy: { _id, firstName, lastName, username, avatarProfile },
+  } = newData;
   const times = moment(createdAt).fromNow();
   const div = document.createElement("div");
-  div.classList.add("tweet");
 
-  div.innerHTML = `
-        <div class="avatar-area">
-          <img src="${
-            window.location.origin
-          }/uploads/profile/${avatarProfile}" alt=""/>
-        </div>
-        <div class="tweet_body">
-          <div class="header">
-            <div class="displayUserInfo"><a class="displayName" href="profile/${username}">${
+  div.innerHTML = `${retweetNameDisplay}
+  <div class="tweet">
+  <div class="avatar-area">
+  <img src="${window.location.origin}/uploads/profile/${avatarProfile}" alt=""/>
+</div>
+<div class="tweet_body">
+  <div class="header">
+    <div class="displayUserInfo"><a class="displayName" href="profile/${username}">${
     firstName + " " + lastName
   }</a><span class="username">${username}.</span><span class="time">${times}</span></div>
-            <div class="content"><span>${content}</span></div>
-          </div>
-          <div class="tweetsPostImages"></div>
-          <div class="post_footer">
-            <button class="comment"><i class="far fa-comment"></i><span class="mx-1">5</span></button>
-            <button class="retweet" onclick="retweetHandler(event,'${postId}')">
-              <i class="fas fa-retweet"></i><span class="mx-1">5</span>
-            </button>
-            <button class="like ${
-              user.likes.includes(postId) ? "active" : ""
-            }" onclick="likeHandler(event,'${postId}')"><i class="fas fa-heart"></i><span class="mx-1">${
+    <div class="content"><span>${content}</span></div>
+  </div>
+  <div class="tweetsPostImages"></div>
+  <div class="post_footer">
+    <button class="comment" data-post='${JSON.stringify(
+      data
+    )}' data-bs-toggle="modal" data-bs-target="#replyModal" onclick="replyHandler(event,'${postId}')"><i class="far fa-comment"></i><span class="mx-1">5</span></button>
+    <button class="retweet ${
+      retweetUsers.includes(user._id) ? "active" : ""
+    }" onclick="retweetHandler(event,'${postId}')">
+      <i class="fas fa-retweet"></i><span class="mx-1">${
+        retweetUsers.length || ""
+      }</span>
+    </button>
+    <button class="like ${
+      user.likes.includes(postId) ? "active" : ""
+    }" onclick="likeHandler(event,'${postId}')"><i class="fas fa-heart"></i><span class="mx-1">${
     likes.length || ""
   }</span></button>
-          </div>
-        </div>
+  </div>
+</div>
+  </div>
   `;
 
   let imagesContainer = div.querySelector(".tweetsPostImages");
@@ -197,6 +302,7 @@ function likeHandler(e, postId) {
   fetch(url, { method: "PUT" })
     .then((res) => res.json())
     .then((data) => {
+      console.log(data);
       if (data.likes.includes(user._id)) {
         likeBtn.classList.add("active");
       } else {
@@ -214,6 +320,23 @@ function retweetHandler(e, postId) {
   fetch(url, { method: "POST" })
     .then((res) => res.json())
     .then((data) => {
-      console.log(data);
+      if (data.retweetUsers.includes(user._id)) {
+        retweetBtn.classList.add("active");
+      } else {
+        retweetBtn.classList.remove("active");
+      }
+      span.innerText = data.retweetUsers.length || "";
     });
+  window.location.reload();
+}
+
+function replyHandler(e, postId) {
+  const replyBtn = e.target;
+  const postObj = JSON.parse(replyBtn.dataset.post);
+  const modal = document.querySelector("#commentModal");
+  const modalBody = document.querySelector(".modal-body");
+  modalBody.innerHTML = "";
+  const tweetEl = createTweet(postObj);
+  modalBody.appendChild(tweetEl);
+  console.log(modalBody);
 }
