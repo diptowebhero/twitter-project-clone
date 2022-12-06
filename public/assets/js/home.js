@@ -302,7 +302,6 @@ function likeHandler(e, postId) {
   fetch(url, { method: "PUT" })
     .then((res) => res.json())
     .then((data) => {
-      console.log(data);
       if (data.likes.includes(user._id)) {
         likeBtn.classList.add("active");
       } else {
@@ -333,10 +332,36 @@ function retweetHandler(e, postId) {
 function replyHandler(e, postId) {
   const replyBtn = e.target;
   const postObj = JSON.parse(replyBtn.dataset.post);
-  const modal = document.querySelector("#commentModal");
   const modalBody = document.querySelector(".modal-body");
   modalBody.innerHTML = "";
   const tweetEl = createTweet(postObj);
+
+  replyBtn.addEventListener("click", function (e) {
+    console.log(e.target);
+    const content = replyTextAreaContent.value.trim();
+    if (!(replyImages.length || content)) return;
+
+    //store form data in formData api
+    const formData = new FormData();
+    formData.append("content", content);
+
+    //store tweet image in formData
+    replyImages.forEach((file) => {
+      formData.append(file.name, file);
+    });
+    console.log(formData);
+    //post & store data in database
+    const url = `${window.location.origin}/posts/reply/${postId}`;
+    fetch(url, { method: "POST", body: formData })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data._id) {
+          window.location.reload();
+          return console.log(data);
+        }
+      })
+      .catch((error) => console.log(error));
+  });
+
   modalBody.appendChild(tweetEl);
-  console.log(modalBody);
 }
