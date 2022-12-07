@@ -1,10 +1,38 @@
+const Tweet = require("../../models/Tweet");
+const { updateCached } = require("../../utilities/cacheManager");
+
 const replyHandler = async (req, res, next) => {
   try {
-    console.log(req.params.id);
-    console.log(req.id);
-    console.log(req.body);
-    console.log(req.body.files);
-    console.log(req.body.content);
+    const postId = req.params.id;
+    const userId = req.id;
+    const files = req.files;
+    const content = req.body.content;
+    const postData = {
+      content,
+      images: [],
+      tweetedBy: userId,
+      likes: [],
+      retweetUsers: [],
+      postData: null,
+      replyTo: postId,
+      replyTweets: [],
+    };
+    files.forEach((file) => {
+      postData.images.push(file.filename);
+    });
+
+    const postObj = await Tweet(postData).save();
+    const repliedPost = await Tweet.findByIdAndUpdate(
+      postId,
+      {
+        $addToSet: { replyTweets: postObj._id },
+      },
+      { new: true }
+    );
+
+    updateCached(`posts:${postObj._id}`, postObj);
+    updateCached(`posts:${repliedPost._id}`, repliedPost);
+    return res.json(postObj);
   } catch (error) {
     next(error);
   }

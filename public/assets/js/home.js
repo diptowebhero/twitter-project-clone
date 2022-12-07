@@ -90,6 +90,7 @@ postImageInp.addEventListener("change", function () {
 //uploading reply image handler
 replyPostImageInp.addEventListener("change", function () {
   const files = this.files;
+  replyImages = [];
   [...files].forEach((file) => {
     // toasts error
     const fileSizeLimitError = Toastify({
@@ -110,7 +111,6 @@ replyPostImageInp.addEventListener("change", function () {
     if (file.size > 1000000) {
       return fileSizeLimitError.showToast();
     }
-    replyImages = [];
     replyBtn.removeAttribute("disabled", "");
     replyBtn.style.background = "#1d9bf0";
     replyImages.push(file);
@@ -211,6 +211,7 @@ tweetBtn.addEventListener("click", function (e) {
 
 //create tweet
 function createTweet(data) {
+  let repliedPost = "";
   let retweetNameDisplay = "";
   let newData = data;
   if (data.postData) {
@@ -224,8 +225,16 @@ function createTweet(data) {
     <i class="fas fa-retweet"></i> retweeted By @<a href="/user/profile/"}>${data.tweetedBy.username}</a>
     </p>`;
   }
+  if (data.replyTo?.tweetedBy?.username) {
+    repliedPost = `
+        <div class="replyUser">
+            <p>Replying to <span>@</span><a href="/profile/${data.replyTo.tweetedBy.username}">${data.replyTo.tweetedBy.username}</a>
+            </p>
+        </div>`;
+  }
   const {
     _id: postId,
+    replyTweets,
     content,
     createdAt,
     images,
@@ -246,13 +255,16 @@ function createTweet(data) {
     <div class="displayUserInfo"><a class="displayName" href="profile/${username}">${
     firstName + " " + lastName
   }</a><span class="username">${username}.</span><span class="time">${times}</span></div>
+  ${repliedPost}
     <div class="content"><span>${content}</span></div>
   </div>
   <div class="tweetsPostImages"></div>
   <div class="post_footer">
     <button class="comment" data-post='${JSON.stringify(
       data
-    )}' data-bs-toggle="modal" data-bs-target="#replyModal" onclick="replyHandler(event,'${postId}')"><i class="far fa-comment"></i><span class="mx-1">5</span></button>
+    )}' data-bs-toggle="modal" data-bs-target="#replyModal" onclick="replyHandler(event,'${postId}')"><i class="far fa-comment"></i><span class="mx-1">${
+    replyTweets.length || ""
+  }</span></button>
     <button class="retweet ${
       retweetUsers.includes(user._id) ? "active" : ""
     }" onclick="retweetHandler(event,'${postId}')">
@@ -330,15 +342,16 @@ function retweetHandler(e, postId) {
 }
 
 function replyHandler(e, postId) {
+  const replyTweetBtn = document.querySelector("#replyBtn");
   const replyBtn = e.target;
+  console.log();
   const postObj = JSON.parse(replyBtn.dataset.post);
   const modalBody = document.querySelector(".modal-body");
   modalBody.innerHTML = "";
   const tweetEl = createTweet(postObj);
-
-  replyBtn.addEventListener("click", function (e) {
-    console.log(e.target);
+  replyTweetBtn.addEventListener("click", function (e) {
     const content = replyTextAreaContent.value.trim();
+    console.log(content);
     if (!(replyImages.length || content)) return;
 
     //store form data in formData api
@@ -349,7 +362,6 @@ function replyHandler(e, postId) {
     replyImages.forEach((file) => {
       formData.append(file.name, file);
     });
-    console.log(formData);
     //post & store data in database
     const url = `${window.location.origin}/posts/reply/${postId}`;
     fetch(url, { method: "POST", body: formData })
@@ -357,10 +369,9 @@ function replyHandler(e, postId) {
       .then((data) => {
         if (data._id) {
           window.location.reload();
-          return console.log(data);
         }
-      })
-      .catch((error) => console.log(error));
+      });
+    // .catch((error) => console.log(error));
   });
 
   modalBody.appendChild(tweetEl);
