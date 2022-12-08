@@ -404,6 +404,7 @@
 .main .middle_side_container .tweetPost_container .tweet {
   border-bottom: 1px solid #dfdfdf;
   padding: 20px;
+  cursor: pointer;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -588,7 +589,7 @@
       grid-template-columns: auto auto;
   border-radius: 10px;
   overflow: hidden;
-  border: 2px solid #dfdfdf;
+  border: 1px solid #dfdfdf;
 }
 
 #replyModal .tweet .tweet_body .tweetsPostImages .tweetImg {

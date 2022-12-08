@@ -5,7 +5,7 @@ block cssLink
     link(rel="stylesheet" href="/assets/css/home.css")
     link(rel="stylesheet" href="/assets/css/toastify.css")
 block jsScript
-    script(src="/assets/js/home.js" defer)
+    script(src="/assets/js/singlePost.js" defer)
     <script type="text/javascript" src="/assets/js/toastify.js" defer></script>
     <script type="text/javascript" src="/assets/js/moment.js" defer></script>
 block bodyContent
@@ -91,18 +91,8 @@ block bodyContent
             .post_header
                 h4 Latest Tweet 
                 i.fas.fa-star
-            .create_post
-                .user_avatar
-                    img(src="/uploads/profile/" + user.avatarProfile alt="Avatar")
-                .post_area
-                    textarea#textAreaContent(placeholder="What's happening")
-                    #postImageContainer
-                    .post_actions.mt-3
-                        label(for="postImage")
-                            i.fas.fa-image
-                            input#postImage(type="file" multiple hidden)
-                        button#tweetBtn(disabled) Tweet
             .tweetPost_container
         .right_side_container
     script.
         const user = !{userObj}
+        const postId = "!{postId}"

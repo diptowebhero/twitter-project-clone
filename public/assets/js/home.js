@@ -246,7 +246,7 @@ function createTweet(data) {
   const div = document.createElement("div");
 
   div.innerHTML = `${retweetNameDisplay}
-  <div class="tweet">
+  <div onclick="openTweet(event,'${postId}')" class="tweet">
   <div class="avatar-area">
   <img src="${window.location.origin}/uploads/profile/${avatarProfile}" alt=""/>
 </div>
@@ -341,6 +341,7 @@ function retweetHandler(e, postId) {
   window.location.reload();
 }
 
+//reply handler
 function replyHandler(e, postId) {
   const replyTweetBtn = document.querySelector("#replyBtn");
   const replyBtn = e.target;
@@ -375,4 +376,12 @@ function replyHandler(e, postId) {
   });
 
   modalBody.appendChild(tweetEl);
+}
+
+//open tweet
+function openTweet(e, postId) {
+  const targetEl = e.target;
+  if (targetEl.localName === "button" || targetEl.localName === "a") return;
+
+  window.location.href = `${window.location.origin}/posts/${postId}`;
 }
