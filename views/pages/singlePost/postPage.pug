@@ -89,7 +89,10 @@ block bodyContent
                     a(href="/logout") Log out @#{user.username}
         .middle_side_container
             .post_header
-                h4 Latest Tweet 
+                h4
+                    button(onclick="history.back()" class="backBtn")
+                        i.fas.fa-angle-left
+                    |Latest Tweet 
                 i.fas.fa-star
             .tweetPost_container
         .right_side_container

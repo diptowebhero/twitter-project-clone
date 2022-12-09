@@ -1,6 +1,7 @@
 const Tweet = require("../../models/Tweet");
 const User = require("../../models/User");
 const { updateCached } = require("../../utilities/cacheManager");
+const { postPopulate } = require("../../utilities/postPopulate");
 
 const postRetweetHandler = async (req, res, next) => {
   try {
@@ -34,7 +35,8 @@ const postRetweetHandler = async (req, res, next) => {
       { [option]: { retweetUsers: userId } },
       { new: true }
     );
-    updateCached(`posts:${postId}`, post);
+    await postPopulate(post);
+    await updateCached(`posts:${postId}`, post);
 
     //update user
     const modifiedUser = await User.findOneAndUpdate(

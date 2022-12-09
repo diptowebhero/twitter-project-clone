@@ -1,5 +1,6 @@
 const Tweet = require("../../models/Tweet");
 const { updateCached } = require("../../utilities/cacheManager");
+const { postPopulate } = require("../../utilities/postPopulate");
 
 const replyHandler = async (req, res, next) => {
   try {
@@ -29,6 +30,8 @@ const replyHandler = async (req, res, next) => {
       },
       { new: true }
     );
+    await postPopulate(postObj);
+    await postPopulate(repliedPost);
 
     updateCached(`posts:${postObj._id}`, postObj);
     updateCached(`posts:${repliedPost._id}`, repliedPost);

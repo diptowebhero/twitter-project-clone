@@ -4,6 +4,7 @@ const {
   getAndSetCachedData,
   updateCached,
 } = require("../../utilities/cacheManager");
+const { postPopulate } = require("../../utilities/postPopulate");
 
 const postLikeHandler = async (req, res, next) => {
   try {
@@ -24,7 +25,8 @@ const postLikeHandler = async (req, res, next) => {
       { [options]: { likes: userId } },
       { new: true }
     );
-    updateCached(`posts:${postId}`, post);
+    await postPopulate(post);
+    await updateCached(`posts:${postId}`, post);
     // update user like
     const updateUsers = await User.findOneAndUpdate(
       { _id: userId },

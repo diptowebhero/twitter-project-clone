@@ -811,3 +811,9 @@
   font-size: 12px;
   pointer-events: none;
 }
+
+.backBtn {
+  border: none;
+  background: transparent;
+  margin-right: 10px;
+}
