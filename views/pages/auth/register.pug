@@ -10,7 +10,7 @@ block jsScript
 
 block bodyContent
     div.authSection.register_container
-        div.wrapper 
+        div.wrapper
             div.auth_wrapper.register
                 h2 Register in to Twitter
                     i.fab.fa-twitter
@@ -62,10 +62,13 @@ block bodyContent
                                     p.error #{error.confirmPassword.msg}
                     .col
                         .mb-3 
-                            label(for="avatarProfile") Avatar
+                            label(for="") Avatar
                             input#avatarProfile(type="file" accept=".jpg, .jpeg, .png, .svg" name="avatarProfile" class="form-control")
+                            //- label(for="avatarProfile" class="label-img") select image
+
+                                //- i.fas.fa-image
                             if error.avatarProfile
                                 p.error #{error.avatarProfile.msg}
-                    input#formBtn(type="submit" class="form-control mt-3" value="Register")
+                    button#formBtn(type="submit" class="form-control mt-3") Register
                 p.toggle_page Have an account?
                     a(href="/login") Login Here

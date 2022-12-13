@@ -1,6 +1,4 @@
 .authSection {
-  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(24, 23, 23, 0.2)), to(rgba(32, 29, 29, 0.4))), url("/assets/images/bg-1.jpg") !important;
-  background-image: linear-gradient(rgba(24, 23, 23, 0.2), rgba(32, 29, 29, 0.4)), url("/assets/images/bg-1.jpg") !important;
   width: 100%;
   height: 100vh;
   background-repeat: no-repeat;
@@ -25,12 +23,15 @@
 }
 
 .authSection .auth_wrapper {
-  background: white;
-  width: 500px;
+  background: rgba(51, 38, 153, 0.12549) !important;
+  -webkit-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+          box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+  width: 600px;
   max-width: 80%;
   margin: 0px auto;
   padding: 30px;
-  border-radius: 10px;
+  border-radius: 20px;
+  color: white;
 }
 
 .authSection .auth_wrapper h2 {
@@ -43,8 +44,9 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  font-size: 35px;
+  font-size: 40px;
   font-weight: 700;
+  color: #44abf7 !important;
 }
 
 @media only screen and (min-width: 426px) and (max-width: 575px), only screen and (min-width: 375px) and (max-width: 425px), only screen and (min-width: 320px) and (max-width: 375px) {
@@ -60,10 +62,13 @@
 }
 
 .authSection .auth_wrapper form input {
-  padding: 8px;
+  background: #131237 !important;
+  color: white !important;
   border-radius: 5px;
-  -webkit-transition: 0.3s;
-  transition: 0.3s;
+  -webkit-transition: 0.3s !important;
+  transition: 0.3s !important;
+  border: 1px solid #131237;
+  padding: 14px !important;
 }
 
 .authSection .auth_wrapper form input:hover {
@@ -90,7 +95,7 @@
 .authSection label {
   font-size: 15px;
   font-weight: bold;
-  color: #332f2f;
+  color: white;
 }
 
 @media only screen and (min-width: 426px) and (max-width: 575px), only screen and (min-width: 375px) and (max-width: 425px), only screen and (min-width: 320px) and (max-width: 375px) {
@@ -100,8 +105,17 @@
 }
 
 .authSection #formBtn {
-  background: #16181c !important;
+  background: transparent;
   color: white !important;
+  border: 1px solid #673ab7;
+  padding: 14px !important;
+  -webkit-transition: 0.5s !important;
+  transition: 0.5s !important;
+}
+
+.authSection #formBtn:hover {
+  background: -webkit-gradient(linear, left top, right top, color-stop(0, #4e65ac), to(#6122bef5)) !important;
+  background: linear-gradient(90deg, #4e65ac 0, #6122bef5) !important;
 }
 
 .authSection .toggle_page {
@@ -111,26 +125,10 @@
 }
 
 .authSection .error {
-  color: red;
-  font-weight: 500;
+  color: #e55353 !important;
+  font-weight: 400;
+  font-size: 14px;
   margin: 0;
-}
-
-.authSection .register {
-  background: white;
-  width: 600px !important;
-  max-width: 80%;
-  margin: 0px auto;
-  padding: 30px;
-  border-radius: 10px;
-}
-
-@media only screen and (min-width: 426px) and (max-width: 575px), only screen and (min-width: 375px) and (max-width: 425px), only screen and (min-width: 320px) and (max-width: 375px) {
-  .authSection .register {
-    width: 600px !important;
-    max-width: 90% !important;
-    padding: 10px;
-  }
 }
 
 .authSection .passContainer {
@@ -146,7 +144,7 @@
 .authSection .passContainer span {
   position: absolute;
   right: 25px;
-  bottom: 9px;
+  bottom: 14px;
   cursor: pointer;
 }
 
@@ -180,14 +178,20 @@
   }
 }
 
-.login {
-  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(24, 23, 23, 0.2)), to(rgba(32, 29, 29, 0.4))), url("/assets/images/bg-2.jpg") !important;
-  background-image: linear-gradient(rgba(24, 23, 23, 0.2), rgba(32, 29, 29, 0.4)), url("/assets/images/bg-2.jpg") !important;
+.register_container .register {
+  width: 650px !important;
+  max-width: 80%;
+  margin: 0px auto;
+  padding: 30px;
+  border-radius: 10px;
 }
 
-.register_container {
-  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(24, 23, 23, 0.2)), to(rgba(32, 29, 29, 0.4))), url("/assets/images/bg-1.jpg") !important;
-  background-image: linear-gradient(rgba(24, 23, 23, 0.2), rgba(32, 29, 29, 0.4)), url("/assets/images/bg-1.jpg") !important;
+@media only screen and (min-width: 426px) and (max-width: 575px), only screen and (min-width: 375px) and (max-width: 425px), only screen and (min-width: 320px) and (max-width: 375px) {
+  .register_container .register {
+    width: 600px !important;
+    max-width: 90% !important;
+    padding: 10px;
+  }
 }
 
 .resetPass {
@@ -239,17 +243,20 @@
 }
 
 .resendOtp_btn {
-  background: #e91e63 !important;
+  background: -webkit-gradient(linear, left top, right top, color-stop(0, #4e65ac), to(#6122bef5)) !important;
+  background: linear-gradient(90deg, #4e65ac 0, #6122bef5) !important;
   color: white !important;
   border: none !important;
   width: 140px;
+  padding: 14px !important;
   margin: 10px auto;
   -webkit-transition: 0.3s;
   transition: 0.3s;
 }
 
 .resendOtp_btn:hover {
-  background-color: #d9366e !important;
+  background: -webkit-gradient(linear, left top, right top, color-stop(0, #5c4eac), to(#6122bea1)) !important;
+  background: linear-gradient(90deg, #5c4eac 0, #6122bea1) !important;
 }
 
 .resetPasBtn {
@@ -258,6 +265,53 @@
 }
 
 .otpBtn {
-  background-color: #0f376c !important;
+  background-color: transparent !important;
   color: white !important;
+  padding: 14px !important;
+  border: 1px solid #673ab7 !important;
+  -webkit-transition: 0.5s !important;
+  transition: 0.5s !important;
+}
+
+.otpBtn:hover {
+  background: -webkit-gradient(linear, left top, right top, color-stop(0, #4e65ac), to(#6122bef5)) !important;
+  background: linear-gradient(90deg, #4e65ac 0, #6122bef5) !important;
+}
+
+.left-sidebar-login {
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(24, 23, 23, 0.2)), to(rgba(32, 29, 29, 0.4))), url("/assets/images/wrapped_k7g6ev.svg") !important;
+  background-image: linear-gradient(rgba(24, 23, 23, 0.2), rgba(32, 29, 29, 0.4)), url("/assets/images/wrapped_k7g6ev.svg") !important;
+  width: 100%;
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+label.label-img {
+  background: #131237;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+  gap: 10px;
+  border-radius: 5px;
+  padding: 14px;
+}
+
+label.label-img input {
+  cursor: pointer !important;
+}
+
+label.label-img i {
+  font-size: 20px;
+  cursor: pointer !important;
 }

@@ -1,5 +1,6 @@
 const { Router } = require("express");
 const createTweet = require("../../controllers/APIS/createTweet");
+const deletePost = require("../../controllers/APIS/deletePost");
 const getAllTweet = require("../../controllers/APIS/getAllTweet");
 const postLikeHandler = require("../../controllers/APIS/postLikeHandler");
 const postRetweetHandler = require("../../controllers/APIS/postRetweetHandler");
@@ -12,6 +13,8 @@ const postRoute = Router();
 
 postRoute.get("/posts", checkLogin, getAllTweet);
 postRoute.get("/posts/:id", checkLogin, getSinglePost);
+
+postRoute.delete("/posts/:id", checkLogin, deletePost);
 
 postRoute.get("/posts/singlePost/:postId", checkLogin, singlePostHandler);
 

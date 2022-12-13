@@ -1,11 +1,6 @@
 @import "./partials/variable";
 
 .authSection {
-  background-image: linear-gradient(
-      rgba(24, 23, 23, 0.2),
-      rgba(32, 29, 29, 0.4)
-    ),
-    url("/assets/images/bg-1.jpg") !important;
   width: 100%;
   height: 100vh;
   background-repeat: no-repeat;
@@ -18,19 +13,22 @@
     height: 100%;
   }
   .auth_wrapper {
-    background: white;
-    width: 500px;
+    background: rgba(51, 38, 153, 0.1254901961) !important;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+    width: 600px;
     max-width: 80%;
     margin: 0px auto;
     padding: 30px;
-    border-radius: 10px;
+    border-radius: 20px;
+    color: white;
     h2 {
       text-align: center;
       margin-bottom: 0;
       display: flex;
       flex-direction: column;
-      font-size: 35px;
+      font-size: 40px;
       font-weight: 700;
+      color: #44abf7 !important;
       @media #{$mobile,$mobileLarge,$mobileMedium} {
         font-size: 25px;
       }
@@ -42,9 +40,12 @@
     }
   }
   .auth_wrapper form input {
-    padding: 8px;
+    background: #131237 !important;
+    color: white !important;
     border-radius: 5px;
-    transition: 0.3s;
+    transition: 0.3s !important;
+    border: 1px solid #131237;
+    padding: 14px !important;
     &:hover {
       border: 1px solid #6abbf4;
     }
@@ -63,14 +64,20 @@
   label {
     font-size: 15px;
     font-weight: bold;
-    color: #332f2f;
+    color: white;
     @media #{$mobile,$mobileLarge,$mobileMedium} {
       font-size: 14px;
     }
   }
   #formBtn {
-    background: #16181c !important;
+    background: transparent;
     color: white !important;
+    border: 1px solid #673ab7;
+    padding: 14px !important;
+    transition: 0.5s !important;
+    &:hover {
+      background: linear-gradient(90deg, #4e65ac 0, #6122bef5) !important;
+    }
   }
   .toggle_page {
     margin: 2px 0px;
@@ -78,22 +85,10 @@
     font-weight: 500;
   }
   .error {
-    color: red;
-    font-weight: 500;
+    color: #e55353 !important;
+    font-weight: 400;
+    font-size: 14px;
     margin: 0;
-  }
-  .register {
-    background: white;
-    width: 600px !important;
-    max-width: 80%;
-    margin: 0px auto;
-    padding: 30px;
-    border-radius: 10px;
-    @media #{$mobile,$mobileLarge,$mobileMedium} {
-      width: 600px !important;
-      max-width: 90% !important;
-      padding: 10px;
-    }
   }
 
   .passContainer {
@@ -103,7 +98,7 @@
     span {
       position: absolute;
       right: 25px;
-      bottom: 9px;
+      bottom: 14px;
       cursor: pointer;
     }
   }
@@ -122,20 +117,25 @@
     }
   }
 }
-.login {
-  background-image: linear-gradient(
-      rgba(24, 23, 23, 0.2),
-      rgba(32, 29, 29, 0.4)
-    ),
-    url("/assets/images/bg-2.jpg") !important;
-}
+
+//some login page code
+
+//some register page code
 .register_container {
-  background-image: linear-gradient(
-      rgba(24, 23, 23, 0.2),
-      rgba(32, 29, 29, 0.4)
-    ),
-    url("/assets/images/bg-1.jpg") !important;
+  .register {
+    width: 650px !important;
+    max-width: 80%;
+    margin: 0px auto;
+    padding: 30px;
+    border-radius: 10px;
+    @media #{$mobile,$mobileLarge,$mobileMedium} {
+      width: 600px !important;
+      max-width: 90% !important;
+      padding: 10px;
+    }
+  }
 }
+
 .resetPass {
   min-height: 250px !important;
   h2 {
@@ -170,14 +170,15 @@
 }
 
 .resendOtp_btn {
-  background: #e91e63 !important;
+  background: linear-gradient(90deg, #4e65ac 0, #6122bef5) !important;
   color: white !important;
   border: none !important;
   width: 140px;
+  padding: 14px !important;
   margin: 10px auto;
   transition: 0.3s;
   &:hover {
-    background-color: #d9366e !important;
+    background: linear-gradient(90deg, #5c4eac 0, #6122bea1) !important;
   }
 }
 
@@ -186,6 +187,42 @@
   color: white !important;
 }
 .otpBtn {
-  background-color: #0f376c !important;
+  background-color: transparent !important;
   color: white !important;
+  padding: 14px !important;
+  border: 1px solid #673ab7 !important;
+  transition: 0.5s !important;
+  &:hover {
+    background: linear-gradient(90deg, #4e65ac 0, #6122bef5) !important;
+  }
+}
+
+.left-sidebar-login {
+  background-image: linear-gradient(
+      rgba(24, 23, 23, 0.2),
+      rgba(32, 29, 29, 0.4)
+    ),
+    url("/assets/images/wrapped_k7g6ev.svg") !important;
+  width: 100%;
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+label.label-img {
+  background: #131237;
+  display: flex;
+  align-items: center;
+  flex-direction: row-reverse;
+  justify-content: start;
+  gap: 10px;
+  border-radius: 5px;
+  padding: 14px;
+  input {
+    cursor: pointer !important;
+  }
+  i {
+    font-size: 20px;
+    cursor: pointer !important;
+  }
 }

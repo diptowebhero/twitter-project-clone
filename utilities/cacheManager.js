@@ -25,8 +25,18 @@ async function updateCached(key, value) {
   }
 }
 
+//delete cache
+const deleteCache = async (key) => {
+  try {
+    await redisClient.del(key);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 module.exports = {
   redisClient,
   getAndSetCachedData,
   updateCached,
+  deleteCache,
 };

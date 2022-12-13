@@ -96,7 +96,7 @@
           align-items: center;
   padding: 10px 35px 12px 12px;
   font-size: 20px;
-  color: black;
+  color: white;
   font-weight: 600;
   margin: 5px 0;
   width: -webkit-fit-content;
@@ -108,7 +108,9 @@
 }
 
 .main .left_side_container .left_top_area .menu_section .nav .nav_link:hover {
-  background-color: #e6e7e7;
+  background: rgba(51, 38, 153, 0.12549) !important;
+  -webkit-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+          box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
 }
 
 .main .left_side_container .left_top_area .menu_section .nav .nav_link span {
@@ -174,7 +176,9 @@
 }
 
 .main .left_side_container .left_bottom_area:hover {
-  background-color: #e6e7e7;
+  background: rgba(51, 38, 153, 0.12549) !important;
+  -webkit-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+          box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
 }
 
 .main .left_side_container .left_bottom_area .user_profile_info {
@@ -200,11 +204,15 @@
   font-size: 15px;
   font-weight: 00;
   line-height: 0;
-  color: black;
+  color: white;
 }
 
 .main .left_side_container .left_bottom_area .user_profile_info .info span {
-  color: #536471;
+  color: #a5a9ad !important;
+}
+
+.main .left_side_container .left_bottom_area .user_profile_info i {
+  color: #a5a9ad !important;
 }
 
 .main .left_side_container .left_bottom_area .menu {
@@ -236,8 +244,8 @@
           flex: 1;
   height: 100vh;
   overflow: auto;
-  border-left: 1px solid #dfdfdf;
-  border-right: 1px solid #dfdfdf;
+  border-left: 1px solid #252424;
+  border-right: 1px solid #252424;
 }
 
 .main .middle_side_container .post_header {
@@ -256,16 +264,17 @@
 
 .main .middle_side_container .post_header h4 {
   font-weight: 700;
-  color: black;
+  color: white;
 }
 
 .main .middle_side_container .post_header i {
   cursor: pointer;
+  color: white;
 }
 
 .main .middle_side_container .create_post {
-  border-top: 1px solid #dfdfdf;
-  border-bottom: 1px solid #dfdfdf;
+  border-top: 1px solid #252424;
+  border-bottom: 1px solid #252424;
   padding: 20px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -293,6 +302,8 @@
 
 .main .middle_side_container .create_post .post_area textarea {
   width: 100%;
+  background: transparent;
+  color: white;
   border: none;
   outline: none;
   font-weight: 500;
@@ -314,7 +325,7 @@
 .main .middle_side_container .create_post .post_area .post_actions button {
   border: none;
   border-radius: 30px;
-  padding: 10px 35px;
+  padding: 10px 42px;
   color: white;
   font-size: 15px;
   font-weight: 500;
@@ -350,7 +361,7 @@
   -o-object-fit: cover;
      object-fit: cover;
   border-radius: 10px;
-  border: 1px solid #e5e5e5;
+  border: 1px solid #252424;
 }
 
 .main .middle_side_container .create_post .post_area #postImageContainer .image #close_btn {
@@ -398,11 +409,11 @@
   padding-left: 27px;
   font-size: 19px;
   font-weight: 500;
-  color: black;
+  color: white;
 }
 
 .main .middle_side_container .tweetPost_container .tweet {
-  border-bottom: 1px solid #dfdfdf;
+  border-bottom: 1px solid #252424;
   padding: 20px;
   cursor: pointer;
   display: -webkit-box;
@@ -423,19 +434,21 @@
 }
 
 .main .middle_side_container .tweetPost_container .tweet .tweet_body {
+  max-width: 550px;
+  width: 100%;
   margin-left: 12px;
 }
 
 .main .middle_side_container .tweetPost_container .tweet .tweet_body .tweetsPostImages {
   margin-top: 10px;
-  max-width: 500px;
+  max-width: 550px;
   max-height: 500px;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: auto auto;
       grid-template-columns: auto auto;
   border-radius: 10px;
-  border: 1px solid #dfdfdf;
+  border: 1px solid #252424;
   overflow: hidden;
 }
 
@@ -449,6 +462,10 @@
 .main .middle_side_container .tweetPost_container .tweet .tweet_body .tweetsPostImages .tweetImg img {
   width: 100%;
   height: 100%;
+}
+
+.main .middle_side_container .tweetPost_container .tweet .tweet_body .header {
+  margin-top: -10px;
 }
 
 .main .middle_side_container .tweetPost_container .tweet .tweet_body .header .displayUserInfo {
@@ -465,7 +482,7 @@
   text-decoration: none;
   font-size: 18px;
   font-weight: 600;
-  color: black;
+  color: white;
 }
 
 .main .middle_side_container .tweetPost_container .tweet .tweet_body .header .displayUserInfo a:hover {
@@ -473,19 +490,19 @@
 }
 
 .main .middle_side_container .tweetPost_container .tweet .tweet_body .header .displayUserInfo span {
-  color: #000;
+  color: white;
   font-weight: 400;
   font-size: 17px;
 }
 
 .main .middle_side_container .tweetPost_container .tweet .tweet_body .header .content {
   max-width: 250px;
-  margin-top: 8px;
 }
 
 .main .middle_side_container .tweetPost_container .tweet .tweet_body .header .content span {
   font-weight: 500;
   font-size: 17px;
+  color: white;
 }
 
 .main .middle_side_container .tweetPost_container .tweet .tweet_body .post_footer {
@@ -557,6 +574,18 @@
   transition: 0.3s;
 }
 
+#replyModal .modal-content {
+  background-color: #010313 !important;
+}
+
+#replyModal .modal-header {
+  color: white !important;
+}
+
+#replyModal .modal-header button {
+  color: white !important;
+}
+
 #replyModal .tweet {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -589,7 +618,7 @@
       grid-template-columns: auto auto;
   border-radius: 10px;
   overflow: hidden;
-  border: 1px solid #dfdfdf;
+  border: 1px solid #252424;
 }
 
 #replyModal .tweet .tweet_body .tweetsPostImages .tweetImg {
@@ -602,6 +631,10 @@
 #replyModal .tweet .tweet_body .tweetsPostImages .tweetImg img {
   width: 100%;
   height: 100%;
+}
+
+#replyModal .tweet .tweet_body .header {
+  margin-top: -10px;
 }
 
 #replyModal .tweet .tweet_body .header .displayUserInfo {
@@ -618,7 +651,7 @@
   text-decoration: none;
   font-size: 18px;
   font-weight: 600;
-  color: black;
+  color: white;
 }
 
 #replyModal .tweet .tweet_body .header .displayUserInfo a:hover {
@@ -626,7 +659,7 @@
 }
 
 #replyModal .tweet .tweet_body .header .displayUserInfo span {
-  color: #000;
+  color: white;
   font-weight: 400;
   font-size: 17px;
 }
@@ -639,6 +672,7 @@
 #replyModal .tweet .tweet_body .header .content span {
   font-weight: 500;
   font-size: 17px;
+  color: white;
 }
 
 #replyModal .tweet .tweet_body .post_footer {
@@ -719,11 +753,13 @@
 }
 
 #replyModal .modal-footer .create_reply .reply_area textarea {
+  background: transparent;
   width: 100%;
   border: none;
   outline: none;
   font-weight: 500;
   font-size: 17px;
+  color: white;
 }
 
 #replyModal .modal-footer .create_reply .reply_area .reply_actions {
@@ -777,7 +813,7 @@
   -o-object-fit: cover;
      object-fit: cover;
   border-radius: 10px;
-  border: 1px solid #e5e5e5;
+  border: 1px solid #252424;
 }
 
 #replyModal .modal-footer .create_reply .reply_area .replyImageContainer .image #close_btn {
@@ -816,4 +852,8 @@
   border: none;
   background: transparent;
   margin-right: 10px;
+}
+
+.replyUser {
+  color: white;
 }

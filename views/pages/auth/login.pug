@@ -7,9 +7,9 @@ block cssLink
     link(rel="stylesheet" href="/assets/css/auth.css")
 
 block bodyContent 
-    div.authSection.login
-        div.wrapper 
-            div.auth_wrapper 
+    div.authSection.login_container
+        div.wrapper
+            div.auth_wrapper.shadow
                 h2 Login in to Twitter
                     i.fab.fa-twitter
                 form(action="/login" method="post")
@@ -21,8 +21,8 @@ block bodyContent
                     input#password(type="password" value =user ? user.password :'' name="password" placeholder="Enter your password" class="form-control")
                     if error.password
                         p.error #{error.password.msg}
-                    input#formBtn(type="submit" class="form-control mt-3" value="Login")
-                    .toggle_page_container
+                    button#formBtn(type="submit" class="form-control mt-4") Login
+                    .toggle_page_container.mt-2
                         p.toggle_page Don't Have an account?
                             a(href="/register") Register Here
                         div
