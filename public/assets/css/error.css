@@ -31,3 +31,7 @@
   font-weight: 500;
   font-size: 16px;
 }
+
+.error_page span {
+  color: white;
+}

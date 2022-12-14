@@ -89,11 +89,13 @@ block bodyContent
                     a(href="/logout") Log out @#{user.username}
         .middle_side_container
             .post_header
-                h4 Latest Tweet 
+                h4.d-flex Latest Tweet 
                 i.fas.fa-star
             .create_post
                 .user_avatar
-                    img(src="/uploads/profile/" + user.avatarProfile alt="Avatar")
+                    a(href="/profile")
+                        a(href=`/profile/` + user.username)
+                            img(src="/uploads/profile/" + user.avatarProfile alt="Avatar")
                 .post_area
                     textarea#textAreaContent(placeholder="What's happening")
                     #postImageContainer

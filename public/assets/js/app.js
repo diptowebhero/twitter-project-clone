@@ -1,3 +1,10 @@
+const userProfileInfo = document.querySelector(".user_profile_info");
+const menu = document.querySelector(".menu");
+
+//Logout btn toggle
+userProfileInfo.addEventListener("click", function () {
+  menu.classList.toggle("active");
+});
 //create tweet
 function createTweet(data) {
   let repliedPost = "";
@@ -46,6 +53,8 @@ function createTweet(data) {
                     <i class="fas fa-times"></i>
                   </button>`;
   }
+
+  //for time track
   const times = moment(createdAt).fromNow();
   const div = document.createElement("div");
 
@@ -59,7 +68,7 @@ function createTweet(data) {
   <div class="tweet_body">
     <div class="header">
       <div class="displayUserInfo">
-        <a class="displayName" href="profile/${username}">${
+        <a class="displayName" href="/profile/${username}">${
     firstName + " " + lastName
   }
         </a>

@@ -263,6 +263,12 @@
 }
 
 .main .middle_side_container .post_header h4 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   font-weight: 700;
   color: white;
 }
@@ -270,6 +276,7 @@
 .main .middle_side_container .post_header i {
   cursor: pointer;
   color: white;
+  font-size: 20px;
 }
 
 .main .middle_side_container .create_post {
@@ -576,6 +583,7 @@
 
 #replyModal .modal-content {
   background-color: #010313 !important;
+  border: 1px solid #2f3336;
 }
 
 #replyModal .modal-header {
@@ -851,7 +859,28 @@
 .backBtn {
   border: none;
   background: transparent;
-  margin-right: 10px;
+  height: 40px;
+  width: 40px;
+  margin-top: 5px;
+  border-radius: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-right: 7px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.backBtn:hover {
+  background: rgba(51, 38, 153, 0.12549) !important;
+  -webkit-box-shadow: 0 0.5rem 1rem #00000026 !important;
+          box-shadow: 0 0.5rem 1rem #00000026 !important;
 }
 
 .replyUser {

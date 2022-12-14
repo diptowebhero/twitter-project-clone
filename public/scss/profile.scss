@@ -1,0 +1,142 @@
+.profile_container {
+  color: white;
+  width: 100%;
+  height: 180px;
+  background: #808edb;
+  position: relative;
+  .avatar_profile {
+    position: absolute;
+    bottom: -50px;
+    left: 22px;
+    width: 100px;
+    background: #010313;
+    border: 2px solid #010313;
+    height: 100px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+.actionsBtn {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 12px;
+  height: 35px;
+  button {
+    background: transparent;
+    color: white;
+    padding: 10px 30px;
+    border-radius: 30px;
+    border: 1px solid rgb(83, 100, 113);
+    margin-right: 10px;
+    font-size: 15px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+    &:hover {
+      background: #536471 !important;
+    }
+    i {
+      font-size: 17px;
+    }
+  }
+}
+.userDetails_container {
+  padding: 20px;
+  color: rgb(231, 233, 234);
+  h4 {
+    line-height: 13px;
+    font-weight: 700;
+  }
+  span {
+    font-size: 17px;
+    color: gray;
+  }
+  .followLinks {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    span {
+      color: white !important;
+      margin-right: 4px;
+    }
+    a {
+      color: white !important;
+      font-size: 17px;
+      &:hover {
+        text-decoration: underline !important;
+      }
+    }
+  }
+}
+
+.tabs_container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2px 20px;
+  border-bottom: 1px solid gray;
+  a {
+    color: rgb(231, 233, 234);
+    font-size: 18px;
+    font-weight: 600;
+    transition: 0.3s;
+    &:hover {
+      color: white !important;
+    }
+  }
+  a {
+    padding: 10px;
+  }
+  a.active {
+    color: #17b2ff;
+  }
+  .post_tab {
+    flex: 1;
+    text-align: center;
+    flex: 1;
+  }
+  .active {
+    border-bottom: 2px solid rgb(29, 155, 240);
+  }
+  .reply_tab {
+    flex-basis: 320px;
+    text-align: center;
+  }
+}
+.userNotFound {
+  max-width: 400px;
+  height: 72vh;
+  display: flex;
+  margin: auto;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  img {
+    width: 100%;
+  }
+  button {
+    background: #1d9bf0;
+    color: white !important;
+    padding: 10px 35px;
+    border-radius: 30px;
+    margin-top: 10px;
+    font-size: 15px;
+    font-weight: 500;
+    transition: 0.3s;
+    a {
+      color: white !important;
+      &:hover {
+        text-decoration: underline !important;
+      }
+    }
+  }
+}

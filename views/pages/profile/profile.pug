@@ -3,20 +3,20 @@ block title
     title=title
 block cssLink
     link(rel="stylesheet" href="/assets/css/home.css")
+    link(rel="stylesheet" href="/assets/css/profile.css")
     link(rel="stylesheet" href="/assets/css/toastify.css")
 block jsScript
-    script(src="/assets/js/singlePost.js" defer)
+    script(src="/assets/js/profile.js" defer)
     <script type="text/javascript" src="/assets/js/toastify.js" defer></script>
     <script type="text/javascript" src="/assets/js/moment.js" defer></script>
 block bodyContent
     #replyModal.modal.fade(aria-hidden='true' aria-labelledby='commentModalTitle' tabindex='-1')
         .modal-dialog.modal-dialog-centered
-            .modal-content
+            .modal-content.shadow-lg
                 .modal-header
-                    h1#commentModalTitle.modal-title.fs-5 Reply
-                    button.btn-close(type='button' data-bs-dismiss='modal' aria-label='Close')
+                    h2#commentModalTitle.modal-title.fs-5 Reply
+                    button.btn-close(type='button' class="btn-close btn-close-white" data-bs-dismiss='modal' aria-label='Close')
                 .modal-body
-
                 .modal-footer
                     .create_reply
                         .user_avatar
@@ -82,20 +82,52 @@ block bodyContent
                 .user_profile_info
                     img(src="/uploads/profile/" + user.avatarProfile alt="Avatar")
                     .info
-                        h5 #{user.firstName + ' ' + user.lastName}
-                        span @#{user.username}
+                        h5 #{user.firstName + " " + user.lastName}
+                        span #{user.username}
                     i.fas.fa-ellipsis-h
                 .menu.active.shadow
-                    a(href="/logout") Log out @#{user.username}
+                    a(href="/logout") Log out #{user.username}
         .middle_side_container
             .post_header
                 h4
                     button(onclick="history.back()" class="backBtn")
                         i.fas.fa-arrow-left
-                    |Latest Tweet 
+                    |Profile
                 i.fas.fa-star
-            .tweetPost_container
+            if userProfile !== null
+                .profile_container
+                    .cover_img
+                        img(src="" alt="")
+                    .avatar_profile
+                        img(src="/uploads/profile/" + userProfile.avatarProfile alt="Avatar")
+                .actionsBtn
+                    if userProfile.username !== user.username
+                        button.msg
+                            i.fas.fa-envelope
+                        button.follow Follow
+                .userDetails_container
+                    h4.name #{userProfile.firstName + ' ' + userProfile.lastName}
+                    span.username #{user.username}
+                    .followLinks
+                        a(href="/following")
+                            span 0
+                            |Following
+                        a(href="/followers")
+                            span 0
+                            |Follower
+                .tabs_container
+                    a.post_tab(class=tab === 'post' ? 'active' : '' href=`/profile/` + userProfile.username) Tweets
+
+                    a.reply_tab(class=tab === 'replies' ? 'active' : '' href=`/profile/` + userProfile.username + '/replies') Reply
+                .tweetPost_container
+            else
+                .userNotFound
+                    img(src="./../../../assets/images/404-error.png")
+                    h4.mt-2.text-danger User not Found
+                    button
+                        a(href="/") Go Home
         .right_side_container
     script.
         const user = !{userObj}
-        const postId = "!{postId}"
+        const tab = '!{tab}'
+        const userProfileObj = !{userProfileJs}

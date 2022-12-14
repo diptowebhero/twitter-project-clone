@@ -172,12 +172,15 @@
       justify-content: space-between;
       height: 60px;
       h4 {
+        display: flex;
+        align-items: center;
         font-weight: 700;
         color: white;
       }
       i {
         cursor: pointer;
         color: white;
+        font-size: 20px;
       }
     }
     .create_post {
@@ -423,6 +426,7 @@
 #replyModal {
   .modal-content {
     background-color: #010313 !important;
+    border: 1px solid rgb(47, 51, 54);
   }
   .modal-header {
     color: white !important;
@@ -630,7 +634,19 @@
 .backBtn {
   border: none;
   background: transparent;
-  margin-right: 10px;
+  height: 40px;
+  width: 40px;
+  margin-top: 5px;
+  border-radius: 30px;
+  display: flex;
+  margin-right: 7px;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s;
+  &:hover {
+    background: rgba(51, 38, 153, 0.12549) !important;
+    box-shadow: 0 0.5rem 1rem #00000026 !important;
+  }
 }
 
 .replyUser {

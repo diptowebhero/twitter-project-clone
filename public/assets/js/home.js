@@ -1,8 +1,6 @@
 //select all references
 const postImageInp = document.querySelector("#postImage");
 const postImageContainer = document.querySelector("#postImageContainer");
-const user_profile_info = document.querySelector(".user_profile_info");
-const menu = document.querySelector(".menu");
 const tweetBtn = document.querySelector("#tweetBtn");
 const textAreaInpPost = document.querySelector("#textAreaContent");
 const tweetPostContainer = document.querySelector(".tweetPost_container");
@@ -20,11 +18,6 @@ replyBtn.style.backgroundColor = "#76b9e5";
 //STORE POST IMAGES
 let postImages = [];
 let replyImages = [];
-
-//Logout btn toggle
-user_profile_info.addEventListener("click", function () {
-  menu.classList.toggle("active");
-});
 
 //common function for textarea input handling
 function textAreaInpHandler(input, btn) {

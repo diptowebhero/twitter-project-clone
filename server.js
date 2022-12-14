@@ -11,6 +11,7 @@ const registerRoute = require("./routers/auth/registerRoute");
 const homeRouter = require("./routers/home/homeRoute");
 const { redisClient } = require("./utilities/cacheManager");
 const postRoute = require("./routers/APIS/postRoute");
+const profileRouter = require("./routers/profile/profileRoute");
 const app = express();
 dotenv.config();
 
@@ -32,6 +33,7 @@ app.use(loginRoute); //authentication route
 app.use(registerRoute); //authentication route
 app.use(homeRouter); //home route
 app.use(postRoute); //tweet post route
+app.use(profileRouter); // profile route
 
 //notfound handler
 app.use(notFoundHandler);
