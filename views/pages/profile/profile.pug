@@ -104,15 +104,16 @@ block bodyContent
                     if userProfile.username !== user.username
                         button(class='msg')
                             i.fas.fa-envelope
-                        button(class='follow' onclick=`followHandler(event,"${userProfile._id}")`) Follow
+                        - isFollowing = userProfile.followers && userProfile.followers.includes(user._id.toString())
+                        button(class=isFollowing ? 'active' : 'follow' onclick=`followHandler(event,"${userProfile._id}")`) #{isFollowing ? 'Following' : 'Follow'}
                 .userDetails_container
                     h4.name #{userProfile.firstName + ' ' + userProfile.lastName}
                     span.username #{user.username}
                     .followLinks
-                        a(href="/following")
+                        a(href="/following" class='following')
                             span 0
                             |Following
-                        a(href="/followers")
+                        a(href="/followers" class='followers')
                             span 0
                             |Follower
                 .tabs_container

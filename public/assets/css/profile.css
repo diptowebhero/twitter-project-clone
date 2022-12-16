@@ -72,6 +72,12 @@
   font-size: 17px;
 }
 
+.actionsBtn button.active {
+  background: transparent !important;
+  color: white;
+  border: 1px solid white;
+}
+
 .userDetails_container {
   padding: 20px;
   color: #e7e9ea;

@@ -47,6 +47,11 @@
       font-size: 17px;
     }
   }
+  button.active {
+    background: transparent !important;
+    color: white;
+    border: 1px solid white;
+  }
 }
 .userDetails_container {
   padding: 20px;

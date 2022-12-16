@@ -196,12 +196,27 @@ loadAllTweets();
 
 //follow handling
 function followHandler(e, userId) {
-  const followBtn = e.target;
-
   const url = `${window.location.origin}/profile/${userId}/follow`;
   fetch(url, { method: "PUT" })
     .then((res) => res.json())
     .then((data) => {
-      console.log(data);
+      const followBtn = e.target;
+      const isFollowing = user.followers.includes(user._id);
+
+      const following = document.querySelector("a.following span");
+      const followers = document.querySelector("a.followers span");
+
+      if (isFollowing) {
+        console.log(isFollowing);
+        followBtn.classList.add("active");
+        followBtn.textContent = "Following";
+        following.textContent = data.following.length;
+        followers.textContent = data.followers.length;
+      } else {
+        followBtn.classList.remove("active");
+        followBtn.textContent = "Follow";
+        following.textContent = data.following.length;
+        followers.textContent = data.followers.length;
+      }
     });
 }
