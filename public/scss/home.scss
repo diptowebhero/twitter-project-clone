@@ -1,3 +1,4 @@
+@import "./partials/variable";
 .main {
   display: flex;
   align-items: center;
@@ -12,6 +13,9 @@
     flex-direction: column;
     flex-basis: 250px;
     height: 100vh;
+    @media #{$mobile,$mobileLarge,$mobileMedium} {
+      display: none !important;
+    }
     .left_top_area {
       padding: 10px 0px;
       flex: 1;
@@ -402,6 +406,9 @@
   .right_side_container {
     flex-basis: 250px;
     height: 100vh;
+    @media #{$mobile,$mobileLarge,$mobileMedium} {
+      display: none !important;
+    }
   }
 
   ::-webkit-scrollbar {

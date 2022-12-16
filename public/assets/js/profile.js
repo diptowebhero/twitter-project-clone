@@ -193,3 +193,15 @@ async function loadAllTweets() {
   }
 }
 loadAllTweets();
+
+//follow handling
+function followHandler(e, userId) {
+  const followBtn = e.target;
+
+  const url = `${window.location.origin}/profile/${userId}/follow`;
+  fetch(url, { method: "PUT" })
+    .then((res) => res.json())
+    .then((data) => {
+      console.log(data);
+    });
+}

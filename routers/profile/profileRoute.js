@@ -1,4 +1,5 @@
 const { Router } = require("express");
+const followHandler = require("../../controllers/APIS/followHandler");
 const checkLogin = require("../../controllers/auth/checkLogin");
 const getPostProfile = require("../../controllers/profile/getPostProfile");
 const getReplyPost = require("../../controllers/profile/getReplyPost");
@@ -16,6 +17,13 @@ profileRouter.get(
   htmlResponse("Profile"),
   checkLogin,
   getReplyPost
+);
+
+profileRouter.put(
+  "/profile/:id/follow",
+  htmlResponse("Profile"),
+  checkLogin,
+  followHandler
 );
 
 module.exports = profileRouter;

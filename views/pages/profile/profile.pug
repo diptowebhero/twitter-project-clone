@@ -102,9 +102,9 @@ block bodyContent
                         img(src="/uploads/profile/" + userProfile.avatarProfile alt="Avatar")
                 .actionsBtn
                     if userProfile.username !== user.username
-                        button.msg
+                        button(class='msg')
                             i.fas.fa-envelope
-                        button.follow Follow
+                        button(class='follow' onclick=`followHandler(event,"${userProfile._id}")`) Follow
                 .userDetails_container
                     h4.name #{userProfile.firstName + ' ' + userProfile.lastName}
                     span.username #{user.username}

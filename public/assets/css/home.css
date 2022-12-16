@@ -29,6 +29,12 @@
   height: 100vh;
 }
 
+@media only screen and (min-width: 426px) and (max-width: 575px), only screen and (min-width: 375px) and (max-width: 425px), only screen and (min-width: 320px) and (max-width: 375px) {
+  .main .left_side_container {
+    display: none !important;
+  }
+}
+
 .main .left_side_container .left_top_area {
   padding: 10px 0px;
   -webkit-box-flex: 1;
@@ -563,6 +569,12 @@
   -ms-flex-preferred-size: 250px;
       flex-basis: 250px;
   height: 100vh;
+}
+
+@media only screen and (min-width: 426px) and (max-width: 575px), only screen and (min-width: 375px) and (max-width: 425px), only screen and (min-width: 320px) and (max-width: 375px) {
+  .main .right_side_container {
+    display: none !important;
+  }
 }
 
 .main ::-webkit-scrollbar {
