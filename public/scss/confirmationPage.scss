@@ -40,8 +40,12 @@
   padding: 30px;
   border-radius: 10px;
   max-width: 600px;
-  -webkit-box-shadow: 5px 3px 4px 6px #f5f0f0;
-  box-shadow: 5px 3px 4px 6px #f5f0f0;
+  color: white;
+  background: #060a2d;
+  box-shadow: 5px 3px 4px -4px #000000;
+  padding: 30px;
+  border-radius: 10px;
+  max-width: 600px;
   @media #{$laptop} {
     margin: 0;
   }
@@ -66,8 +70,9 @@
     }
   }
   h3 {
-    color: #102e44;
+    color: #aad4f2;
     font-weight: 500;
+    font-size: 35px;
   }
   a {
     color: rgb(29, 67, 235) !important;

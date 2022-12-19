@@ -201,22 +201,21 @@ function followHandler(e, userId) {
     .then((res) => res.json())
     .then((data) => {
       const followBtn = e.target;
-      const isFollowing = user.followers.includes(user._id);
+      const isFollowing = data.followers.includes(user._id);
 
       const following = document.querySelector("a.following span");
       const followers = document.querySelector("a.followers span");
 
       if (isFollowing) {
-        console.log(isFollowing);
         followBtn.classList.add("active");
         followBtn.textContent = "Following";
-        following.textContent = data.following.length;
-        followers.textContent = data.followers.length;
+        following.textContent = data?.following?.length;
+        followers.textContent = data?.followers?.length;
       } else {
         followBtn.classList.remove("active");
         followBtn.textContent = "Follow";
-        following.textContent = data.following.length;
-        followers.textContent = data.followers.length;
+        following.textContent = data?.following?.length;
+        followers.textContent = data?.followers?.length;
       }
     });
 }

@@ -35,6 +35,13 @@ app.use(homeRouter); //home route
 app.use(postRoute); //tweet post route
 app.use(profileRouter); // profile route
 
+// app.get("/following", (req, res) => {
+//   res.render("/pages/follow/follow.pug", { error: {} });
+// });
+// app.get("/user/followers", (req, res) => {
+//   res.render("pages/follow/follow", { error: {} });
+// });
+
 //notfound handler
 app.use(notFoundHandler);
 

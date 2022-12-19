@@ -29,7 +29,7 @@
   height: 100vh;
 }
 
-@media only screen and (min-width: 426px) and (max-width: 575px), only screen and (min-width: 375px) and (max-width: 425px), only screen and (min-width: 320px) and (max-width: 375px) {
+@media only screen and (min-width: 769px) and (max-width: 1024px), only screen and (min-width: 576px) and (max-width: 768px), only screen and (min-width: 426px) and (max-width: 575px), only screen and (min-width: 375px) and (max-width: 425px), only screen and (min-width: 320px) and (max-width: 375px) {
   .main .left_side_container {
     display: none !important;
   }
@@ -571,7 +571,7 @@
   height: 100vh;
 }
 
-@media only screen and (min-width: 426px) and (max-width: 575px), only screen and (min-width: 375px) and (max-width: 425px), only screen and (min-width: 320px) and (max-width: 375px) {
+@media only screen and (min-width: 769px) and (max-width: 1024px), only screen and (min-width: 576px) and (max-width: 768px), only screen and (min-width: 426px) and (max-width: 575px), only screen and (min-width: 375px) and (max-width: 425px), only screen and (min-width: 320px) and (max-width: 375px) {
   .main .right_side_container {
     display: none !important;
   }
@@ -897,4 +897,32 @@
 
 .replyUser {
   color: white;
+}
+
+.deleteBtn {
+  width: 40px;
+  height: 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background-color: transparent;
+  border-radius: 30px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.deleteBtn:hover {
+  background: rgba(51, 38, 153, 0.12549) !important;
+  -webkit-box-shadow: 0 0.5rem 1rem #00000026 !important;
+          box-shadow: 0 0.5rem 1rem #00000026 !important;
+}
+
+.deleteBtn i {
+  color: white !important;
 }

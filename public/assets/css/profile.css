@@ -212,3 +212,71 @@
 .userNotFound button a:hover {
   text-decoration: underline !important;
 }
+
+.followFollowing_container .follow {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  border-bottom: 1px solid gray;
+  padding: 20px;
+}
+
+.followFollowing_container .follow .followUserInfo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 10px;
+}
+
+.followFollowing_container .follow .followUserInfo .displayName {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  color: #fff;
+}
+
+.followFollowing_container .follow .followUserInfo .displayName a {
+  font-size: 20px;
+}
+
+.followFollowing_container .follow .followUserInfo .avatar {
+  width: 50px;
+  height: 50px;
+}
+
+.followFollowing_container .follow .followUserInfo .avatar img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+.followFollowing_container .follow button {
+  padding: 4px 30px;
+  border-radius: 30px;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.followFollowing_container .follow .follow {
+  background: #eff3f4 !important;
+  border: 1px solid white;
+}
+
+.followFollowing_container .follow .follow.active {
+  background: transparent !important;
+  color: white;
+  border: 1px solid white;
+}

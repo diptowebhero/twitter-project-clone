@@ -13,7 +13,7 @@
     flex-direction: column;
     flex-basis: 250px;
     height: 100vh;
-    @media #{$mobile,$mobileLarge,$mobileMedium} {
+    @media #{$laptop,$tablet,$mobile,$mobileLarge,$mobileMedium} {
       display: none !important;
     }
     .left_top_area {
@@ -406,7 +406,7 @@
   .right_side_container {
     flex-basis: 250px;
     height: 100vh;
-    @media #{$mobile,$mobileLarge,$mobileMedium} {
+    @media #{$laptop,$tablet,$mobile,$mobileLarge,$mobileMedium} {
       display: none !important;
     }
   }
@@ -658,4 +658,22 @@
 
 .replyUser {
   color: white;
+}
+
+.deleteBtn {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  border-radius: 30px;
+  transition: 0.3s;
+  &:hover {
+    background: rgba(51, 38, 153, 0.12549) !important;
+    box-shadow: 0 0.5rem 1rem #00000026 !important;
+  }
+  i {
+    color: white !important;
+  }
 }

@@ -6,7 +6,8 @@ block cssLink
     link(rel="stylesheet" href="/assets/css/profile.css")
     link(rel="stylesheet" href="/assets/css/toastify.css")
 block jsScript
-    script(src="/assets/js/profile.js" defer)
+    script(src="/assets/js/app.js" defer)
+    script(src="/assets/js/follow.js" defer)
     <script type="text/javascript" src="/assets/js/toastify.js" defer></script>
     <script type="text/javascript" src="/assets/js/moment.js" defer></script>
 block bodyContent
@@ -109,6 +110,7 @@ block bodyContent
                 .userDetails_container
                     h4.name #{userProfile.firstName + ' ' + userProfile.lastName}
                     span.username #{user.username}
+
                     - followers = userProfile.followers && userProfile.followers.length || 0
                     - following = userProfile.following && userProfile.following.length || 0
                     .followLinks
@@ -119,10 +121,10 @@ block bodyContent
                             span.value #{followers}
                             |Followers
                 .tabs_container
-                    a.post_tab(class=tab === 'post' ? 'active' : '' href=`/profile/` + userProfile.username) Tweets
+                    a.post_tab(class=tab === 'followers' ? 'active' : '' href=`/profile/` + userProfile.username + '/followers') Followers
 
-                    a.reply_tab(class=tab === 'replies' ? 'active' : '' href=`/profile/` + userProfile.username + '/replies') Reply
-                .tweetPost_container
+                    a.reply_tab(class=tab === 'following' ? 'active' : '' href=`/profile/` + userProfile.username + '/following') Following
+                .followFollowing_container
             else
                 .userNotFound
                     img(src="./../../../assets/images/404-error.png")
@@ -133,4 +135,4 @@ block bodyContent
     script.
         const user = !{userObj}
         const tab = '!{tab}'
-        const userProfileObj = !{userProfileJs}
+        const userProfileJs = !{userProfileJs}

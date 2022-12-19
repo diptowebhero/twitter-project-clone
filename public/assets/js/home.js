@@ -197,7 +197,7 @@ tweetBtn.addEventListener("click", function (e) {
 
 //Load all tweets
 async function loadAllTweets() {
-  const url = `${window.location.origin}/posts`;
+  const url = `${window.location.origin}/posts?followingOnly=true`;
   const result = await fetch(url, { method: "GET" });
   const posts = await result.json();
   if (posts.length) {

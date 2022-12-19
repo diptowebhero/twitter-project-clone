@@ -91,8 +91,13 @@
   padding: 30px;
   border-radius: 10px;
   max-width: 600px;
-  -webkit-box-shadow: 5px 3px 4px 6px #f5f0f0;
-  box-shadow: 5px 3px 4px 6px #f5f0f0;
+  color: white;
+  background: #060a2d;
+  -webkit-box-shadow: 5px 3px 4px -4px #000000;
+          box-shadow: 5px 3px 4px -4px #000000;
+  padding: 30px;
+  border-radius: 10px;
+  max-width: 600px;
 }
 
 @media only screen and (min-width: 769px) and (max-width: 1024px) {
@@ -133,8 +138,9 @@
 }
 
 .confirmation-inner h3 {
-  color: #102e44;
+  color: #aad4f2;
   font-weight: 500;
+  font-size: 35px;
 }
 
 .confirmation-inner a {
