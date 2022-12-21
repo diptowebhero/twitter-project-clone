@@ -42,7 +42,6 @@ const userSchema = new Schema(
     },
     avatarProfile: {
       type: String,
-      required: true,
     },
     status: {
       type: String,
@@ -64,6 +63,7 @@ const userSchema = new Schema(
 
     followers: [{ type: Schema.Types.ObjectId, ref: "User" }],
     following: [{ type: Schema.Types.ObjectId, ref: "User" }],
+    coverImg: [{ type: String }],
   },
   { timestamps: true }
 );

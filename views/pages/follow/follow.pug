@@ -11,6 +11,7 @@ block jsScript
     <script type="text/javascript" src="/assets/js/toastify.js" defer></script>
     <script type="text/javascript" src="/assets/js/moment.js" defer></script>
 block bodyContent
+    - avatarUrl = user.avatarProfile ? `/uploads/${user._id}/profile/${user.avatarProfile}` : `/uploads/profile/avatar.png`;
     #replyModal.modal.fade(aria-hidden='true' aria-labelledby='commentModalTitle' tabindex='-1')
         .modal-dialog.modal-dialog-centered
             .modal-content.shadow-lg
@@ -21,7 +22,7 @@ block bodyContent
                 .modal-footer
                     .create_reply
                         .user_avatar
-                            img(src="/uploads/profile/" + user.avatarProfile alt="Avatar")
+                            img(src=avatarUrl alt="Avatar")
                         .reply_area
                             textarea#replyTextAreaContent(placeholder="What's happening" spellcheck='false')
                             .replyImageContainer
@@ -81,7 +82,7 @@ block bodyContent
                         button Tweet
             .left_bottom_area 
                 .user_profile_info
-                    img(src="/uploads/profile/" + user.avatarProfile alt="Avatar")
+                    img(src=avatarUrl alt="Avatar")
                     .info
                         h5 #{user.firstName + " " + user.lastName}
                         span #{user.username}
@@ -97,10 +98,13 @@ block bodyContent
                 i.fas.fa-star
             if userProfile !== null
                 .profile_container
+                    - profileAvatarUrl = userProfile.avatarProfile ? `/uploads/${userProfile._id}/profile/${userProfile.avatarProfile}` : `/uploads/profile/avatar.png`;
+
+                    - coverAvatarUrl = userProfile.coverImg ? `/uploads/${userProfile._id}/cover/${userProfile.coverImg}` : `/uploads/profile/avatar.png`;
                     .cover_img
-                        img(src="" alt="")
+                        img(src=coverAvatarUrl alt="")
                     .avatar_profile
-                        img(src="/uploads/profile/" + userProfile.avatarProfile alt="Avatar")
+                        img(src=profileAvatarUrl alt="Avatar")
                 .actionsBtn
                     if userProfile.username !== user.username
                         button(class='msg')
@@ -109,7 +113,7 @@ block bodyContent
                         button.follow(class=isFollowing ? 'active' : '' onclick=`followHandler(event,"${userProfile._id}")`) #{isFollowing ? 'Following' : 'Follow'}
                 .userDetails_container
                     h4.name #{userProfile.firstName + ' ' + userProfile.lastName}
-                    span.username #{user.username}
+                    span.username #{userProfile.username}
 
                     - followers = userProfile.followers && userProfile.followers.length || 0
                     - following = userProfile.following && userProfile.following.length || 0

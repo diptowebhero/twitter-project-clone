@@ -442,6 +442,7 @@
 .main .middle_side_container .tweetPost_container .tweet .avatar-area img {
   width: 100%;
   height: 100%;
+  border-radius: 50%;
   -o-object-fit: cover;
      object-fit: cover;
 }
@@ -622,6 +623,7 @@
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
+  border-radius: 50%;
 }
 
 #replyModal .tweet .tweet_body {
@@ -925,4 +927,52 @@
 
 .deleteBtn i {
   color: white !important;
+}
+
+#avatarUpdateModal .modal-content {
+  background-color: #010313 !important;
+  color: white !important;
+  border: 1px solid #2f3336;
+}
+
+#coverUpdateModal .modal-content {
+  background-color: #010313 !important;
+  color: white !important;
+  border: 1px solid #2f3336;
+}
+
+div#avatarPreviewContainer {
+  max-width: 350px;
+  margin: 20px auto;
+  width: 100%;
+}
+
+div#avatarPreviewContainer img {
+  width: 100%;
+  border-radius: 10px;
+  display: block;
+  /* This rule is very important, please don't ignore this */
+  max-width: 100%;
+}
+
+div#coverPreviewContainer {
+  max-width: 350px;
+  margin: 20px auto;
+  width: 100%;
+}
+
+div#coverPreviewContainer img {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  display: block;
+  /* This rule is very important, please don't ignore this */
+  max-width: 100%;
+}
+
+.cover_img img {
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
 }

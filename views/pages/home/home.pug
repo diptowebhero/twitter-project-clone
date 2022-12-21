@@ -9,6 +9,8 @@ block jsScript
     <script type="text/javascript" src="/assets/js/toastify.js" defer></script>
     <script type="text/javascript" src="/assets/js/moment.js" defer></script>
 block bodyContent
+    - avatarUrl = user.avatarProfile ? `/uploads/${user._id}/profile/${user.avatarProfile}` : `/uploads/profile/avatar.png`;
+
     #replyModal.modal.fade(aria-hidden='true' aria-labelledby='commentModalTitle' tabindex='-1')
         .modal-dialog.modal-dialog-centered
             .modal-content
@@ -20,7 +22,7 @@ block bodyContent
                 .modal-footer
                     .create_reply
                         .user_avatar
-                            img(src="/uploads/profile/" + user.avatarProfile alt="Avatar")
+                            img(src=avatarUrl alt="Avatar")
                         .reply_area
                             textarea#replyTextAreaContent(placeholder="What's happening" spellcheck='false')
                             .replyImageContainer
@@ -80,7 +82,7 @@ block bodyContent
                         button Tweet
             .left_bottom_area 
                 .user_profile_info
-                    img(src="/uploads/profile/" + user.avatarProfile alt="Avatar")
+                    img(src=avatarUrl alt="Avatar")
                     .info
                         h5 #{user.firstName + ' ' + user.lastName}
                         span @#{user.username}
@@ -95,7 +97,7 @@ block bodyContent
                 .user_avatar
                     a(href="/profile")
                         a(href=`/profile/` + user.username)
-                            img(src="/uploads/profile/" + user.avatarProfile alt="Avatar")
+                            img(src=avatarUrl alt="Avatar")
                 .post_area
                     textarea#textAreaContent(placeholder="What's happening")
                     #postImageContainer

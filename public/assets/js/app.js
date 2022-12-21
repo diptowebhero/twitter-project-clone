@@ -1,10 +1,10 @@
-// const userProfileInfo = document.querySelector(".user_profile_info");
+const userProfileInfo = document.querySelector(".user_profile_info");
 const menu = document.querySelector(".menu");
 
 //Logout btn toggle
-// userProfileInfo.addEventListener("click", function () {
-//   menu.classList.toggle("active");
-// });
+userProfileInfo.addEventListener("click", function () {
+  menu.classList.toggle("active");
+});
 //create tweet
 function createTweet(data) {
   let repliedPost = "";
@@ -57,12 +57,14 @@ function createTweet(data) {
   const times = moment(createdAt).fromNow();
   const div = document.createElement("div");
 
+  const avatarUrl = avatarProfile
+    ? `/uploads/${_id}/profile/${avatarProfile}`
+    : `/uploads/profile/avatar.png`;
+
   div.innerHTML = `${retweetNameDisplay}
     <div onclick="openTweet(event,'${postId}')" class="tweet">
     <div class="avatar-area">
-    <img src="${
-      window.location.origin
-    }/uploads/profile/${avatarProfile}" alt=""/>
+    <img src="${window.location.origin}${avatarUrl}" alt=""/>
   </div>
   <div class="tweet_body">
     <div class="header">

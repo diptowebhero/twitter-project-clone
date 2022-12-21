@@ -1,35 +1,31 @@
 const upload = require("multer-uploader");
 const path = require("path");
-const avatarUploader = async (req, res, next) => {
+const updateAvatarImgUpload = async (req, res, next) => {
   try {
     // absolute path of your upload directory
-    const upload_dir = path.join(__dirname, "./../../temp/");
-    // const upload_dir = path.join(
-    //   __dirname + "./../../public/uploads/${user._id}/profile/${avatarProfile}"
-    // );
-    // max file size in bytes, such as 1MB equal 1000000 bytes
+    const upload_dir = path.join(
+      __dirname,
+      `./../../public/uploads/${req.id}/profile/`
+    ); // absolute path
+    // max file size in bytes
     const max_file_size = 1000000; // bytes
     // allowed file types in Array
     const allowed_file_mime_type = [
       "image/png",
       "image/jpg",
       "image/jpeg",
-      "images/svg+xml",
+      "image/svg+xml",
     ]; // mime types Array
 
     const uploader = upload(
       upload_dir,
       max_file_size,
       allowed_file_mime_type
-    ).single("avatarProfile");
+    ).any();
+
     uploader(req, res, (err) => {
       if (err) {
-        const error = {
-          avatarProfile: {
-            msg: err.message,
-          },
-        };
-        res.render("pages/auth/register", { error: error });
+        next(err);
       } else {
         next();
       }
@@ -38,5 +34,4 @@ const avatarUploader = async (req, res, next) => {
     next(error);
   }
 };
-
-module.exports = avatarUploader;
+module.exports = updateAvatarImgUpload;

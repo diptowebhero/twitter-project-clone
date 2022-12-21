@@ -1,9 +1,35 @@
 .profile_container {
   color: white;
   width: 100%;
-  height: 180px;
+  height: 230px;
   background: #808edb;
   position: relative;
+}
+
+.profile_container .cover_img {
+  position: relative;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  height: 100%;
+}
+
+.profile_container .cover_img button.uploadImage {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  background: transparent;
+  border: none;
+  display: none;
+}
+
+.profile_container .cover_img button.uploadImage i {
+  font-size: 25px;
+}
+
+.profile_container .cover_img:hover button.uploadImage {
+  display: block !important;
 }
 
 .profile_container .avatar_profile {
@@ -24,11 +50,29 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
 }
 
 .profile_container .avatar_profile img {
   width: 100%;
   height: 100%;
+  border-radius: 50%;
+}
+
+.profile_container .avatar_profile button.uploadImage {
+  position: absolute;
+  border: none;
+  background: transparent;
+  display: none;
+}
+
+.profile_container .avatar_profile button.uploadImage i {
+  font-size: 23px;
+}
+
+.profile_container .avatar_profile:hover button.uploadImage {
+  display: block;
 }
 
 .actionsBtn {
@@ -249,7 +293,19 @@
 }
 
 .followFollowing_container .follow .followUserInfo .displayName a {
-  font-size: 20px;
+  font-size: 18px;
+  color: white;
+  font-weight: 600;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.followFollowing_container .follow .followUserInfo .displayName a:hover {
+  text-decoration: underline !important;
+}
+
+.followFollowing_container .follow .followUserInfo .displayName span {
+  color: #9e9e9e;
 }
 
 .followFollowing_container .follow .followUserInfo .avatar {
@@ -279,4 +335,17 @@
   background: transparent !important;
   color: white;
   border: 1px solid white;
+}
+
+.avatar-area {
+  width: 50px;
+  height: 50px;
+}
+
+.avatar-area img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 50%;
 }

@@ -3,19 +3,8 @@ const createHttpError = require("http-errors");
 const User = require("../../models/User");
 
 const registerValidator = [
-  check("firstName")
-    .notEmpty()
-    .withMessage("firstName is require")
-    .isAlpha("en-US", { ignore: "_" })
-    .withMessage("Name must not contain anything other than alphabet")
-    .trim(),
-
-  check("lastName")
-    .notEmpty()
-    .withMessage("lastName is require")
-    .isAlpha("en-US", { ignore: "_" })
-    .withMessage("Name must not contain anything other than alphabet")
-    .trim(),
+  check("firstName").notEmpty().withMessage("firstName is require").trim(),
+  check("lastName").notEmpty().withMessage("lastName is require").trim(),
 
   check("username")
     .notEmpty()

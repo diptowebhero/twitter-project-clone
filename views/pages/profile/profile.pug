@@ -5,11 +5,15 @@ block cssLink
     link(rel="stylesheet" href="/assets/css/home.css")
     link(rel="stylesheet" href="/assets/css/profile.css")
     link(rel="stylesheet" href="/assets/css/toastify.css")
+    link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.css")
 block jsScript
+    script(src="/assets/js/app.js" defer)
+    script(src="/assets/js/uploadImage.js" defer)
     script(src="/assets/js/profile.js" defer)
     <script type="text/javascript" src="/assets/js/toastify.js" defer></script>
     <script type="text/javascript" src="/assets/js/moment.js" defer></script>
 block bodyContent
+    - avatarUrl = user.avatarProfile ? `/uploads/${user._id}/profile/${user.avatarProfile}` : `/uploads/profile/avatar.png`;
     #replyModal.modal.fade(aria-hidden='true' aria-labelledby='commentModalTitle' tabindex='-1')
         .modal-dialog.modal-dialog-centered
             .modal-content.shadow-lg
@@ -20,7 +24,7 @@ block bodyContent
                 .modal-footer
                     .create_reply
                         .user_avatar
-                            img(src="/uploads/profile/" + user.avatarProfile alt="Avatar")
+                            img(src=avatarUrl alt="Avatar")
                         .reply_area
                             textarea#replyTextAreaContent(placeholder="What's happening" spellcheck='false')
                             .replyImageContainer
@@ -29,6 +33,34 @@ block bodyContent
                                     i.fas.fa-image(aria-hidden='true')
                                     input#replyPostImage(type='file' multiple='' hidden='')
                                 button#replyBtn(disabled onclick="clearInputData()") Reply Tweet
+
+    #avatarUpdateModal.modal.fade(aria-hidden='true' aria-labelledby='avatarModalTitle' tabindex='-1')
+        .modal-dialog.modal-dialog-centered
+            .modal-content.shadow-lg
+                .modal-header
+                    h2#avatarModalTitle.modal-title.fs-5 Update Profile Avatar
+                    button.btn-close(type='button' class="btn-close btn-close-white" data-bs-dismiss='modal' aria-label='Close')
+                .modal-body
+                    input#updateAvatarInput(type='file')
+                    #avatarPreviewContainer
+                        img#avatarPreview
+                .modal-footer
+                    button.btn.btn-secondary(type='button' data-bs-dismiss='modal') Close
+                    button#avatarUpdateBtn.btn.btn-primary(type='button') Save changes
+
+    #coverUpdateModal.modal.fade(aria-hidden='true' aria-labelledby='coverModalTitle' tabindex='-1')
+        .modal-dialog.modal-dialog-centered
+            .modal-content.shadow-lg
+                .modal-header
+                    h2#coverModalTitle.modal-title.fs-5 Update Cover Image
+                    button.btn-close(type='button' class="btn-close btn-close-white" data-bs-dismiss='modal' aria-label='Close')
+                .modal-body
+                    input#coverUpdateInput(type='file')
+                    #coverPreviewContainer
+                        img#coverPreview
+                .modal-footer
+                    button.btn.btn-secondary(type='button' data-bs-dismiss='modal') Close
+                    button#coverUpdateBtn.btn.btn-primary(type='button') Save changes
     main.main
         .left_side_container
             .left_top_area
@@ -80,7 +112,7 @@ block bodyContent
                         button Tweet
             .left_bottom_area 
                 .user_profile_info
-                    img(src="/uploads/profile/" + user.avatarProfile alt="Avatar")
+                    img(src=avatarUrl alt="Avatar")
                     .info
                         h5 #{user.firstName + " " + user.lastName}
                         span #{user.username}
@@ -96,10 +128,20 @@ block bodyContent
                 i.fas.fa-star
             if userProfile !== null
                 .profile_container
+                    - profileAvatarUrl = userProfile.avatarProfile ? `/uploads/${userProfile._id}/profile/${userProfile.avatarProfile}` : `/uploads/profile/avatar.png`;
                     .cover_img
-                        img(src="" alt="")
+                        - coverAvatarUrl = userProfile.coverImg ? `/uploads/${userProfile._id}/cover/${userProfile.coverImg}` : `/uploads/profile/avatar.png`;
+
+                        if userProfile._id.toString() === user._id
+                            button.uploadImage(data-bs-toggle="modal" data-bs-target="#coverUpdateModal")
+                                i.fas.fa-camera
+                        img(src=coverAvatarUrl alt="")
+
                     .avatar_profile
-                        img(src="/uploads/profile/" + userProfile.avatarProfile alt="Avatar")
+                        if userProfile._id.toString() === user._id
+                            button.uploadImage(data-bs-toggle="modal" data-bs-target="#avatarUpdateModal")
+                                i.fas.fa-camera
+                        img(src=profileAvatarUrl alt="Avatar")
                 .actionsBtn
                     if userProfile.username !== user.username
                         button(class='msg')
@@ -130,6 +172,7 @@ block bodyContent
                     button
                         a(href="/") Go Home
         .right_side_container
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.js") 
     script.
         const user = !{userObj}
         const tab = '!{tab}'
