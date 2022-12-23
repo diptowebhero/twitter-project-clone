@@ -26,6 +26,7 @@ const tweetSchema = new Schema(
     postData: { type: Schema.Types.ObjectId, ref: "Tweet" },
     replyTo: { type: Schema.Types.ObjectId, ref: "Tweet" },
     replyTweets: [{ type: Schema.Types.ObjectId, ref: "Tweet" }],
+    pinned: Boolean,
   },
   { timestamps: true }
 );

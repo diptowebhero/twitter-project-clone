@@ -2,6 +2,7 @@ const { Router } = require("express");
 const createTweet = require("../../controllers/APIS/createTweet");
 const deletePost = require("../../controllers/APIS/deletePost");
 const getAllTweet = require("../../controllers/APIS/getAllTweet");
+const pinPostHandler = require("../../controllers/APIS/pinPostHandler");
 const postLikeHandler = require("../../controllers/APIS/postLikeHandler");
 const postRetweetHandler = require("../../controllers/APIS/postRetweetHandler");
 const replyHandler = require("../../controllers/APIS/replyHandler");
@@ -30,5 +31,8 @@ postRoute.post(
   tweetImageUploader,
   replyHandler
 );
+
+//pin route handler
+postRoute.put("/posts/:id/pin", checkLogin, pinPostHandler);
 
 module.exports = postRoute;

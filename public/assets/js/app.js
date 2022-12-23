@@ -6,11 +6,14 @@ userProfileInfo.addEventListener("click", function () {
   menu.classList.toggle("active");
 });
 //create tweet
-function createTweet(data) {
+function createTweet(data, pinned) {
   let repliedPost = "";
   let retweetNameDisplay = "";
   let deleteBtn = "";
   let newData = data;
+  let pinBtn = "";
+  let toggleDeletePinBtn = "";
+  //retweet flag
   if (data?.postData) {
     //delete post
     if (data?.tweetedBy?._id === user?._id) {
@@ -23,12 +26,14 @@ function createTweet(data) {
     retweetNameDisplay =
       data.tweetedBy.username === user.username
         ? `<p class="tweetedUser">
-  <i class="fas fa-retweet"></i>You retweeted</a>
-  </p>`
+              <i class="fas fa-retweet"></i>You retweeted</a>
+            </p>`
         : `<p class="tweetedUser">
-      <i class="fas fa-retweet"></i> retweeted By @<a href="/user/profile/"}>${data.tweetedBy.username}</a>
-      </p>`;
+                <i class="fas fa-retweet"></i> retweeted By @<a href="/user/profile/"}>${data.tweetedBy.username}</a>
+            </p>`;
   }
+
+  //reply flag
   if (data.replyTo?.tweetedBy?.username) {
     repliedPost = `
           <div class="replyUser">
@@ -36,6 +41,7 @@ function createTweet(data) {
               </p>
           </div>`;
   }
+
   const {
     _id: postId,
     replyTweets,
@@ -47,25 +53,68 @@ function createTweet(data) {
     tweetedBy: { _id, firstName, lastName, username, avatarProfile },
   } = newData;
 
-  //delete post
+  //delete post && pinned post
   if (newData.tweetedBy._id === user._id) {
-    deleteBtn = `<button onclick="deletePost('${data._id}')" class="deleteBtn">
-                    <i class="fas fa-times"></i>
+    if (
+      window.location.pathname.split("/").includes("profile") &&
+      !data.replyTo
+    ) {
+      pinBtn = `<button onclick="pinPost('${data._id}',${
+        data.pinned
+      })" class="pinBtn ${data.pinned ? "active" : ""}">
+      <i class="fas fa-thumbtack"></i> ${
+        data.pinned ? "Unpin this post" : "Pin this post"
+      }
+    </button>`;
+    }
+    deleteBtn = `
+                  <button onclick="deletePost('${data._id}')" class="deleteBtn d-flex">
+                    <i class="fas fa-times"></i> Delete this post
                   </button>`;
   }
   //for time track
   const times = moment(createdAt).fromNow();
   const div = document.createElement("div");
+  //pin flag
+  let pinFlag = "";
+  if (pinned) {
+    // console.log(pinned);
+    div.classList.add("pinPost");
+    pinFlag = `<div class="pinnedFlag">
+                        <i class="fas fa-thumbtack"></i> Pinned post
+                      </div>`;
+  }
 
+  if (user.username === username) {
+    toggleDeletePinBtn = ` <div class="dropdown">
+      <button
+        class="toggle_btn dropdown-toggle"
+        type="button"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+      >
+        <i class="fas fa-ellipsis-h" aria-hidden="true"></i>
+      </button>
+      <ul class="pinDeleteBtn dropdown-menu">
+        ${deleteBtn}
+        ${pinBtn}
+      </ul>
+    </div>`;
+  }
+
+  //select avatar image
   const avatarUrl = avatarProfile
     ? `/uploads/${_id}/profile/${avatarProfile}`
     : `/uploads/profile/avatar.png`;
 
-  div.innerHTML = `${retweetNameDisplay}
+  div.innerHTML = `
+  ${pinFlag}
+  ${retweetNameDisplay}
     <div onclick="openTweet(event,'${postId}')" class="tweet">
     <div class="avatar-area">
     <img src="${window.location.origin}${avatarUrl}" alt=""/>
   </div>
+
   <div class="tweet_body">
     <div class="header">
       <div class="displayUserInfo">
@@ -74,7 +123,9 @@ function createTweet(data) {
   }</a>
         <span class="username">${username}.</span>
         <span class="time" style="flex:1">${times}</span>
-        ${deleteBtn}
+        
+       
+       ${toggleDeletePinBtn}
       </div>
       ${repliedPost}
       <div class="content">
@@ -228,4 +279,39 @@ function deletePost(postId) {
         });
     }
   });
+}
+
+//pin post
+function pinPost(postId, pinned) {
+  console.log(pinned);
+  Swal.fire({
+    title: "Are you sure?",
+    text: pinned ? "Unpin this post" : "You can pin only one post",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: pinned ? "Yes, unpin it!" : "Yes, pin it!",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      const url = `${window.location.origin}/posts/${postId}/pin`;
+      fetch(url, { method: "PUT" })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data?._id) {
+            // return console.log(data);
+            window.location.reload();
+          } else {
+            console.log("delete post error");
+            window.location.href = "/";
+          }
+        });
+    }
+  });
+}
+
+//
+
+function toggleBtn() {
+  document.querySelector(".pinDeleteBtn").classList.toggle("activeBtn");
 }

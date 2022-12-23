@@ -129,7 +129,7 @@ function retweetHandler(e, postId) {
 function replyHandler(e, postId) {
   const replyTweetBtn = document.querySelector("#replyBtn");
   const replyBtn = e.target;
-  console.log();
+
   const postObj = JSON.parse(replyBtn.dataset.post);
   const modalBody = document.querySelector(".modal-body");
   modalBody.innerHTML = "";
@@ -190,6 +190,20 @@ async function loadAllTweets() {
     });
   } else {
     return (tweetPostContainer.innerHTML = `<h4 class='nothing'>Nothing to show!!</h4>`);
+  }
+
+  if (tab === "post") {
+    const pinPostResult = await fetch(
+      `${window.location.origin}/posts?tweetedBy=${userProfileObj._id}&pinned=true`
+    );
+
+    const pinPost = await pinPostResult.json();
+
+    pinPost?.forEach((post) => {
+      console.log(post);
+      const tweetEl = createTweet(post, true);
+      tweetPostContainer.insertAdjacentElement("afterbegin", tweetEl);
+    });
   }
 }
 loadAllTweets();

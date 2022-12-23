@@ -369,6 +369,7 @@
           }
 
           button {
+            width: 100%;
             background: transparent;
             border: none;
             padding: 10px;
@@ -515,6 +516,7 @@
       }
 
       button {
+        width: 100%;
         background: transparent;
         border: none;
         padding: 10px;
@@ -667,9 +669,10 @@
   height: 40px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: start;
+  gap: 7px;
   background-color: transparent;
-  border-radius: 30px;
+  padding: 0px 15px !important;
   transition: 0.3s;
   &:hover {
     background: rgba(51, 38, 153, 0.12549) !important;
@@ -678,6 +681,28 @@
   i {
     color: white !important;
   }
+}
+
+.pinBtn {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: 7px;
+  background-color: transparent;
+  padding: 0px 15px !important;
+  transition: 0.3s;
+  &:hover {
+    background: rgba(51, 38, 153, 0.12549) !important;
+    box-shadow: 0 0.5rem 1rem #00000026 !important;
+  }
+  i {
+    color: white !important;
+  }
+}
+.pinBtn.active i {
+  color: #03a9f4 !important;
 }
 
 #avatarUpdateModal {
@@ -728,6 +753,62 @@ div#coverPreviewContainer {
   img {
     height: 100%;
     width: 100%;
-    object-fit: cover;
   }
+}
+
+.dropdown {
+  .activeBtn {
+    display: flex !important;
+  }
+  .toggle_btn {
+    width: 40px !important;
+    height: 40px !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #e5e5e5 !important;
+    border-radius: 50%;
+    transition: 0.3s;
+    &:hover {
+      background: rgba(51, 38, 153, 0.12549) !important;
+      box-shadow: 0 0.5rem 1rem #00000026 !important;
+    }
+  }
+
+  .dropdown-toggle::after {
+    display: none !important;
+    margin-left: 0.255em;
+    vertical-align: 0.255em;
+    content: "";
+    border-top: 0.3em solid;
+    border-right: 0.3em solid transparent;
+    border-bottom: 0;
+    border-left: 0.3em solid transparent;
+  }
+}
+
+.pinPost {
+  border-bottom: 7px solid #3f3d3d;
+  color: white;
+  .pinnedFlag {
+    margin-left: 22px;
+    margin-top: 10px;
+    font-family: cursive;
+    font-size: 17px;
+    font-weight: 600;
+  }
+}
+
+.pinDeleteBtn {
+  position: absolute;
+  width: 212px;
+  // width: 100%;
+  padding: 10px 0px;
+  right: 0;
+  display: none;
+  align-items: center;
+  background: black !important;
+  box-shadow: #ffffff33 0px 0px 15px, #ffffff26 0px 0px 3px 1px;
+  flex-direction: column;
+  border-radius: 10px;
 }

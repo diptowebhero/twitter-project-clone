@@ -10,21 +10,24 @@ const getAllTweet = async (req, res, next) => {
     });
 
     const filterObj = {};
-
     req.query.tweetedBy && (filterObj.tweetedBy = req.query.tweetedBy);
 
     req.query.replyTo &&
       (filterObj.replyTo =
         req.query.replyTo == "false" ? { $exists: false } : { $exists: true });
+    //load only following user post
 
     user.following = user.following || [];
     const followingUser = [...user.following];
     followingUser.push(user)._id;
 
-    //load only following user post
     req.query.followingOnly &&
       req.query.followingOnly === true &&
       (filterObj.tweetedBy = { $in: followingUser });
+
+    req.query.pinned &&
+      req.query.pinned === "true" &&
+      (filterObj.pinned = true);
 
     const tweet = await Tweet.find(filterObj);
 
