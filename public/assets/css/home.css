@@ -1083,3 +1083,55 @@ div#coverPreviewContainer img {
           flex-direction: column;
   border-radius: 10px;
 }
+
+.searchBox_container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  max-width: 600px;
+  height: 50px;
+  width: 100%;
+  border-radius: 30px;
+  background: rgba(51, 38, 153, 0.12549) !important;
+  -webkit-box-shadow: 0 0.5rem 1rem #00000026 !important;
+          box-shadow: 0 0.5rem 1rem #00000026 !important;
+  margin: 20px auto;
+  padding: 0px 20px;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  color: white;
+}
+
+.searchBox_container input#searchInput {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  background: transparent;
+  border: 0;
+  font-size: 17px;
+  font-weight: 500;
+  outline: none;
+  color: white;
+}
+
+.searchBox_container i {
+  margin-right: 8px;
+  font-size: 18px;
+}
+
+.spinner_container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-top: 20px;
+}

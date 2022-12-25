@@ -12,6 +12,8 @@ const homeRouter = require("./routers/home/homeRoute");
 const { redisClient } = require("./utilities/cacheManager");
 const postRoute = require("./routers/APIS/postRoute");
 const profileRouter = require("./routers/profile/profileRoute");
+const searchRouter = require("./routers/search/searchRoute");
+const userRouter = require("./routers/users/usersRoute");
 const app = express();
 dotenv.config();
 
@@ -34,13 +36,8 @@ app.use(registerRoute); //authentication route
 app.use(homeRouter); //home route
 app.use(postRoute); //tweet post route
 app.use(profileRouter); // profile route
-
-// app.get("/following", (req, res) => {
-//   res.render("/pages/follow/follow.pug", { error: {} });
-// });
-// app.get("/user/followers", (req, res) => {
-//   res.render("pages/follow/follow", { error: {} });
-// });
+app.use(searchRouter); // search route
+app.use(userRouter); // user route
 
 //notfound handler
 app.use(notFoundHandler);

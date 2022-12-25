@@ -1,7 +1,7 @@
 const User = require("../../models/User");
 const { getAndSetCachedData } = require("../../utilities/cacheManager");
-const getPostProfile = async (req, res, next) => {
-  const username = req.params.username;
+
+const getSearchPost = async (req, res, next) => {
   const user = await getAndSetCachedData(`users:${req.id}`, async () => {
     const newUser = await User.findOne(
       { username: req.username },
@@ -10,22 +10,16 @@ const getPostProfile = async (req, res, next) => {
     return newUser;
   });
 
-  const userProfile = await User.findOne({ username });
-
   const userObj = JSON.stringify(user);
-  const userProfileJs = JSON.stringify(userProfile);
   try {
-    res.render("pages/profile/profile", {
+    res.render("pages/search/search", {
       error: {},
-      user: user,
+      user: user ? user : {},
       userObj,
-      userProfileJs,
-      userProfile,
-      tab: "post",
+      tab: "posts",
     });
   } catch (error) {
     next(error);
   }
 };
-
-module.exports = getPostProfile;
+module.exports = getSearchPost;

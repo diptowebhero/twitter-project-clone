@@ -7,8 +7,8 @@ block cssLink
     link(rel="stylesheet" href="/assets/css/toastify.css")
     link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.css")
 block jsScript
-    script(src="/assets/js/app.js" defer)
     script(src="/assets/js/uploadImage.js" defer)
+    script(src="/assets/js/app.js" defer)
     script(src="/assets/js/profile.js" defer)
     <script type="text/javascript" src="/assets/js/toastify.js" defer></script>
     <script type="text/javascript" src="/assets/js/moment.js" defer></script>
@@ -74,11 +74,10 @@ block bodyContent
                                 i.fas.fa-home
                                 .notification_box 1
                             |Home 
-                        a.nav_link(href="/explore")
+                        a.nav_link(href="/search")
                             span
-                                i.fas.fa-hashtag
-                                .notification_box
-                            |Explore 
+                                i.fas.fa-search
+                            |Search 
                         a.nav_link(href="/notification")
                             span
                                 i.fas.fa-bell

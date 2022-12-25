@@ -1,10 +1,103 @@
 const userProfileInfo = document.querySelector(".user_profile_info");
 const menu = document.querySelector(".menu");
+const textAreaInpPostReply = document.querySelector("#replyTextAreaContent");
+const replyBtn = document.querySelector("#replyBtn");
+const replyPostImageInp = document.querySelector("#replyPostImage");
+const replyImageContainer = document.querySelector(".replyImageContainer");
+
+//STORE POST IMAGES
+let postImages = [];
+let replyImages = [];
+
+//set default style tweet btn
+replyBtn.style.backgroundColor = "#76b9e5";
 
 //Logout btn toggle
 userProfileInfo.addEventListener("click", function () {
   menu.classList.toggle("active");
 });
+
+//common function for textarea input handling
+function textAreaInpHandler(input, btn) {
+  input.addEventListener("input", function () {
+    const value = this.value.trim();
+    if (value || postImages.length) {
+      btn.removeAttribute("disabled", "");
+      btn.style.background = "#1d9bf0";
+    } else {
+      btn.setAttribute("disabled", "");
+      btn.style.background = "#76b9e5";
+    }
+  });
+}
+
+//reply textarea handling
+textAreaInpHandler(textAreaInpPostReply, replyBtn);
+
+//uploading reply image handler
+replyPostImageInp.addEventListener("change", function () {
+  const files = this.files;
+  replyImages = [];
+  [...files].forEach((file) => {
+    // toasts error
+    const fileSizeLimitError = Toastify({
+      text: "File is too large",
+      duration: 4000,
+    });
+    const fileTypeLimitError = Toastify({
+      text: "Only jpeg, jpg, png, svg file is allowed",
+      duration: 4000,
+    });
+    if (
+      !["image/png", "image/jpg", "image/jpeg", "images/svg+xml"].includes(
+        file.type
+      )
+    ) {
+      return fileTypeLimitError.showToast();
+    }
+    if (file.size > 1000000) {
+      return fileSizeLimitError.showToast();
+    }
+    replyBtn.removeAttribute("disabled", "");
+    replyBtn.style.background = "#1d9bf0";
+    replyImages.push(file);
+    const fr = new FileReader();
+    fr.onload = function () {
+      const htmlEl = document.createElement("div");
+      htmlEl.classList.add("image");
+      htmlEl.dataset.name = file.name;
+      htmlEl.innerHTML = `<span id="close_btn">
+                            <i class="fas fa-times"></i>
+                          </span><img>`;
+      const img = htmlEl.querySelector("img");
+      img.src = fr.result;
+      replyImageContainer.appendChild(htmlEl);
+    };
+    fr.readAsDataURL(file);
+  });
+});
+
+//remove reply image
+replyImageContainer.addEventListener("click", function (e) {
+  const closeBtn = e.target.id === "close_btn" ? e.target.id : null;
+  if (closeBtn) {
+    const imgEl = e.target.parentElement;
+    const imgName = imgEl.dataset.name;
+    replyImages.forEach((img, i) => {
+      if (imgName === img.name) {
+        replyImages.splice(i, 1);
+        imgEl.remove();
+        if (!replyImages.length && !replyTextAreaContent.value.trim()) {
+          replyBtn.setAttribute("disabled", "");
+          replyBtn.style.background = "#76b9e5";
+        }
+      }
+    });
+  } else {
+    return;
+  }
+});
+
 //create tweet
 function createTweet(data, pinned) {
   let repliedPost = "";
@@ -205,12 +298,12 @@ function retweetHandler(e, postId) {
 function replyHandler(e, postId) {
   const replyTweetBtn = document.querySelector("#replyBtn");
   const replyBtn = e.target;
-  console.log();
   const postObj = JSON.parse(replyBtn.dataset.post);
   const modalBody = document.querySelector(".modal-body");
   modalBody.innerHTML = "";
   const tweetEl = createTweet(postObj);
   replyTweetBtn.addEventListener("click", function (e) {
+    console.log("click");
     const content = replyTextAreaContent.value.trim();
     console.log(content);
     if (!(replyImages.length || content)) return;
@@ -310,8 +403,76 @@ function pinPost(postId, pinned) {
   });
 }
 
-//
+//create follow user element
+function createFollowElement(data) {
+  const avatarUrl = data.avatarProfile
+    ? `/uploads/${data._id}/profile/${data.avatarProfile}`
+    : `/uploads/profile/avatar.png`;
 
-function toggleBtn() {
-  document.querySelector(".pinDeleteBtn").classList.toggle("activeBtn");
+  const name = data.firstName + " " + data.lastName;
+  const isFollowing = data?.followers?.includes(user._id);
+
+  let followDiv = "";
+
+  if (data._id !== user._id) {
+    followDiv = `
+      <button class="follow ${
+        isFollowing ? "active" : ""
+      }" id='followBtn' onclick="followHandler(event,'${data._id}')">
+        ${isFollowing ? "Following" : "follow"}
+      </button>
+    `;
+  }
+
+  const div = document.createElement("div");
+  div.classList.add("follow");
+
+  div.innerHTML = `<div class="followUserInfo">
+                      <div class="avatar">
+                        <img src=${avatarUrl}>
+                      </div>
+                    <div class="displayName">
+                      <a href="/profile/${data.username}">${name}</a>
+                      <span>@${data.username}</span>
+                    </div>
+                    </div>
+                    <div class="followBtn">
+                          ${followDiv}
+                    </div>
+                  `;
+  return div;
+}
+
+//follow following handler
+//follow handling
+function followHandler(e, userId) {
+  const url = `${window.location.origin}/profile/${userId}/follow`;
+  fetch(url, { method: "PUT" })
+    .then((res) => res.json())
+    .then((data) => {
+      const followBtn = e.target;
+      const isFollowing = data.followers.includes(user._id);
+
+      const following = document.querySelector("a.following span");
+      const followers = document.querySelector("a.followers span");
+
+      if (isFollowing) {
+        if (userProfileJs._id === user._id) {
+          following.textContent = parseInt(following.textContent) + 1;
+        }
+        followBtn.classList.add("active");
+        followBtn.textContent = "Following";
+      } else {
+        if (userProfileJs._id === user._id) {
+          following.textContent = parseInt(following.textContent) - 1;
+        }
+        followBtn.classList.remove("active");
+        followBtn.textContent = "Follow";
+      }
+
+      if (data._id === userProfileJs._id) {
+        following.textContent = data.following.length;
+        followers.textContent = data.followers.length;
+      }
+    });
 }

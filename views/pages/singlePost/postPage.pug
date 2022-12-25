@@ -5,10 +5,12 @@ block cssLink
     link(rel="stylesheet" href="/assets/css/home.css")
     link(rel="stylesheet" href="/assets/css/toastify.css")
 block jsScript
+    script(src="/assets/js/app.js" defer)
     script(src="/assets/js/singlePost.js" defer)
     <script type="text/javascript" src="/assets/js/toastify.js" defer></script>
     <script type="text/javascript" src="/assets/js/moment.js" defer></script>
 block bodyContent
+    - avatarUrl = user.avatarProfile ? `/uploads/${user._id}/profile/${user.avatarProfile}` : `/uploads/profile/avatar.png`;
     #replyModal.modal.fade(aria-hidden='true' aria-labelledby='commentModalTitle' tabindex='-1')
         .modal-dialog.modal-dialog-centered
             .modal-content
@@ -20,7 +22,7 @@ block bodyContent
                 .modal-footer
                     .create_reply
                         .user_avatar
-                            img(src="/uploads/profile/" + user.avatarProfile alt="Avatar")
+                            img(src=avatarUrl alt="Avatar")
                         .reply_area
                             textarea#replyTextAreaContent(placeholder="What's happening" spellcheck='false')
                             .replyImageContainer
@@ -42,11 +44,10 @@ block bodyContent
                                 i.fas.fa-home
                                 .notification_box 1
                             |Home 
-                        a.nav_link(href="/explore")
+                        a.nav_link(href="/search")
                             span
-                                i.fas.fa-hashtag
-                                .notification_box
-                            |Explore 
+                                i.fas.fa-search
+                            |Search 
                         a.nav_link(href="/notification")
                             span
                                 i.fas.fa-bell
@@ -80,7 +81,7 @@ block bodyContent
                         button Tweet
             .left_bottom_area 
                 .user_profile_info
-                    img(src="/uploads/profile/" + user.avatarProfile alt="Avatar")
+                    img(src=avatarUrl alt="Avatar")
                     .info
                         h5 #{user.firstName + ' ' + user.lastName}
                         span @#{user.username}

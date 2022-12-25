@@ -812,3 +812,38 @@ div#coverPreviewContainer {
   flex-direction: column;
   border-radius: 10px;
 }
+
+.searchBox_container {
+  display: flex;
+  align-items: center;
+  max-width: 600px;
+  height: 50px;
+  width: 100%;
+  border-radius: 30px;
+  background: rgba(51, 38, 153, 0.12549) !important;
+  box-shadow: 0 0.5rem 1rem #00000026 !important;
+  margin: 20px auto;
+  padding: 0px 20px;
+  justify-content: space-between;
+  color: white;
+  input#searchInput {
+    flex: 1;
+    background: transparent;
+    border: 0;
+    font-size: 17px;
+    font-weight: 500;
+    outline: none;
+    color: white;
+  }
+  i {
+    margin-right: 8px;
+    font-size: 18px;
+  }
+}
+
+.spinner_container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
