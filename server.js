@@ -14,6 +14,7 @@ const postRoute = require("./routers/APIS/postRoute");
 const profileRouter = require("./routers/profile/profileRoute");
 const searchRouter = require("./routers/search/searchRoute");
 const userRouter = require("./routers/users/usersRoute");
+const httpSocketServer = require("./socketServer");
 const app = express();
 dotenv.config();
 
@@ -55,6 +56,11 @@ mongoose
   .then(() => {
     app.listen(process.env.PORT || 5000, () => {
       console.log("Database connection successfully");
+    });
+    httpSocketServer.listen(process.env.SOCKET_PORT || 5003, () => {
+      console.log(
+        "Socket server listening on port " + process.env.SOCKET_PORT || 5003
+      );
     });
   })
   .catch((error) => console.log(error));

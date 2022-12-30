@@ -81,12 +81,14 @@ block bodyContent
                         button Tweet
             .left_bottom_area 
                 .user_profile_info
-                    img(src=avatarUrl alt="Avatar")
+                    .img
+                        .activeStatus.tweetActiveStatus.active(data-activeStatus='active now')
+                        img(src=avatarUrl alt="Avatar")
                     .info
                         h5 #{user.firstName + " " + user.lastName}
                         span #{user.username}
                     i.fas.fa-ellipsis-h
-                .menu.active.shadow
+                .menu.activeToggle.shadow
                     a(href="/logout") Log out #{user.username}
         .middle_side_container
             .post_header
@@ -103,6 +105,13 @@ block bodyContent
                     .cover_img
                         img(src=coverAvatarUrl alt="")
                     .avatar_profile
+                        - activeStatusText = userProfile?.activeStatus ? 'active now' : userProfile.lastSeen ? 'Last seen: ' + userProfile.lastSeen?.toLocaleString() : 'Not seen yet'
+
+                        - isActive = (user._id.toString() === userProfile._id.toString())||activeStatusText == 'active now' 
+
+                        - activeStatusText= isActive ? 'active now' : activeStatusText
+
+                        .activeStatus(data-activeStatus=activeStatusText class= isActive && 'active')
                         img(src=profileAvatarUrl alt="Avatar")
                 .actionsBtn
                     if userProfile.username !== user.username

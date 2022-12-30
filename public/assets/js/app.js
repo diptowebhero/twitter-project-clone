@@ -1,3 +1,17 @@
+//socket
+const socket = io("http://localhost:5003");
+
+//Global variable
+let isConnected = false;
+
+//setup socket
+socket.emit("setup", user);
+
+//connection confirmation
+socket.on("connected", () => {
+  isConnected = true;
+});
+
 const userProfileInfo = document.querySelector(".user_profile_info");
 const menu = document.querySelector(".menu");
 const textAreaInpPostReply = document.querySelector("#replyTextAreaContent");
@@ -14,7 +28,7 @@ replyBtn.style.backgroundColor = "#76b9e5";
 
 //Logout btn toggle
 userProfileInfo.addEventListener("click", function () {
-  menu.classList.toggle("active");
+  menu.classList.toggle("activeToggle");
 });
 
 //common function for textarea input handling
@@ -143,7 +157,15 @@ function createTweet(data, pinned) {
     images,
     likes,
     retweetUsers,
-    tweetedBy: { _id, firstName, lastName, username, avatarProfile },
+    tweetedBy: {
+      _id,
+      firstName,
+      lastName,
+      username,
+      avatarProfile,
+      activeStatus,
+      lastSeen,
+    },
   } = newData;
 
   //delete post && pinned post
@@ -200,11 +222,27 @@ function createTweet(data, pinned) {
     ? `/uploads/${_id}/profile/${avatarProfile}`
     : `/uploads/profile/avatar.png`;
 
+  //active status
+  let activeStatusText = activeStatus
+    ? "active now"
+    : new Date(lastSeen).toLocaleString() !== "Invalid Date"
+    ? "Last seen: " + lastSeen.toLocaleString()
+    : "Not seen yet";
+
+  const isActive =
+    _id.toString() === user._id.toString() || activeStatusText == "active now";
+
+  activeStatusText = isActive ? "active now" : activeStatusText;
+
   div.innerHTML = `
   ${pinFlag}
   ${retweetNameDisplay}
     <div onclick="openTweet(event,'${postId}')" class="tweet">
     <div class="avatar-area">
+    <div class="activeStatus tweetActiveStatus ${
+      isActive && "active"
+    }" data-activeStatus="${activeStatusText}">
+    </div>
     <img src="${window.location.origin}${avatarUrl}" alt=""/>
   </div>
 
@@ -427,10 +465,30 @@ function createFollowElement(data) {
   const div = document.createElement("div");
   div.classList.add("follow");
 
+  //active status
+  let activeStatusText = data?.activeStatus
+    ? "active now"
+    : new Date(data?.lastSeen).toLocaleString() !== "Invalid Date"
+    ? "Last seen: " + data.lastSeen.toLocaleString()
+    : "Not seen yet";
+
+  const isActive =
+    data._id.toString() === user._id.toString() ||
+    activeStatusText == "active now";
+  console.log(activeStatusText);
+  console.log(isActive);
+  // console.log(data._id.toString() === user._id.toString());
+
+  activeStatusText = isActive ? "active now" : activeStatusText;
+
   div.innerHTML = `<div class="followUserInfo">
-                      <div class="avatar">
-                        <img src=${avatarUrl}>
-                      </div>
+                    <div class="avatar">
+                    <div class="activeStatus tweetActiveStatus ${
+                      isActive && "active"
+                    }" data-activeStatus="${activeStatusText}">
+                    </div>
+                      <img src=${avatarUrl}>
+                    </div>
                     <div class="displayName">
                       <a href="/profile/${data.username}">${name}</a>
                       <span>@${data.username}</span>

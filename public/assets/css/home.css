@@ -240,7 +240,7 @@
   text-decoration: underline !important;
 }
 
-.main .left_side_container .left_bottom_area .active {
+.main .left_side_container .left_bottom_area .activeToggle {
   display: none;
 }
 
@@ -298,6 +298,8 @@
   -ms-flex-preferred-size: 50px;
       flex-basis: 50px;
   margin-right: 10px;
+  height: 51px;
+  position: relative;
 }
 
 .main .middle_side_container .create_post .user_avatar img {
@@ -437,6 +439,7 @@
 .main .middle_side_container .tweetPost_container .tweet .avatar-area {
   width: 50px;
   height: 50px;
+  position: relative;
 }
 
 .main .middle_side_container .tweetPost_container .tweet .avatar-area img {
@@ -617,6 +620,7 @@
 #replyModal .tweet .avatar-area {
   width: 50px;
   height: 50px;
+  position: relative;
 }
 
 #replyModal .tweet .avatar-area img {
@@ -761,6 +765,8 @@
   -ms-flex-preferred-size: 50px;
       flex-basis: 50px;
   margin-right: 10px;
+  position: relative;
+  height: 51px;
 }
 
 #replyModal .modal-footer .create_reply .user_avatar img {

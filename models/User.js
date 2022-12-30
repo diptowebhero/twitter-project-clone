@@ -64,6 +64,9 @@ const userSchema = new Schema(
     followers: [{ type: Schema.Types.ObjectId, ref: "User" }],
     following: [{ type: Schema.Types.ObjectId, ref: "User" }],
     coverImg: [{ type: String }],
+
+    activeStatus: Boolean,
+    lastSeen: Date,
   },
   { timestamps: true }
 );

@@ -5,11 +5,12 @@ block cssLink
     link(rel="stylesheet" href="/assets/css/home.css")
     link(rel="stylesheet" href="/assets/css/toastify.css")
 block jsScript
+    script(src="/assets/js/app.js" defer)
     script(src="/assets/js/home.js" defer)
     <script type="text/javascript" src="/assets/js/toastify.js" defer></script>
-    <script type="text/javascript" src="/assets/js/moment.js" defer></script>
 block bodyContent
     - avatarUrl = user.avatarProfile ? `/uploads/${user._id}/profile/${user.avatarProfile}` : `/uploads/profile/avatar.png`;
+
 
     #replyModal.modal.fade(aria-hidden='true' aria-labelledby='commentModalTitle' tabindex='-1')
         .modal-dialog.modal-dialog-centered
@@ -22,6 +23,7 @@ block bodyContent
                 .modal-footer
                     .create_reply
                         .user_avatar
+                            .activeStatus.tweetActiveStatus.active(data-activeStatus='active now')
                             img(src=avatarUrl alt="Avatar")
                         .reply_area
                             textarea#replyTextAreaContent(placeholder="What's happening" spellcheck='false')
@@ -81,12 +83,14 @@ block bodyContent
                         button Tweet
             .left_bottom_area 
                 .user_profile_info
-                    img(src=avatarUrl alt="Avatar")
+                    .img
+                        .activeStatus.tweetActiveStatus.active(data-activeStatus='active now')
+                        img(src=avatarUrl alt="Avatar")
                     .info
                         h5 #{user.firstName + ' ' + user.lastName}
                         span @#{user.username}
                     i.fas.fa-ellipsis-h
-                .menu.active.shadow
+                .menu.activeToggle.shadow
                     a(href="/logout") Log out @#{user.username}
         .middle_side_container
             .post_header
@@ -94,9 +98,9 @@ block bodyContent
                 i.fas.fa-star
             .create_post
                 .user_avatar
-                    a(href="/profile")
-                        a(href=`/profile/` + user.username)
-                            img(src=avatarUrl alt="Avatar")
+                    .activeStatus.tweetActiveStatus.active(data-activeStatus='active now')
+                    a(href=`/profile/` + user.username)
+                        img(src=avatarUrl alt="Avatar")
                 .post_area
                     textarea#textAreaContent(placeholder="What's happening")
                     #postImageContainer

@@ -13,3 +13,106 @@ body {
 a {
   text-decoration: none !important;
 }
+
+//common css for active status
+
+//tweet post active status
+.activeStatus.tweetActiveStatus {
+  position: absolute;
+  background: #787c80;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  bottom: 2px;
+  right: 3px;
+  border: 2px solid black;
+  &::after {
+    content: attr(data-activeStatus);
+    font-size: 15px;
+    font-weight: 500;
+    position: absolute;
+    left: 22px;
+    top: -9px;
+    box-shadow: 0px 0px 2px 0px #fff;
+    background: white;
+    color: black;
+    padding: 2px 8px;
+    white-space: nowrap;
+    border-radius: 5px;
+    visibility: hidden;
+  }
+  &::before {
+    content: "";
+    width: 10px;
+    height: 10px;
+    background: white;
+    position: absolute;
+    left: 18px;
+    top: -1px;
+    transform: rotate(39deg) skew(360deg, 13deg);
+    visibility: hidden;
+  }
+}
+.activeStatus.tweetActiveStatus.active {
+  background: #31a24c;
+}
+
+//profile active status
+.profile_container .activeStatus {
+  background: #787c80;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  position: absolute;
+  left: 75px;
+  bottom: 7px;
+  border: 2px solid black;
+  &::after {
+    content: attr(data-activeStatus);
+    font-size: 15px;
+    font-weight: 500;
+    position: absolute;
+    left: 30px;
+    top: -7px;
+    box-shadow: 0px 0px 2px 0px #fff;
+    background: white;
+    color: black;
+    padding: 2px 8px;
+    white-space: nowrap;
+    border-radius: 5px;
+    visibility: hidden;
+  }
+  &::before {
+    content: "";
+    width: 10px;
+    height: 10px;
+    background: white;
+    position: absolute;
+    left: 25px;
+    top: 2px;
+    transform: rotate(39deg) skew(360deg, 13deg);
+    visibility: hidden;
+  }
+}
+.profile_container .activeStatus.active {
+  background: #31a24c;
+}
+
+.profile_container .activeStatus:hover::after {
+  visibility: visible;
+}
+.profile_container .activeStatus:hover::before {
+  visibility: visible;
+}
+
+//tweet post
+.activeStatus.tweetActiveStatus:hover::after {
+  visibility: visible;
+}
+.activeStatus.tweetActiveStatus:hover::before {
+  visibility: visible;
+}
+
+.user_profile_info .img {
+  position: relative;
+}

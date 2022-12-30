@@ -7,13 +7,15 @@ block cssLink
     link(rel="stylesheet" href="/assets/css/toastify.css")
     link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.css")
 block jsScript
-    script(src="/assets/js/uploadImage.js" defer)
     script(src="/assets/js/app.js" defer)
+    script(src="/assets/js/uploadImage.js" defer)
     script(src="/assets/js/profile.js" defer)
     <script type="text/javascript" src="/assets/js/toastify.js" defer></script>
     <script type="text/javascript" src="/assets/js/moment.js" defer></script>
 block bodyContent
     - avatarUrl = user.avatarProfile ? `/uploads/${user._id}/profile/${user.avatarProfile}` : `/uploads/profile/avatar.png`;
+
+
     #replyModal.modal.fade(aria-hidden='true' aria-labelledby='commentModalTitle' tabindex='-1')
         .modal-dialog.modal-dialog-centered
             .modal-content.shadow-lg
@@ -24,6 +26,7 @@ block bodyContent
                 .modal-footer
                     .create_reply
                         .user_avatar
+                            .activeStatus.tweetActiveStatus.active(data-activeStatus='active now')
                             img(src=avatarUrl alt="Avatar")
                         .reply_area
                             textarea#replyTextAreaContent(placeholder="What's happening" spellcheck='false')
@@ -111,12 +114,14 @@ block bodyContent
                         button Tweet
             .left_bottom_area 
                 .user_profile_info
-                    img(src=avatarUrl alt="Avatar")
+                    .img
+                        .activeStatus.tweetActiveStatus.active(data-activeStatus='active now')
+                        img(src=avatarUrl alt="Avatar")
                     .info
                         h5 #{user.firstName + " " + user.lastName}
                         span #{user.username}
                     i.fas.fa-ellipsis-h
-                .menu.active.shadow
+                .menu.activeToggle.shadow
                     a(href="/logout") Log out #{user.username}
         .middle_side_container
             .post_header
@@ -137,6 +142,14 @@ block bodyContent
                         img(src=coverAvatarUrl alt="")
 
                     .avatar_profile
+                        - activeStatusText = userProfile?.activeStatus ? 'active now' : userProfile.lastSeen ? 'Last seen: ' + userProfile.lastSeen?.toLocaleString() : 'Not seen yet'
+
+                        - isActive = (user._id.toString() === userProfile._id.toString())||activeStatusText == 'active now' 
+
+                        - activeStatusText= isActive ? 'active now' : activeStatusText
+
+
+                        .activeStatus(data-activeStatus=activeStatusText class= isActive && 'active')
                         if userProfile._id.toString() === user._id
                             button.uploadImage(data-bs-toggle="modal" data-bs-target="#avatarUpdateModal")
                                 i.fas.fa-camera
