@@ -15,6 +15,8 @@ const profileRouter = require("./routers/profile/profileRoute");
 const searchRouter = require("./routers/search/searchRoute");
 const userRouter = require("./routers/users/usersRoute");
 const httpSocketServer = require("./socketServer");
+const messagesRouter = require("./routers/messages/messagesRoute");
+const chatRoute = require("./routers/chat/chatRoute");
 const app = express();
 dotenv.config();
 
@@ -39,6 +41,8 @@ app.use(postRoute); //tweet post route
 app.use(profileRouter); // profile route
 app.use(searchRouter); // search route
 app.use(userRouter); // user route
+app.use(messagesRouter); // message route
+app.use(chatRoute); // chat route
 
 //notfound handler
 app.use(notFoundHandler);

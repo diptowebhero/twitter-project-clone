@@ -442,7 +442,7 @@ function pinPost(postId, pinned) {
 }
 
 //create follow user element
-function createFollowElement(data) {
+function createFollowElement(data, hideFollowBtn) {
   const avatarUrl = data.avatarProfile
     ? `/uploads/${data._id}/profile/${data.avatarProfile}`
     : `/uploads/profile/avatar.png`;
@@ -475,8 +475,7 @@ function createFollowElement(data) {
   const isActive =
     data._id.toString() === user._id.toString() ||
     activeStatusText == "active now";
-  console.log(activeStatusText);
-  console.log(isActive);
+
   // console.log(data._id.toString() === user._id.toString());
 
   activeStatusText = isActive ? "active now" : activeStatusText;
@@ -495,7 +494,7 @@ function createFollowElement(data) {
                     </div>
                     </div>
                     <div class="followBtn">
-                          ${followDiv}
+                    ${hideFollowBtn ? "" : followDiv}
                     </div>
                   `;
   return div;
@@ -533,4 +532,11 @@ function followHandler(e, userId) {
         followers.textContent = data.followers.length;
       }
     });
+}
+
+function getChatUserName(users) {
+  let chatName = users.map((user) => user.firstName + " " + user.lastName);
+
+  chatName = chatName.join(", ");
+  return chatName;
 }

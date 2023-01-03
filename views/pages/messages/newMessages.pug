@@ -3,34 +3,15 @@ block title
     title=title
 block cssLink
     link(rel="stylesheet" href="/assets/css/home.css")
+    link(rel="stylesheet" href="/assets/css/profile.css")
+    link(rel="stylesheet" href="/assets/css/messages.css")
     link(rel="stylesheet" href="/assets/css/toastify.css")
 block jsScript
     script(src="/assets/js/app.js" defer)
-    script(src="/assets/js/singlePost.js" defer)
+    script(src="/assets/js/newMessages.js" defer)
     <script type="text/javascript" src="/assets/js/toastify.js" defer></script>
-    <script type="text/javascript" src="/assets/js/moment.js" defer></script>
 block bodyContent
     - avatarUrl = user.avatarProfile ? `/uploads/${user._id}/profile/${user.avatarProfile}` : `/uploads/profile/avatar.png`;
-    #replyModal.modal.fade(aria-hidden='true' aria-labelledby='commentModalTitle' tabindex='-1')
-        .modal-dialog.modal-dialog-centered
-            .modal-content
-                .modal-header
-                    h1#commentModalTitle.modal-title.fs-5 Reply
-                    button.btn-close(type='button' data-bs-dismiss='modal' aria-label='Close')
-                .modal-body
-
-                .modal-footer
-                    .create_reply
-                        .user_avatar
-                            img(src=avatarUrl alt="Avatar")
-                        .reply_area
-                            textarea#replyTextAreaContent(placeholder="What's happening" spellcheck='false')
-                            .replyImageContainer
-                            .reply_actions.mt-3
-                                label(for='replyPostImage')
-                                    i.fas.fa-image(aria-hidden='true')
-                                    input#replyPostImage(type='file' multiple='' hidden='')
-                                button#replyBtn(disabled onclick="clearInputData()") Reply Tweet
     main.main
         .left_side_container
             .left_top_area
@@ -47,7 +28,7 @@ block bodyContent
                         a.nav_link(href="/search")
                             span
                                 i.fas.fa-search
-                            |Search 
+                            |Search  
                         a.nav_link(href="/notification")
                             span
                                 i.fas.fa-bell
@@ -68,7 +49,7 @@ block bodyContent
                                 i.fas.fa-list
                                 .notification_box
                             | Lists
-                        a.nav_link(href="/profile")
+                        a.nav_link(href=`/profile/${user.username}`)
                             span
                                 i.fas.fa-user-circle
                                 .notification_box
@@ -81,7 +62,9 @@ block bodyContent
                         button Tweet
             .left_bottom_area 
                 .user_profile_info
-                    img(src=avatarUrl alt="Avatar")
+                    .img
+                        .activeStatus.tweetActiveStatus.active(data-activeStatus='active now')
+                        img(src=avatarUrl alt="Avatar")
                     .info
                         h5 #{user.firstName + ' ' + user.lastName}
                         span @#{user.username}
@@ -90,13 +73,16 @@ block bodyContent
                     a(href="/logout") Log out @#{user.username}
         .middle_side_container
             .post_header
-                h4
-                    button(onclick="history.back()" class="backBtn")
-                        i.fas.fa-arrow-left
-                    |Latest Tweet 
-                i.fas.fa-star
-            .tweetPost_container
+                h4.d-flex Create New Group
+            .searchUserBox_container
+                .search_box
+                    .input_box
+                        i.fas.fa-search
+                        input#userSearchInput(type="search" placeholder="Search User")
+                    button#createNewChatBtn.createNewChatBtn Cerate group chat
+                #selectedUser
+                    //- span Dipto Das
+            .followFollowing_container.msg_page
         .right_side_container
     script.
         const user = !{userObj}
-        const postId = "!{postId}"

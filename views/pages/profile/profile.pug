@@ -86,7 +86,7 @@ block bodyContent
                                 i.fas.fa-bell
                                 .notification_box
                             |Notification 
-                        a.nav_link(href="/message")
+                        a.nav_link(href="/messages")
                             span
                                 i.fas.fa-envelope
                                 .notification_box
@@ -156,8 +156,9 @@ block bodyContent
                         img(src=profileAvatarUrl alt="Avatar")
                 .actionsBtn
                     if userProfile.username !== user.username
-                        button(class='msg')
-                            i.fas.fa-envelope
+                        button.msg
+                            a(href=`/messages/${userProfile._id}`)
+                                i.fas.fa-envelope
                         - isFollowing = userProfile.followers && userProfile.followers.includes(user._id.toString())
                         button.follow(class=isFollowing ? 'active' : '' onclick=`followHandler(event,"${userProfile._id}")`) #{isFollowing ? 'Following' : 'Follow'}
                 .userDetails_container
