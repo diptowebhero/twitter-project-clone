@@ -116,3 +116,9 @@ a {
 .user_profile_info .img {
   position: relative;
 }
+
+.activeStatus.tweetActiveStatus.chatActiveStatus {
+  &::after {
+    content: attr(data-active-status);
+  }
+}

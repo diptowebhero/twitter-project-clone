@@ -7,6 +7,7 @@ block cssLink
     link(rel="stylesheet" href="/assets/css/toastify.css")
 block jsScript
     script(src="/assets/js/app.js" defer)
+    script(src="/assets/js/message.js" defer)
     <script type="text/javascript" src="/assets/js/toastify.js" defer></script>
 block bodyContent
     - avatarUrl = user.avatarProfile ? `/uploads/${user._id}/profile/${user.avatarProfile}` : `/uploads/profile/avatar.png`;

@@ -16,7 +16,7 @@ fetch(url)
 function displayChatData(chatData) {
   //get other user
   const otherUsers = chatData.users.filter((u) => u._id !== user._id);
-  console.log(otherUsers.length);
+
   // console.log(otherUsers);
   // console.log(chatData.chatImg);
 
@@ -28,7 +28,7 @@ function displayChatData(chatData) {
 
   let remainingUsers = "";
   remainingUsers =
-    otherUsers.length === 2 ? "" : `<span>${otherUsers.length - 2}+</span>`;
+    otherUsers.length <= 2 ? "" : `<span>${otherUsers.length - 2}+</span>`;
 
   //get chat image
   let chatImage = chatData.chatImg;
@@ -59,7 +59,31 @@ function displayChatData(chatData) {
           : "/uploads/profile/avatar.png"
       }'>
     ${remainingUsers}`;
-  console.log(remainingUsers);
   chatImgEl.innerHTML = chatImage;
   displayChatUserName.innerHTML = `<span>${chatUserNameStr}</span>`;
+
+  //showing active status
+  let isActive = otherUsers.some((otherUser) => otherUser.activeStatus);
+  // console.log(isActive);
+  const isGroupChat = chatData.isGroupChat;
+  let activeStatusText;
+  if (!isGroupChat) {
+    activeStatusText = isActive
+      ? "active now"
+      : new Date(lastSeen).toLocaleString() !== "Invalid Date"
+      ? "Last seen: " + lastSeen.toLocaleString()
+      : "Not seen yet";
+  } else {
+    activeStatusText = isActive ? "active now" : "away";
+  }
+
+  const activeStatusEl = document.createElement("div");
+  activeStatusEl.classList.add(
+    "activeStatus",
+    "tweetActiveStatus",
+    "chatActiveStatus"
+  );
+  isActive && activeStatusEl.classList.add("active");
+  activeStatusEl.dataset.activeStatus = activeStatusText;
+  chatImgEl.prepend(activeStatusEl);
 }

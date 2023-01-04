@@ -57,7 +57,7 @@ userSearchInp.addEventListener("input", function () {
 });
 
 function displaySelectedUser(usersSelected) {
-  if (usersSelected.length) {
+  if (usersSelected.length >= 2) {
     createNewChatBtn.disabled = false;
   }
 
