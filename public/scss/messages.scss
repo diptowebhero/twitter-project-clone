@@ -115,7 +115,7 @@
         width: 40px;
         height: 40px;
         border-radius: 50%;
-        &:nth-child(2) {
+        &:nth-child(3) {
           margin-left: -15px;
         }
       }
@@ -135,6 +135,7 @@
     .chatName {
       color: white;
       span {
+        text-transform: capitalize;
         font-size: 1rem;
         font-weight: 500;
       }
@@ -204,7 +205,7 @@ h4.chat_error {
 .messages_container {
   .chatItem {
     padding: 10px 20px;
-    background-color: rgb(32, 35, 39);
+    background-color: #030618;
     display: flex;
     border-bottom: 1px solid #504e4e;
     transition: 0.3s;
@@ -242,6 +243,7 @@ h4.chat_error {
         white-space: nowrap;
         text-overflow: ellipsis;
         height: 15px;
+        text-transform: capitalize;
       }
       .sub-text {
         display: flex;

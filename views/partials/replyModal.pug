@@ -1,0 +1,21 @@
+#replyModal.modal.fade(aria-hidden='true' aria-labelledby='commentModalTitle' tabindex='-1')
+    .modal-dialog.modal-dialog-centered
+        .modal-content
+            .modal-header
+                h2#commentModalTitle.modal-title.fs-5 Reply
+                button.btn-close(type='button' class="btn-close btn-close-white" data-bs-dismiss='modal' aria-label='Close')
+            .modal-body
+
+            .modal-footer
+                .create_reply
+                    .user_avatar
+                        .activeStatus.tweetActiveStatus.active(data-activeStatus='active now')
+                        img(src=avatarUrl alt="Avatar")
+                    .reply_area
+                        textarea#replyTextAreaContent(placeholder="What's happening" spellcheck='false')
+                        .replyImageContainer
+                        .reply_actions.mt-3
+                            label(for='replyPostImage')
+                                i.fas.fa-image(aria-hidden='true')
+                                input#replyPostImage(type='file' multiple='' hidden='')
+                            button#replyBtn(disabled onclick="clearInputData()") Reply Tweet

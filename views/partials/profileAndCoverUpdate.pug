@@ -1,0 +1,27 @@
+#avatarUpdateModal.modal.fade(aria-hidden='true' aria-labelledby='avatarModalTitle' tabindex='-1')
+    .modal-dialog.modal-dialog-centered
+        .modal-content.shadow-lg
+            .modal-header
+                h2#avatarModalTitle.modal-title.fs-5 Update Profile Avatar
+                button.btn-close(type='button' class="btn-close btn-close-white" data-bs-dismiss='modal' aria-label='Close')
+            .modal-body
+                input#updateAvatarInput(type='file')
+                #avatarPreviewContainer
+                    img#avatarPreview
+            .modal-footer
+                button.btn.btn-secondary(type='button' data-bs-dismiss='modal') Close
+                button#avatarUpdateBtn.btn.btn-primary(type='button') Save changes
+
+#coverUpdateModal.modal.fade(aria-hidden='true' aria-labelledby='coverModalTitle' tabindex='-1')
+    .modal-dialog.modal-dialog-centered
+        .modal-content.shadow-lg
+            .modal-header
+                h2#coverModalTitle.modal-title.fs-5 Update Cover Image
+                button.btn-close(type='button' class="btn-close btn-close-white" data-bs-dismiss='modal' aria-label='Close')
+            .modal-body
+                input#coverUpdateInput(type='file')
+                #coverPreviewContainer
+                    img#coverPreview
+            .modal-footer
+                button.btn.btn-secondary(type='button' data-bs-dismiss='modal') Close
+                button#coverUpdateBtn.btn.btn-primary(type='button') Save changes

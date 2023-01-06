@@ -265,7 +265,7 @@ function createTweet(data, pinned) {
     </div>
     <div class="tweetsPostImages"></div>
     <div class="post_footer">
-      <button class="comment" data-post='${JSON.stringify(
+      <button class="comment text-start" data-post='${JSON.stringify(
         data
       )}' data-bs-toggle="modal" data-bs-target="#replyModal" onclick="replyHandler(event,'${postId}')"><i class="far fa-comment"></i><span class="mx-1">${
     replyTweets.length || ""
@@ -277,7 +277,7 @@ function createTweet(data, pinned) {
           retweetUsers.length || ""
         }</span>
       </button>
-      <button class="like ${
+      <button class="text-end like ${
         user.likes.includes(postId) ? "active" : ""
       }" onclick="likeHandler(event,'${postId}')"><i class="fas fa-heart"></i><span class="mx-1">${
     likes.length || ""

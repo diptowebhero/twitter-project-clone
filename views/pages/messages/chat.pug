@@ -11,64 +11,7 @@ block jsScript
 block bodyContent
     - avatarUrl = user.avatarProfile ? `/uploads/${user._id}/profile/${user.avatarProfile}` : `/uploads/profile/avatar.png`;
     main.main
-        .left_side_container
-            .left_top_area
-                .logo_area
-                    a(href="/" class="logoIcon")
-                        i.fab.fa-twitter
-                .menu_section.mt-2
-                    nav.nav
-                        a.nav_link(href="/")
-                            span
-                                i.fas.fa-home
-                                .notification_box 1
-                            |Home 
-                        a.nav_link(href="/search")
-                            span
-                                i.fas.fa-search
-                            |Search  
-                        a.nav_link(href="/notification")
-                            span
-                                i.fas.fa-bell
-                                .notification_box
-                            |Notification 
-                        a.nav_link(href="/messages")
-                            span
-                                i.fas.fa-envelope
-                                .notification_box
-                            |Message 
-                        a.nav_link(href="/bookmarks")
-                            span 
-                                i.far.fa-bookmark
-                                .notification_box
-                            | Bookmarks
-                        a.nav_link(href="/lists")
-                            span 
-                                i.fas.fa-list
-                                .notification_box
-                            | Lists
-                        a.nav_link(href=`/profile/${user.username}`)
-                            span
-                                i.fas.fa-user-circle
-                                .notification_box
-                            |Profile
-                        a.nav_link
-                            span
-                                i.fas.fa-ellipsis-h
-                            |More
-                    .tweet_btn.mt-3
-                        button Tweet
-            .left_bottom_area 
-                .user_profile_info
-                    .img
-                        .activeStatus.tweetActiveStatus.active(data-activeStatus='active now')
-                        img(src=avatarUrl alt="Avatar")
-                    .info
-                        h5 #{user.firstName + ' ' + user.lastName}
-                        span @#{user.username}
-                    i.fas.fa-ellipsis-h
-                .menu.activeToggle.shadow
-                    a(href="/logout") Log out @#{user.username}
+        include ./../../partials/left_side.pug
         .middle_side_container
             .post_header
                 h4.d-flex Chat

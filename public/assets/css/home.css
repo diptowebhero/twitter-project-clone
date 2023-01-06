@@ -465,7 +465,6 @@
   -ms-grid-columns: auto auto;
       grid-template-columns: auto auto;
   border-radius: 10px;
-  border: 1px solid #252424;
   overflow: hidden;
 }
 
@@ -479,6 +478,8 @@
 .main .middle_side_container .tweetPost_container .tweet .tweet_body .tweetsPostImages .tweetImg img {
   width: 100%;
   height: 100%;
+  border-radius: 10px;
+  border: 1px solid #252424;
 }
 
 .main .middle_side_container .tweetPost_container .tweet .tweet_body .header {
@@ -532,7 +533,7 @@
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  padding: 10px;
+  padding: 10px 30px;
 }
 
 .main .middle_side_container .tweetPost_container .tweet .tweet_body button {
@@ -645,7 +646,6 @@
       grid-template-columns: auto auto;
   border-radius: 10px;
   overflow: hidden;
-  border: 1px solid #252424;
 }
 
 #replyModal .tweet .tweet_body .tweetsPostImages .tweetImg {
@@ -656,6 +656,8 @@
 }
 
 #replyModal .tweet .tweet_body .tweetsPostImages .tweetImg img {
+  border-radius: 10px;
+  border: 1px solid #252424;
   width: 100%;
   height: 100%;
 }
@@ -712,7 +714,7 @@
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  padding: 10px;
+  padding: 10px 30px;
 }
 
 #replyModal .tweet .tweet_body button {

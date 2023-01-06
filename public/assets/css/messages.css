@@ -171,7 +171,7 @@
   border-radius: 50%;
 }
 
-.chat_container .chat_header .chatImage img:nth-child(2) {
+.chat_container .chat_header .chatImage img:nth-child(3) {
   margin-left: -15px;
 }
 
@@ -199,6 +199,7 @@
 }
 
 .chat_container .chat_header .chatName span {
+  text-transform: capitalize;
   font-size: 1rem;
   font-weight: 500;
 }
@@ -291,7 +292,7 @@ h4.chat_error {
 
 .messages_container .chatItem {
   padding: 10px 20px;
-  background-color: #202327;
+  background-color: #030618;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -345,6 +346,7 @@ h4.chat_error {
   white-space: nowrap;
   text-overflow: ellipsis;
   height: 15px;
+  text-transform: capitalize;
 }
 
 .messages_container .chatItem .chatDetails .sub-text {
