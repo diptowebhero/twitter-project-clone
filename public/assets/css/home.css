@@ -307,6 +307,7 @@
   height: 50px;
   border-radius: 50%;
   cursor: pointer;
+  border: 1px solid #4a4a4a;
 }
 
 .main .middle_side_container .create_post .post_area {
@@ -448,6 +449,7 @@
   border-radius: 50%;
   -o-object-fit: cover;
      object-fit: cover;
+  border: 1px solid #4a4a4a;
 }
 
 .main .middle_side_container .tweetPost_container .tweet .tweet_body {
@@ -776,6 +778,7 @@
   height: 50px;
   border-radius: 50%;
   cursor: pointer;
+  border: 1px solid #4a4a4a;
 }
 
 #replyModal .modal-footer .create_reply .reply_area {
