@@ -35,12 +35,14 @@ block bodyContent
                                 input#userName(type="text" name="username" value = user? user.username : '' placeholder="Enter userName" class="form-control")
                                 if error.username
                                     p.error #{error.username.msg}
+                                span.usernameError username error
                         .col
                             .mb-3 
                                 label(for="email") Email
                                 input#email(type="text" name="email" value = user? user.email : '' placeholder="Enter Email" class="form-control")
                                 if error.email
-                                    p.error #{error.email.msg} 
+                                    p.error #{error.email.msg}
+                                span.emailError email error
                     .row.rows_container
                         .col
                             .mb-0
@@ -60,6 +62,7 @@ block bodyContent
                                         i.fas.fa-eye
                                 if error.confirmPassword
                                     p.error #{error.confirmPassword.msg}
+                        span.passError Password must be at least 8 chars long & should contain 1 lowercase, 1 uppercase, 1 number & 1 symbol
                     .col
                         .mb-3 
                             label(for="") Avatar

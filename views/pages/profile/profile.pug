@@ -34,7 +34,7 @@ block bodyContent
                     .cover_img
                         - coverAvatarUrl = userProfile.coverImg ? `/uploads/${userProfile._id}/cover/${userProfile.coverImg}` : `/uploads/profile/avatar.png`;
 
-                        if userProfile._id.toString() === user._id
+                        if userProfile._id.toString() === user._id.toString()
                             button.uploadImage(data-bs-toggle="modal" data-bs-target="#coverUpdateModal")
                                 i.fas.fa-camera
                         img(src=coverAvatarUrl alt="")
@@ -48,7 +48,7 @@ block bodyContent
 
 
                         .activeStatus(data-activeStatus=activeStatusText class= isActive && 'active')
-                        if userProfile._id.toString() === user._id
+                        if userProfile._id.toString() === user._id.toString()
                             button.uploadImage(data-bs-toggle="modal" data-bs-target="#avatarUpdateModal")
                                 i.fas.fa-camera
                         img(src=profileAvatarUrl alt="Avatar")

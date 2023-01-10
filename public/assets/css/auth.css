@@ -151,7 +151,7 @@
 .authSection .passError {
   color: red;
   font-weight: 500;
-  margin-top: 3px;
+  margin-top: -17px;
 }
 
 .authSection .toggle_page_container {

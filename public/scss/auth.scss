@@ -105,7 +105,7 @@
   .passError {
     color: red;
     font-weight: 500;
-    margin-top: 3px;
+    margin-top: -17px;
   }
   .toggle_page_container {
     display: flex;
@@ -226,3 +226,10 @@ label.label-img {
     cursor: pointer !important;
   }
 }
+
+// .usernameError {
+//   margin-top: -17px;
+//   span {
+//     color: red;
+//   }
+// }
