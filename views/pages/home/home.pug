@@ -11,6 +11,7 @@ block jsScript
 block bodyContent
     - avatarUrl = user.avatarProfile ? `/uploads/${user._id}/profile/${user.avatarProfile}` : `/uploads/profile/avatar.png`;
     include ./../../partials/replyModal.pug
+    .overlay
     main.main
         include ./../../partials/left_side.pug
         .middle_side_container

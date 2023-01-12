@@ -1,3 +1,6 @@
+.middle_side_container {
+  overflow: visible !important;
+}
 .searchUserBox_container {
   //   margin: auto 20px;
   padding: 10px 20px;
@@ -173,6 +176,184 @@
         color: white;
       }
     }
+    .chat_attachments {
+      display: flex;
+      align-items: center;
+      margin-right: 10px;
+      position: relative;
+      span.material-symbols-outlined {
+        color: #03a9f4;
+        font-size: 21px;
+        pointer-events: none;
+      }
+      label {
+        cursor: pointer;
+      }
+      button#stickerHandler {
+        .sticker_container {
+          position: absolute;
+          width: fit-content;
+          min-height: 200px;
+          background: black;
+          box-shadow: #ffffff33 0px 0px 15px, #ffffff26 0px 0px 3px 1px;
+          border-radius: 10px;
+          bottom: 32px;
+          left: 50%;
+          z-index: 1000;
+          transform: translateX(-50%);
+          padding: 10px;
+          &::after {
+            content: "";
+            width: 15px;
+            height: 15px;
+            position: absolute;
+            background: black;
+            box-shadow: 2px 2px 1px -2px #000000;
+            transform: translateX(-50%) rotate(45deg);
+            bottom: -4px;
+            z-index: -1;
+          }
+          .searchArea {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            border: 2px solid #03a9f4;
+            padding: 5px 10px;
+            border-radius: 30px;
+            gap: 5px;
+            input {
+              background: transparent;
+              border: none;
+              outline: none;
+              color: white;
+              &::placeholder {
+                color: gray;
+              }
+            }
+            i {
+              color: gray;
+              pointer-events: none;
+            }
+            span.material-symbols-outlined {
+              color: gray !important;
+              pointer-events: none;
+            }
+          }
+          .stickers {
+            width: 100%;
+            border: 1px solid gray;
+            border-radius: 5px;
+            height: 150px;
+            overflow-y: auto;
+            margin-top: 10px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 5px;
+            gap: 15px;
+            &::-webkit-scrollbar {
+              width: 5px;
+            }
+            &::-webkit-scrollbar-track {
+              background: white !important;
+            }
+            &::-webkit-scrollbar-thumb {
+              background: white !important;
+              border-radius: 10px;
+            }
+            .sticker {
+              width: 40px;
+              height: 40px;
+
+              padding: 5px;
+              display: flex;
+              align-items: center;
+              border-radius: 30px;
+              transition: 0.3s;
+
+              img {
+                width: 100%;
+                height: 100%;
+                pointer-events: none;
+              }
+              &:hover {
+                background: #ffffffc2;
+              }
+            }
+          }
+        }
+      }
+      button#gifHandler {
+        .gif_container {
+          position: absolute;
+          width: fit-content;
+          min-height: 200px;
+          background: black;
+          box-shadow: #ffffff33 0px 0px 15px, #ffffff26 0px 0px 3px 1px;
+          border-radius: 10px;
+          bottom: 32px;
+          left: 54%;
+          z-index: 1000;
+          transform: translateX(-40%);
+          padding: 10px;
+          &::after {
+            content: "";
+            width: 15px;
+            height: 15px;
+            position: absolute;
+            background: black;
+            box-shadow: 2px 2px 1px -2px #000000;
+            transform: translateX(-50%) rotate(45deg);
+            bottom: -4px;
+            z-index: -1;
+          }
+          .searchArea {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            border: 2px solid #03a9f4;
+            padding: 5px 10px;
+            border-radius: 30px;
+            gap: 5px;
+            input {
+              background: transparent;
+              border: none;
+              outline: none;
+              &::placeholder {
+                color: gray;
+              }
+            }
+            i {
+              color: gray;
+              pointer-events: none;
+            }
+            span.material-symbols-outlined {
+              color: gray !important;
+              pointer-events: none;
+            }
+          }
+          .GIfs {
+            border: 1px solid gray;
+            border-radius: 5px;
+            height: 150px;
+            overflow-y: auto;
+            margin-top: 10px;
+            display: flex;
+            flex-wrap: wrap;
+            &::-webkit-scrollbar {
+              width: 5px;
+            }
+            &::-webkit-scrollbar-track {
+              background: white !important;
+            }
+            &::-webkit-scrollbar-thumb {
+              background: white !important;
+              border-radius: 10px;
+            }
+          }
+        }
+      }
+    }
   }
 }
 
@@ -287,4 +468,22 @@ h4.nothingShow {
 
 .activeStatus.tweetActiveStatus.message.active {
   background: #31a24c !important;
+}
+
+.overlay {
+  position: fixed;
+  // background: #ffffff1f;
+  height: 100vw;
+  width: 100%;
+  z-index: 999;
+  top: 0;
+  left: 0;
+}
+.stickerError {
+  color: red;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  font-weight: 500;
 }

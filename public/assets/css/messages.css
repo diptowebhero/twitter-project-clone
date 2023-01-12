@@ -1,3 +1,7 @@
+.middle_side_container {
+  overflow: visible !important;
+}
+
 .searchUserBox_container {
   padding: 10px 20px;
   background: rgba(51, 38, 153, 0.12549) !important;
@@ -254,6 +258,267 @@
   color: white;
 }
 
+.chat_container .chat_footer .chat_attachments {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-right: 10px;
+  position: relative;
+}
+
+.chat_container .chat_footer .chat_attachments span.material-symbols-outlined {
+  color: #03a9f4;
+  font-size: 21px;
+  pointer-events: none;
+}
+
+.chat_container .chat_footer .chat_attachments label {
+  cursor: pointer;
+}
+
+.chat_container .chat_footer .chat_attachments button#stickerHandler .sticker_container {
+  position: absolute;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  min-height: 200px;
+  background: black;
+  -webkit-box-shadow: #ffffff33 0px 0px 15px, #ffffff26 0px 0px 3px 1px;
+          box-shadow: #ffffff33 0px 0px 15px, #ffffff26 0px 0px 3px 1px;
+  border-radius: 10px;
+  bottom: 32px;
+  left: 50%;
+  z-index: 1000;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  padding: 10px;
+}
+
+.chat_container .chat_footer .chat_attachments button#stickerHandler .sticker_container::after {
+  content: "";
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  background: black;
+  -webkit-box-shadow: 2px 2px 1px -2px #000000;
+          box-shadow: 2px 2px 1px -2px #000000;
+  -webkit-transform: translateX(-50%) rotate(45deg);
+          transform: translateX(-50%) rotate(45deg);
+  bottom: -4px;
+  z-index: -1;
+}
+
+.chat_container .chat_footer .chat_attachments button#stickerHandler .sticker_container .searchArea {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  border: 2px solid #03a9f4;
+  padding: 5px 10px;
+  border-radius: 30px;
+  gap: 5px;
+}
+
+.chat_container .chat_footer .chat_attachments button#stickerHandler .sticker_container .searchArea input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: white;
+}
+
+.chat_container .chat_footer .chat_attachments button#stickerHandler .sticker_container .searchArea input::-webkit-input-placeholder {
+  color: gray;
+}
+
+.chat_container .chat_footer .chat_attachments button#stickerHandler .sticker_container .searchArea input:-ms-input-placeholder {
+  color: gray;
+}
+
+.chat_container .chat_footer .chat_attachments button#stickerHandler .sticker_container .searchArea input::-ms-input-placeholder {
+  color: gray;
+}
+
+.chat_container .chat_footer .chat_attachments button#stickerHandler .sticker_container .searchArea input::placeholder {
+  color: gray;
+}
+
+.chat_container .chat_footer .chat_attachments button#stickerHandler .sticker_container .searchArea i {
+  color: gray;
+  pointer-events: none;
+}
+
+.chat_container .chat_footer .chat_attachments button#stickerHandler .sticker_container .searchArea span.material-symbols-outlined {
+  color: gray !important;
+  pointer-events: none;
+}
+
+.chat_container .chat_footer .chat_attachments button#stickerHandler .sticker_container .stickers {
+  width: 100%;
+  border: 1px solid gray;
+  border-radius: 5px;
+  height: 150px;
+  overflow-y: auto;
+  margin-top: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 5px;
+  gap: 15px;
+}
+
+.chat_container .chat_footer .chat_attachments button#stickerHandler .sticker_container .stickers::-webkit-scrollbar {
+  width: 5px;
+}
+
+.chat_container .chat_footer .chat_attachments button#stickerHandler .sticker_container .stickers::-webkit-scrollbar-track {
+  background: white !important;
+}
+
+.chat_container .chat_footer .chat_attachments button#stickerHandler .sticker_container .stickers::-webkit-scrollbar-thumb {
+  background: white !important;
+  border-radius: 10px;
+}
+
+.chat_container .chat_footer .chat_attachments button#stickerHandler .sticker_container .stickers .sticker {
+  width: 40px;
+  height: 40px;
+  padding: 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 30px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.chat_container .chat_footer .chat_attachments button#stickerHandler .sticker_container .stickers .sticker img {
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.chat_container .chat_footer .chat_attachments button#stickerHandler .sticker_container .stickers .sticker:hover {
+  background: #ffffffc2;
+}
+
+.chat_container .chat_footer .chat_attachments button#gifHandler .gif_container {
+  position: absolute;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  min-height: 200px;
+  background: black;
+  -webkit-box-shadow: #ffffff33 0px 0px 15px, #ffffff26 0px 0px 3px 1px;
+          box-shadow: #ffffff33 0px 0px 15px, #ffffff26 0px 0px 3px 1px;
+  border-radius: 10px;
+  bottom: 32px;
+  left: 54%;
+  z-index: 1000;
+  -webkit-transform: translateX(-40%);
+          transform: translateX(-40%);
+  padding: 10px;
+}
+
+.chat_container .chat_footer .chat_attachments button#gifHandler .gif_container::after {
+  content: "";
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  background: black;
+  -webkit-box-shadow: 2px 2px 1px -2px #000000;
+          box-shadow: 2px 2px 1px -2px #000000;
+  -webkit-transform: translateX(-50%) rotate(45deg);
+          transform: translateX(-50%) rotate(45deg);
+  bottom: -4px;
+  z-index: -1;
+}
+
+.chat_container .chat_footer .chat_attachments button#gifHandler .gif_container .searchArea {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  border: 2px solid #03a9f4;
+  padding: 5px 10px;
+  border-radius: 30px;
+  gap: 5px;
+}
+
+.chat_container .chat_footer .chat_attachments button#gifHandler .gif_container .searchArea input {
+  background: transparent;
+  border: none;
+  outline: none;
+}
+
+.chat_container .chat_footer .chat_attachments button#gifHandler .gif_container .searchArea input::-webkit-input-placeholder {
+  color: gray;
+}
+
+.chat_container .chat_footer .chat_attachments button#gifHandler .gif_container .searchArea input:-ms-input-placeholder {
+  color: gray;
+}
+
+.chat_container .chat_footer .chat_attachments button#gifHandler .gif_container .searchArea input::-ms-input-placeholder {
+  color: gray;
+}
+
+.chat_container .chat_footer .chat_attachments button#gifHandler .gif_container .searchArea input::placeholder {
+  color: gray;
+}
+
+.chat_container .chat_footer .chat_attachments button#gifHandler .gif_container .searchArea i {
+  color: gray;
+  pointer-events: none;
+}
+
+.chat_container .chat_footer .chat_attachments button#gifHandler .gif_container .searchArea span.material-symbols-outlined {
+  color: gray !important;
+  pointer-events: none;
+}
+
+.chat_container .chat_footer .chat_attachments button#gifHandler .gif_container .GIfs {
+  border: 1px solid gray;
+  border-radius: 5px;
+  height: 150px;
+  overflow-y: auto;
+  margin-top: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.chat_container .chat_footer .chat_attachments button#gifHandler .gif_container .GIfs::-webkit-scrollbar {
+  width: 5px;
+}
+
+.chat_container .chat_footer .chat_attachments button#gifHandler .gif_container .GIfs::-webkit-scrollbar-track {
+  background: white !important;
+}
+
+.chat_container .chat_footer .chat_attachments button#gifHandler .gif_container .GIfs::-webkit-scrollbar-thumb {
+  background: white !important;
+  border-radius: 10px;
+}
+
 h4.chat_error {
   text-align: center;
   width: 100%;
@@ -400,4 +665,28 @@ h4.nothingShow {
 
 .activeStatus.tweetActiveStatus.message.active {
   background: #31a24c !important;
+}
+
+.overlay {
+  position: fixed;
+  height: 100vw;
+  width: 100%;
+  z-index: 999;
+  top: 0;
+  left: 0;
+}
+
+.stickerError {
+  color: red;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-size: 15px;
+  font-weight: 500;
 }

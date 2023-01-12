@@ -70,8 +70,8 @@ function displayChatData(chatData) {
   if (!isGroupChat) {
     activeStatusText = isActive
       ? "active now"
-      : new Date(lastSeen).toLocaleString() !== "Invalid Date"
-      ? "Last seen: " + lastSeen.toLocaleString()
+      : new Date(chatData.lastSeen).toLocaleString() !== "Invalid Date"
+      ? "Last seen: " + chatData.lastSeen.toLocaleString()
       : "Not seen yet";
   } else {
     activeStatusText = isActive ? "active now" : "away";

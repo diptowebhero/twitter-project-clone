@@ -17,6 +17,7 @@ const userRouter = require("./routers/users/usersRoute");
 const httpSocketServer = require("./socketServer");
 const messagesRouter = require("./routers/messages/messagesRoute");
 const chatRoute = require("./routers/chat/chatRoute");
+const externalRoute = require("./routers/externalRouter/externalRoute");
 const app = express();
 dotenv.config();
 
@@ -43,6 +44,7 @@ app.use(searchRouter); // search route
 app.use(userRouter); // user route
 app.use(messagesRouter); // message route
 app.use(chatRoute); // chat route
+app.use(externalRoute); // chat route
 
 //notfound handler
 app.use(notFoundHandler);
