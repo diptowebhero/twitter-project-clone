@@ -45,8 +45,8 @@ block bodyContent
                             .gif_container(hidden)
                                 .searchArea
                                     i.fas.fa-search
-                                    input(type="text" placeholder='Search...')
-                                .GIfs
+                                    input#gifInput(type="text" placeholder='Search...')
+                                .gifs
                             span.material-symbols-outlined
                                 | gif_box
                     textarea#msgInput(placeholder='Start a new message...' rows="1")

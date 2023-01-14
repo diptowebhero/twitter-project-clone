@@ -281,9 +281,7 @@
 
 .chat_container .chat_footer .chat_attachments button#stickerHandler .sticker_container {
   position: absolute;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
+  width: 250px;
   min-height: 200px;
   background: black;
   -webkit-box-shadow: #ffffff33 0px 0px 15px, #ffffff26 0px 0px 3px 1px;
@@ -417,9 +415,7 @@
 
 .chat_container .chat_footer .chat_attachments button#gifHandler .gif_container {
   position: absolute;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
+  width: 250px;
   min-height: 200px;
   background: black;
   -webkit-box-shadow: #ffffff33 0px 0px 15px, #ffffff26 0px 0px 3px 1px;
@@ -465,6 +461,7 @@
   background: transparent;
   border: none;
   outline: none;
+  color: #fff;
 }
 
 .chat_container .chat_footer .chat_attachments button#gifHandler .gif_container .searchArea input::-webkit-input-placeholder {
@@ -493,7 +490,7 @@
   pointer-events: none;
 }
 
-.chat_container .chat_footer .chat_attachments button#gifHandler .gif_container .GIfs {
+.chat_container .chat_footer .chat_attachments button#gifHandler .gif_container .gifs {
   border: 1px solid gray;
   border-radius: 5px;
   height: 150px;
@@ -504,19 +501,31 @@
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  padding: 0px 8px;
 }
 
-.chat_container .chat_footer .chat_attachments button#gifHandler .gif_container .GIfs::-webkit-scrollbar {
+.chat_container .chat_footer .chat_attachments button#gifHandler .gif_container .gifs::-webkit-scrollbar {
   width: 5px;
 }
 
-.chat_container .chat_footer .chat_attachments button#gifHandler .gif_container .GIfs::-webkit-scrollbar-track {
+.chat_container .chat_footer .chat_attachments button#gifHandler .gif_container .gifs::-webkit-scrollbar-track {
   background: white !important;
 }
 
-.chat_container .chat_footer .chat_attachments button#gifHandler .gif_container .GIfs::-webkit-scrollbar-thumb {
+.chat_container .chat_footer .chat_attachments button#gifHandler .gif_container .gifs::-webkit-scrollbar-thumb {
   background: white !important;
   border-radius: 10px;
+}
+
+.chat_container .chat_footer .chat_attachments button#gifHandler .gif_container .gifs .gif {
+  margin: 5px 0px;
+}
+
+.chat_container .chat_footer .chat_attachments button#gifHandler .gif_container .gifs .gif img {
+  height: 100%;
+  width: 100%;
+  border-radius: 5px;
+  pointer-events: none;
 }
 
 h4.chat_error {

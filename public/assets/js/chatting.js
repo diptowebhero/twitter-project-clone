@@ -5,11 +5,11 @@ const stickerHandlerBtn = document.querySelector("#stickerHandler");
 const gifHandlerBtn = document.querySelector("#gifHandler");
 
 const stickersBox = document.querySelector(".stickers");
-const gifBox = document.querySelector(".GIFs");
-
+const gifBox = document.querySelector(".gifs");
 const overlay = document.querySelector(".overlay");
 
 const stickerInput = document.querySelector("input#stickerInput");
+const gifInput = document.querySelector("input#gifInput");
 
 //Global variable
 let timer;
@@ -45,6 +45,39 @@ async function loadSticker(searchTerm) {
   }
 }
 
+//load all gifs
+async function loadGif(searchTerm) {
+  const url = searchTerm
+    ? `http://localhost:5000/external/gifs/search?q=${searchTerm}`
+    : `http://localhost:5000/external/gifs/trending`;
+
+  const data = await fetch(url);
+  const { results } = await data.json();
+
+  gifBox.innerHTML = `
+  <div class='spinner_container w-100'>
+    <div class="spinner-border text-danger" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+    </div>`;
+
+  if (results.length) {
+    gifBox.innerHTML = "";
+    results.forEach((gif) => {
+      const gifObj = gif.media_formats.gif.url;
+      const div = document.createElement("div");
+      div.addEventListener("click", (e) => sendGifHandler(e));
+      div.classList.add("gif");
+      div.dataset.gif = JSON.stringify(gif);
+      div.innerHTML = `<img src="${gifObj}"/>`;
+
+      gifBox.appendChild(div);
+    });
+  } else {
+    gifBox.innerHTML = `<h5 class='stickerError'>No result found!</h5>`;
+  }
+}
+
 //sticker handler
 stickerHandlerBtn.addEventListener("click", function (e) {
   if (e.target.id === "stickerHandler") {
@@ -59,6 +92,8 @@ gifHandlerBtn.addEventListener("click", function (e) {
     gifContainer.hidden = false;
     overlay.hidden = false;
   }
+
+  loadGif();
 });
 
 overlay.addEventListener("click", function () {
@@ -72,13 +107,27 @@ function sendStickerHandler(e) {
   const stickerObj = JSON.parse(e.target.dataset.sticker);
   console.log(stickerObj);
 }
+//send gif event handler
+function sendGifHandler(e) {
+  const gifObj = JSON.parse(e.target.dataset.gif);
+  console.log(gifObj);
+}
 
-//search sticker handler
+//search gif handler
 stickerInput.addEventListener("input", function () {
   clearTimeout(timer);
 
   const searchTerm = stickerInput.value;
   if (searchTerm) {
     loadSticker(searchTerm);
+  }
+});
+//search sticker handler
+gifInput.addEventListener("input", function () {
+  clearTimeout(timer);
+
+  const searchTerm = gifInput.value;
+  if (searchTerm) {
+    loadGif(searchTerm);
   }
 });

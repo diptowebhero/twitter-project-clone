@@ -192,7 +192,7 @@
       button#stickerHandler {
         .sticker_container {
           position: absolute;
-          width: fit-content;
+          width: 250px;
           min-height: 200px;
           background: black;
           box-shadow: #ffffff33 0px 0px 15px, #ffffff26 0px 0px 3px 1px;
@@ -286,7 +286,7 @@
       button#gifHandler {
         .gif_container {
           position: absolute;
-          width: fit-content;
+          width: 250px;
           min-height: 200px;
           background: black;
           box-shadow: #ffffff33 0px 0px 15px, #ffffff26 0px 0px 3px 1px;
@@ -319,6 +319,7 @@
               background: transparent;
               border: none;
               outline: none;
+              color: #fff;
               &::placeholder {
                 color: gray;
               }
@@ -332,7 +333,7 @@
               pointer-events: none;
             }
           }
-          .GIfs {
+          .gifs {
             border: 1px solid gray;
             border-radius: 5px;
             height: 150px;
@@ -340,6 +341,7 @@
             margin-top: 10px;
             display: flex;
             flex-wrap: wrap;
+            padding: 0px 8px;
             &::-webkit-scrollbar {
               width: 5px;
             }
@@ -349,6 +351,15 @@
             &::-webkit-scrollbar-thumb {
               background: white !important;
               border-radius: 10px;
+            }
+            .gif {
+              margin: 5px 0px;
+              img {
+                height: 100%;
+                width: 100%;
+                border-radius: 5px;
+                pointer-events: none;
+              }
             }
           }
         }
