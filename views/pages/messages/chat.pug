@@ -5,10 +5,12 @@ block cssLink
     link(rel="stylesheet" href="/assets/css/home.css")
     link(rel="stylesheet" href="/assets/css/profile.css")
     link(rel="stylesheet" href="/assets/css/messages.css")
+    link(rel="stylesheet" href="/assets/css/toastify.css")
 block jsScript
     script(src="/assets/js/app.js" defer)
     script(src="/assets/js/chat.js" defer)
     script(src="/assets/js/chatting.js" defer)
+    <script type="text/javascript" src="/assets/js/toastify.js" defer></script>
 block bodyContent
     - avatarUrl = user.avatarProfile ? `/uploads/${user._id}/profile/${user.avatarProfile}` : `/uploads/profile/avatar.png`;
     .overlay(hidden)
@@ -26,6 +28,16 @@ block bodyContent
                 .chat_message
                     ul
                         li Hello, How are you?
+
+                .selectedImages(hidden)
+                    label(for="image")
+                        span.material-symbols-outlined
+                            | library_add
+                    .image-container
+                        //- .img
+                        //-     button.crossBtn
+                        //-         i.fas.fa-times
+                        //-     img(src="/assets/images/lock.png" alt="")
                 .chat_footer
                     .chat_attachments
                         label(for="image" class="d-flex align-items-center")

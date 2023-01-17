@@ -11,8 +11,14 @@ const overlay = document.querySelector(".overlay");
 const stickerInput = document.querySelector("input#stickerInput");
 const gifInput = document.querySelector("input#gifInput");
 
+//select image reference
+const selectedImages = document.querySelector(".selectedImages");
+const imageInput = document.querySelector("input#image");
+const imageContainer = document.querySelector(".image-container");
+
 //Global variable
 let timer;
+let messageImages = [];
 
 //load all sticker
 async function loadSticker(searchTerm) {
@@ -129,5 +135,89 @@ gifInput.addEventListener("input", function () {
   const searchTerm = gifInput.value;
   if (searchTerm) {
     loadGif(searchTerm);
+  }
+});
+
+//select images
+imageInput.addEventListener("change", function () {
+  // toasts error
+  const fileSizeLimitError = Toastify({
+    text: "File size must not exceed 1MB",
+    duration: 4000,
+  });
+
+  const fileTypeLimitError = Toastify({
+    text: "Only jpeg, jpg, png, svg file is allowed",
+    duration: 4000,
+  });
+
+  const files = this.files;
+
+  imageInput.files = new DataTransfer().files;
+  [...files].forEach((file) => {
+    /* Checking if the file type is not include in the array. it will return the
+    error message. */
+    if (
+      !["image/png", "image/jpg", "image/jpeg", "images/svg+xml"].includes(
+        file.type
+      )
+    ) {
+      return fileTypeLimitError.showToast();
+    }
+
+    /* Checking if the file size is greater than 1MB. If it is, it will return the error message. */
+    if (file.size > 1000000) {
+      return fileSizeLimitError.showToast();
+    }
+
+    let filename = file.name;
+    filename = filename.replace(" ", "-");
+    filename = filename.split(".");
+    const fileExt = filename[filename.length - 1];
+    filename.pop();
+
+    filename = filename.join("-") + "-" + new Date().getTime() + "." + fileExt;
+
+    // change file original name
+    file = new File([file], filename, {
+      type: file.type,
+    });
+    selectedImages.removeAttribute("hidden");
+    messageImages.push(file);
+
+    const fr = new FileReader();
+
+    fr.onload = (e) => {
+      const div = document.createElement("div");
+      div.classList.add("img");
+      div.dataset.name = file.name;
+      div.innerHTML = `
+        <button id="crossBtn" class="crossBtn"><i class="fas fa-times" aria-hidden="true"></i></button><img src="${fr.result}" alt="">
+        `;
+      imageContainer.appendChild(div);
+    };
+
+    fr.readAsDataURL(file);
+  });
+});
+
+//remove specific image
+imageContainer.addEventListener("click", function (e) {
+  const crossBtn = e.target.id === "crossBtn" ? e.target.id : null;
+  if (crossBtn) {
+    const imgEl = e.target.parentElement;
+    const imgName = imgEl.dataset.name;
+    messageImages.forEach((img, i) => {
+      if (imgName === img.name) {
+        messageImages.splice(i, 1);
+        imgEl.remove();
+
+        if (!messageImages.length) {
+          selectedImages.setAttribute("hidden", "");
+        }
+      }
+    });
+  } else {
+    return;
   }
 });
