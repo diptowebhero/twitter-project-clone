@@ -255,7 +255,7 @@
 
 .chat_container .chat_footer button i {
   pointer-events: none;
-  color: white;
+  color: #1d9bf0;
 }
 
 .chat_container .chat_footer .chat_attachments {

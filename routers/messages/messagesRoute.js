@@ -1,7 +1,9 @@
 const { Router } = require("express");
+const createNewMessage = require("../../controllers/APIS/createNewMessage");
 const checkLogin = require("../../controllers/auth/checkLogin");
 const getMessagesPage = require("../../controllers/messages/getMessagesPage");
 const getNewMessagesPage = require("../../controllers/messages/getNewMessagesPage");
+const uploadMessageImg = require("../../middlewares/APIS/uploadMessageImg");
 const htmlResponse = require("../../middlewares/common/htmlResponse");
 const getChatPage = require("./getChatPage");
 const messagesRouter = Router();
@@ -24,5 +26,12 @@ messagesRouter.get(
 
 //get chat page
 messagesRouter.get("/messages/:chatId", checkLogin, getChatPage);
+
+messagesRouter.post(
+  "/messages/:chatId",
+  checkLogin,
+  uploadMessageImg,
+  createNewMessage
+);
 
 module.exports = messagesRouter;

@@ -11,6 +11,9 @@ const overlay = document.querySelector(".overlay");
 const stickerInput = document.querySelector("input#stickerInput");
 const gifInput = document.querySelector("input#gifInput");
 
+const msgInput = document.querySelector("textarea#msgInput");
+const msgSendBtn = document.querySelector("button.sendMassageBtn");
+
 //select image reference
 const selectedImages = document.querySelector(".selectedImages");
 const imageInput = document.querySelector("input#image");
@@ -111,12 +114,12 @@ overlay.addEventListener("click", function () {
 //send sticker event handler
 function sendStickerHandler(e) {
   const stickerObj = JSON.parse(e.target.dataset.sticker);
-  console.log(stickerObj);
+  sendMessage(null, null, null, stickerObj);
 }
 //send gif event handler
 function sendGifHandler(e) {
   const gifObj = JSON.parse(e.target.dataset.gif);
-  console.log(gifObj);
+  sendMessage(null, null, gifObj);
 }
 
 //search gif handler
@@ -221,3 +224,68 @@ imageContainer.addEventListener("click", function (e) {
     return;
   }
 });
+
+//Handle send message
+
+msgInput.addEventListener("keyup", function (e) {
+  const message = this.value.trim();
+  if (e.key === "Enter" && !e.shiftKey) {
+    if (message || messageImages.length) {
+      msgInput.value = "";
+      sendMessage(message, messageImages);
+    } else {
+      console.log("empty message");
+    }
+  }
+});
+
+msgSendBtn.addEventListener("click", function (e) {
+  const message = msgInput.value.trim();
+  if (message || messageImages.length) {
+    msgInput.value = "";
+    sendMessage(message, messageImages);
+  }
+});
+
+//send message
+function sendMessage(message, images = [], sticker, gif) {
+  const url = `${window.location.origin}/messages/${chatId}`;
+  let payload = {
+    message: message ? message : "",
+    gif: gif ? gif : null,
+    sticker: sticker ? sticker : null,
+    replyTo: null,
+  };
+
+  const isImages = images && images.length;
+  if (isImages) {
+    payload = new FormData();
+    payload.append("message", message ? message : "");
+    payload.append("replyTo", null);
+
+    images.forEach((file) => {
+      payload.append(file.name, file);
+    });
+  }
+
+  const options = isImages
+    ? { method: "POST", body: payload }
+    : {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify(payload),
+      };
+
+  fetch(url, options)
+    .then((res) => res.json())
+    .then((data) => {
+      console.log(data);
+      console.log(data.sender);
+
+      if (data.message || data.images.length) {
+        imageContainer.innerHTML = "";
+        selectedImages.hidden = true;
+        messageImages = [];
+      }
+    });
+}
